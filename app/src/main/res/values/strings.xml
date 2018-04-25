@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MoCoSS</string>
+    <string name="title_activity_tab">TabActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">MoCoSS apps from section: %1$d</string>
+    <string name="home">home</string>
+    <string name="setting">setting</string>
+    <string name="homeTab">Home</string>
+    <string name="settingTab">Setting</string>
+    <string name="loginFragmentTag">loginFragmentTag</string>
+    <string name="otherLang">Other Language</string>
+    <string name="Info">MoCoSS info</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_tab2">Tab2Activity</string>
+</resources>

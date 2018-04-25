@@ -1,0 +1,30 @@
+package upsi.edu.mocos.model
+
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentPagerAdapter
+import upsi.edu.mocos.activity.SettingActivity
+import upsi.edu.mocos.fragment.AboutFragment
+import upsi.edu.mocos.fragment.LoginFragment
+import upsi.edu.mocos.fragment.SettingFragment
+
+/**
+ * Created by azwady on 19/04/2018.
+ */
+class PageAdapter (fm: FragmentManager, private var tabCount: Int) :
+        FragmentPagerAdapter(fm) {
+
+    override fun getItem(position: Int): Fragment? {
+        when (position) {
+            0 -> return LoginFragment()
+            1 -> return SettingFragment()
+            2 -> return AboutFragment()
+
+            else -> return null
+        }
+    }
+
+    override fun getCount(): Int {
+        return tabCount
+    }
+}
