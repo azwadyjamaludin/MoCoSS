@@ -22,9 +22,9 @@
         <activity
             android:name=".activity.LoginActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.SettingActivity"
-            android:screenOrientation="portrait" />
+        <activity android:name=".activity.SLActivity" />
+        <activity android:name=".activity.GLActivity" />
+        <activity android:name=".activity.TCActivity"></activity>
     </application>
 
 </manifest>

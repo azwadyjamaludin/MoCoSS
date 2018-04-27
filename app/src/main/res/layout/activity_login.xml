@@ -5,7 +5,6 @@
     android:id="@+id/loginActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/whitesmoke"
     tools:context="upsi.edu.mocos.activity.LoginActivity">
 
     <Button

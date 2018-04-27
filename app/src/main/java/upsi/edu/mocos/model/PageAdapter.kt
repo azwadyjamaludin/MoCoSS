@@ -3,7 +3,6 @@ package upsi.edu.mocos.model
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import upsi.edu.mocos.activity.SettingActivity
 import upsi.edu.mocos.fragment.AboutFragment
 import upsi.edu.mocos.fragment.LoginFragment
 import upsi.edu.mocos.fragment.SettingFragment

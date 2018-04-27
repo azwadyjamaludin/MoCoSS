@@ -1,5 +1,6 @@
 package upsi.edu.mocos.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -29,15 +30,39 @@ class LoginActivity : AppCompatActivity() {
         btn3.text = "Kauselor Pelatih"
         }
         if (MiscSetting.BI) {
-            btn1.text = "Supervisor Lecturer"
-            btn2.text = "Counselor Lecturer"
+            btn1.text = "Supervising Lecturer"
+            btn2.text = "Guiding Lecturer"
             btn3.text = "Trainer Counselor"
         }
         refreshLayout()
+        enterSL(btn1)
+        enterGL(btn2)
+        enterTC(btn3)
     }
 
     private fun refreshLayout() {
         val myview: ViewGroup = findViewById<ViewGroup>(R.id.loginActivity)
         myview.invalidate()
+    }
+
+    fun enterSL(btn1: Button) {
+        btn1.setOnClickListener {
+            val slIntent = Intent(this,SLActivity::class.java)
+            startActivity(slIntent)
+        }
+    }
+
+    fun enterGL(btn2: Button) {
+        btn2.setOnClickListener {
+            val glIntent = Intent(this,GLActivity::class.java)
+            startActivity(glIntent)
+        }
+    }
+
+    fun enterTC(btn3: Button) {
+        btn3.setOnClickListener {
+            val tcIntent = Intent(this,TCActivity::class.java)
+            startActivity(tcIntent)
+        }
     }
 }

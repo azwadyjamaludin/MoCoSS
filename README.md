@@ -1,1 +1,1 @@
-MoCoSS 
+MoCoSS - Mobile Counseling Supervision System

@@ -21,6 +21,7 @@
     <style name="MyAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">true</item>
+        <item name="android:windowBackground">@drawable/bg10edited</item>
         <item name="colorPrimary">@color/orange</item>
         <item name="colorPrimaryDark">@color/purple</item>
         <item name="colorAccent">@color/silver</item>
