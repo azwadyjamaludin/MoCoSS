@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/indCounActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="upsi.edu.mocos.activity.IndCounActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/indCounTB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+
+    <HorizontalScrollView
+        android:id="@+id/indCounHSV"
+        android:layout_width="661dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/indCounLL2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/indCounTB">
+
+        <TableLayout
+            android:id="@+id/IndCounTL"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TableRow
+                android:id="@+id/titleRowInd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/contentRowInd"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/numTextInd"
+                    android:layout_width="38dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dateTextInd"
+                    android:layout_width="118dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/sescodeTextInd"
+                    android:layout_width="133dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/seshourTextInd"
+                    android:layout_width="144dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/sesrptTextInd"
+                    android:layout_width="151dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/avTextInd"
+                    android:layout_width="151dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/noteTextInd"
+                    android:layout_width="151dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/indCounLV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/indCounLL2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/indCounTB">
+
+
+            </android.support.v7.widget.RecyclerView>
+        </TableLayout>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/indCounLL2"
+        android:layout_width="594dp"
+        android:layout_height="84dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -16,22 +16,22 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_login)
-        setNewText()
+        initPage()
     }
 
-    private fun setNewText() {
+    private fun initPage() {
         val btn1 = findViewById<Button>(R.id.button1)
         val btn2 = findViewById<Button>(R.id.button2)
         val btn3 = findViewById<Button>(R.id.button3)
 
         if (MiscSetting.BM) {
         btn1.text = "Pensyarah Penyelia"
-        btn2.text = "Pensyarah Pembimbing"
-        btn3.text = "Kauselor Pelatih"
+        btn2.text = "Kaunselor Pembimbing"
+        btn3.text = "Kaunselor Pelatih"
         }
         if (MiscSetting.BI) {
             btn1.text = "Supervising Lecturer"
-            btn2.text = "Guiding Lecturer"
+            btn2.text = "Guiding Counselor"
             btn3.text = "Trainer Counselor"
         }
         refreshLayout()
@@ -45,23 +45,26 @@ class LoginActivity : AppCompatActivity() {
         myview.invalidate()
     }
 
-    fun enterSL(btn1: Button) {
+    private fun enterSL(btn1: Button) {
         btn1.setOnClickListener {
-            val slIntent = Intent(this,SLActivity::class.java)
+            val slIntent = Intent(this,ContentActivity::class.java)
+            MiscSetting.user = "sl"
             startActivity(slIntent)
         }
     }
 
-    fun enterGL(btn2: Button) {
+    private fun enterGL(btn2: Button) {
         btn2.setOnClickListener {
-            val glIntent = Intent(this,GLActivity::class.java)
-            startActivity(glIntent)
+            val gcIntent = Intent(this,ContentActivity::class.java)
+            MiscSetting.user = "gc"
+            startActivity(gcIntent)
         }
     }
 
     fun enterTC(btn3: Button) {
         btn3.setOnClickListener {
-            val tcIntent = Intent(this,TCActivity::class.java)
+            val tcIntent = Intent(this,ContentActivity::class.java)
+            MiscSetting.user = "tc"
             startActivity(tcIntent)
         }
     }

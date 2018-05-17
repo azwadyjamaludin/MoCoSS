@@ -21,10 +21,18 @@
         </activity>
         <activity
             android:name=".activity.LoginActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".activity.SLActivity" />
-        <activity android:name=".activity.GLActivity" />
-        <activity android:name=".activity.TCActivity"></activity>
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activity.ContentActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.IndCounActivity"/>
+            <!--android:screenOrientation="landscape"-->
+
+        <activity android:name=".activity.GrpCounActivity">
+            <!--android:screenOrientation="landscape">-->
+    </activity>
     </application>
 
 </manifest>

@@ -13,6 +13,7 @@ class MiscSetting: Application() {
         private var instance: MiscSetting? = null
         var BI: Boolean = false
         var BM: Boolean = true
+        var user:String = "user"
 
         fun applicationContext() : MiscSetting {
             return instance!!

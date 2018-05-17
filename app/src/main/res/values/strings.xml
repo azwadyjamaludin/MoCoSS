@@ -11,7 +11,6 @@
     <string name="otherLang">Other Language</string>
     <string name="Info">MoCoSS info</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_tab2">Tab2Activity</string>
     <string name="title_activity_sv">SVActivity</string>
