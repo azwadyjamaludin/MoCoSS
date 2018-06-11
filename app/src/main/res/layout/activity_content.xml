@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <TableLayout
+        <LinearLayout
             android:id="@+id/services"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,19 +35,20 @@
             app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.329">
+            app:layout_constraintVertical_bias="0.329"
+            android:orientation="vertical">
 
             <TableRow
                 android:id="@+id/row1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/intservtext"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:textColor="@color/red"
+                    android:textColor="@color/crimson"
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </TableRow>
@@ -55,12 +56,13 @@
             <TableRow
                 android:id="@+id/row2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <Button
                     android:id="@+id/indCounBtn"
-                    android:layout_width="204dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center" />
             </TableRow>
 
             <TableRow
@@ -70,22 +72,23 @@
 
                 <Button
                     android:id="@+id/grpCounBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center" />
 
             </TableRow>
 
             <TableRow
                 android:id="@+id/row4"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/counTaskText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:textColor="@color/red"
+                    android:textColor="@color/crimson"
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </TableRow>
@@ -97,8 +100,9 @@
 
                 <Button
                     android:id="@+id/guidpsyBtn"
-                    android:layout_width="349dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center" />
             </TableRow>
 
             <TableRow
@@ -108,8 +112,9 @@
 
                 <Button
                     android:id="@+id/progExBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center" />
 
             </TableRow>
 
@@ -120,8 +125,9 @@
 
                 <Button
                     android:id="@+id/psyTestBtn"
-                    android:layout_width="204dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center" />
             </TableRow>
 
             <TableRow
@@ -131,8 +137,9 @@
 
                 <Button
                     android:id="@+id/profDevBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center" />
 
             </TableRow>
 
@@ -143,22 +150,23 @@
 
                 <Button
                     android:id="@+id/refConsBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center" />
 
             </TableRow>
 
             <TableRow
                 android:id="@+id/row10"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/adminMgtText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:textColor="@color/red"
+                    android:textColor="@color/crimson"
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </TableRow>
@@ -170,8 +178,9 @@
 
                 <Button
                     android:id="@+id/logBookBtn"
-                    android:layout_width="204dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center" />
             </TableRow>
 
             <TableRow
@@ -181,8 +190,9 @@
 
                 <Button
                     android:id="@+id/caseAnlBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center" />
 
             </TableRow>
 
@@ -193,8 +203,9 @@
 
                 <Button
                     android:id="@+id/endRptBtn"
-                    android:layout_width="204dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center" />
             </TableRow>
 
             <TableRow
@@ -204,8 +215,9 @@
 
                 <Button
                     android:id="@+id/reflexiBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center" />
 
             </TableRow>
 
@@ -216,12 +228,13 @@
 
                 <Button
                     android:id="@+id/recFileBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center" />
 
             </TableRow>
 
-        </TableLayout>
+        </LinearLayout>
     </ScrollView>
 
 

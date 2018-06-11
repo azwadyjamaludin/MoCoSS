@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.activity_ind_coun.*
 import kotlinx.android.synthetic.main.activity_ind_coun.view.*
 import upsi.edu.mocos.R
 import upsi.edu.mocos.model.IndCounContentListAdapter
+import upsi.edu.mocos.model.IndCounContentListAdapter2
 import upsi.edu.mocos.model.MiscSetting
 
 class IndCounActivity : AppCompatActivity() {
@@ -27,11 +28,18 @@ class IndCounActivity : AppCompatActivity() {
     }
 
     private fun attachAdapter(view: View) {
-        val listadapter = IndCounContentListAdapter(this,addElement())
-        val indCounLV = view.indCounLV
+        if (MiscSetting.user == "tc") {
+            val listadapter = IndCounContentListAdapter(addElement())
+            val indCounLV = view.indCounLV
 
-        indCounLV.adapter = listadapter
+            indCounLV.adapter = listadapter
+        }
+        if (MiscSetting.user == "gc"||MiscSetting.user == "sl") {
+            val listadapter = IndCounContentListAdapter2(addElement())
+            val indCounLV = view.indCounLV
 
+            indCounLV.adapter = listadapter
+        }
     }
 
     private fun initPage(view: View) {
@@ -53,6 +61,7 @@ class IndCounActivity : AppCompatActivity() {
             view.sesrptTextInd.text = "Laporan Sesi"
             view.avTextInd.text = "Rekod Audio/Video"
             view.noteTextInd.text = "Catatan"
+            view.totHourTextInd.text = "Jumlah Jam"
 
         }
         if(MiscSetting.BI) {
@@ -63,6 +72,7 @@ class IndCounActivity : AppCompatActivity() {
             view.sesrptTextInd.text = "Session Report"
             view.avTextInd.text = "Audio/Video Record"
             view.noteTextInd.text = "Notes"
+            view.totHourTextInd.text = "Total Hour"
         }
     }
 

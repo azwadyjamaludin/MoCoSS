@@ -20,7 +20,7 @@
         android:id="@+id/indCounHSV"
         android:layout_width="661dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/indCounLL2"
+        app:layout_constraintBottom_toTopOf="@+id/indCounTL2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/indCounTB">
 
@@ -44,7 +44,7 @@
                     android:layout_width="38dp"
                     android:layout_height="match_parent"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -52,7 +52,7 @@
                     android:layout_width="118dp"
                     android:layout_height="match_parent"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -60,7 +60,7 @@
                     android:layout_width="133dp"
                     android:layout_height="match_parent"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -68,7 +68,7 @@
                     android:layout_width="144dp"
                     android:layout_height="match_parent"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <Space
@@ -80,7 +80,7 @@
                     android:layout_width="151dp"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
 
@@ -93,7 +93,7 @@
                     android:layout_width="151dp"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <Space
@@ -105,7 +105,7 @@
                     android:layout_width="151dp"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
             </TableRow>
@@ -124,16 +124,45 @@
         </TableLayout>
     </HorizontalScrollView>
 
-    <LinearLayout
-        android:id="@+id/indCounLL2"
-        android:layout_width="594dp"
-        android:layout_height="84dp"
+    <TableLayout
+        android:id="@+id/indCounTL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.237"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/indCounHSV">
 
-    </LinearLayout>
+        <TableRow
+            android:id="@+id/totalRowInd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/totHourTextInd"
+                android:layout_width="151dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/totalHourInd"
+                android:layout_width="151dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+
+    </TableLayout>
+
+
 
 
 </android.support.constraint.ConstraintLayout>

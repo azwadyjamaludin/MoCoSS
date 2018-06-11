@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.activity_grp_coun.*
 import kotlinx.android.synthetic.main.activity_grp_coun.view.*
 import upsi.edu.mocos.R
 import upsi.edu.mocos.model.GrpCounContentListAdapter
+import upsi.edu.mocos.model.GrpCounContentListAdapter2
 import upsi.edu.mocos.model.MiscSetting
 
 class GrpCounActivity : AppCompatActivity() {
@@ -26,10 +27,18 @@ class GrpCounActivity : AppCompatActivity() {
     }
 
     private fun attachAdapter(view: View) {
-        val listadapter = GrpCounContentListAdapter(this,addElement())
-        val grpCounLV = view.grpCounLV
+        if (MiscSetting.user == "tc") {
+            val listadapter = GrpCounContentListAdapter(addElement())
+            val grpCounLV = view.grpCounLV
 
-        grpCounLV.adapter = listadapter
+            grpCounLV.adapter = listadapter
+        }
+        if (MiscSetting.user == "gc"||MiscSetting.user == "sl") {
+            val listadapter = GrpCounContentListAdapter2(addElement())
+            val grpCounLV = view.grpCounLV
+
+            grpCounLV.adapter = listadapter
+        }
     }
 
     fun initPage(view: View) {
@@ -53,6 +62,7 @@ class GrpCounActivity : AppCompatActivity() {
             view.sesrptTextGrp.text = "Laporan Sesi"
             view.avTextGrp.text = "Rekod Audio/Video"
             view.noteTextGrp.text = "Catatan"
+            view.totHourTextGrp.text = "Jumlah Jam"
 
         }
         if(MiscSetting.BI) {
@@ -63,6 +73,7 @@ class GrpCounActivity : AppCompatActivity() {
             view.sesrptTextGrp.text = "Session Report"
             view.avTextGrp.text = "Audio/Video Record"
             view.noteTextGrp.text = "Notes"
+            view.totHourTextGrp.text = "Total Hour"
         }
     }
 

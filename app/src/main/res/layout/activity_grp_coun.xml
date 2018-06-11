@@ -19,7 +19,7 @@
         android:id="@+id/grpCounHSV"
         android:layout_width="661dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/grpCounLL2"
+        app:layout_constraintBottom_toTopOf="@+id/grpCounTL2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grpCounTB">
 
@@ -43,7 +43,7 @@
                     android:layout_width="38dp"
                     android:layout_height="match_parent"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -51,7 +51,7 @@
                     android:layout_width="118dp"
                     android:layout_height="match_parent"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -59,7 +59,7 @@
                     android:layout_width="133dp"
                     android:layout_height="match_parent"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -67,7 +67,7 @@
                     android:layout_width="144dp"
                     android:layout_height="match_parent"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <Space
@@ -79,7 +79,7 @@
                     android:layout_width="151dp"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
 
@@ -92,7 +92,7 @@
                     android:layout_width="151dp"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <Space
@@ -104,7 +104,7 @@
                     android:layout_width="151dp"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
             </TableRow>
@@ -123,15 +123,42 @@
         </TableLayout>
     </HorizontalScrollView>
 
-    <LinearLayout
-        android:id="@+id/grpCounLL2"
-        android:layout_width="594dp"
-        android:layout_height="84dp"
+    <TableLayout
+        android:id="@+id/grpCounTL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grpCounHSV">
 
-    </LinearLayout>
+        <TableRow
+            android:id="@+id/totalRowGrp"
+            android:layout_width="409dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/totHourTextGrp"
+                android:layout_width="151dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/totalHourGrp"
+                android:layout_width="151dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+
+    </TableLayout>
 
 </android.support.constraint.ConstraintLayout>

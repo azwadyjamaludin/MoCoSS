@@ -3,8 +3,11 @@ package upsi.edu.mocos.activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_content.*
+import kotlinx.android.synthetic.main.activity_content.view.*
 import upsi.edu.mocos.R
 import upsi.edu.mocos.model.MiscSetting
 
@@ -13,59 +16,44 @@ class ContentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_content)
-        initPage()
+        initPage(services)
     }
 
-    private fun initPage() {
-        val intServText = findViewById<TextView>(R.id.intservtext)
-        val indCounBtn = findViewById<Button>(R.id.indCounBtn)
-        val grpCounBtn = findViewById<Button>(R.id.grpCounBtn)
-        val counTaskText = findViewById<TextView>(R.id.counTaskText)
-        val guidpsyBtn = findViewById<Button>(R.id.guidpsyBtn)
-        val progExBtn = findViewById<Button>(R.id.progExBtn)
-        val psyTestBtn = findViewById<Button>(R.id.psyTestBtn)
-        val profDevBtn = findViewById<Button>(R.id.profDevBtn)
-        val refConsBtn = findViewById<Button>(R.id.refConsBtn)
-        val adminMgtText = findViewById<TextView>(R.id.adminMgtText)
-        val logBookBtn = findViewById<Button>(R.id.logBookBtn)
-        val caseAnlBtn = findViewById<Button>(R.id.caseAnlBtn)
-        val endRptBtn = findViewById<Button>(R.id.endRptBtn)
-        val reflexiBtn = findViewById<Button>(R.id.reflexiBtn)
-        val recFileBtn = findViewById<Button>(R.id.recFileBtn)
+    private fun initPage(view:View) {
 
         if (MiscSetting.BM) {
-            intServText.text = "Perkhidmatan Bersemuka"
-            indCounBtn.text = "Kaunseling Individu"
-            grpCounBtn.text = "Kaunseling Kelompok"
-            counTaskText.text = "Tugas Professional Kaunselor"
-            guidpsyBtn.text = "Aktiviti Bimbingan dan Psiko-Pendidikan"
-            progExBtn.text = "Pelaksanaan Program"
-            psyTestBtn.text = "Ujian Psikologi"
-            profDevBtn.text = "Perkembangan Profesional"
-            refConsBtn.text = "Konsultasi dan Rujukan"
-            adminMgtText.text = "Pengurusan Pentadbiran"
-            logBookBtn.text = "Buku Log"
-            caseAnlBtn.text = "Analisis Kes"
-            endRptBtn.text = "Laporan Akhir"
-            reflexiBtn.text = "Refleksi"
-            recFileBtn.text = "Fail dan Rekod"
+            view.intservtext.text = "Perkhidmatan Bersemuka"
+            view.indCounBtn.text = "Kaunseling Individu"
+            view.grpCounBtn.text = "Kaunseling Kelompok"
+            view.counTaskText.text = "Tugas Professional Kaunselor"
+            view.guidpsyBtn.text = "Aktiviti Bimbingan dan Psiko-Pendidikan"
+            view.progExBtn.text = "Pelaksanaan Program"
+            view.psyTestBtn.text = "Ujian Psikologi"
+            view.profDevBtn.text = "Perkembangan Profesional"
+            view.refConsBtn.text = "Konsultasi dan Rujukan"
+            view.adminMgtText.text = "Pengurusan Pentadbiran"
+            view.logBookBtn.text = "Buku Log"
+            view.caseAnlBtn.text = "Analisis Kes"
+            view.endRptBtn.text = "Laporan Akhir"
+            view.reflexiBtn.text = "Refleksi"
+            view.recFileBtn.text = "Fail dan Rekod"
         }
         if (MiscSetting.BI) {
-            intServText.text = "Face to Face"
-            indCounBtn.text = "Individual Counseling"
-            grpCounBtn.text = "Group Counseling"
-            counTaskText.text = "Counselor Professional Task "
-            guidpsyBtn.text = "Guiding and Psyco-Education"
-            progExBtn.text = "Programme Execution"
-            psyTestBtn.text = "Psycology Test"
-            profDevBtn.text = "Professional Development"
-            refConsBtn.text = "Refers and Consultation"
-            adminMgtText.text = "Administration Management"
-            logBookBtn.text = "Log Book"
-            caseAnlBtn.text = "Case Analysis"
-            endRptBtn.text = "End Report"
-            reflexiBtn.text = "Reflexi"
-            recFileBtn.text = "Record and Filing"
+            view.intservtext.text = "Face to Face"
+            view.indCounBtn.text = "Individual Counseling"
+            view.grpCounBtn.text = "Group Counseling"
+            view.counTaskText.text = "Counselor Professional Task "
+            view.guidpsyBtn.text = "Guiding and Psyco-Education"
+            view.progExBtn.text = "Programme Execution"
+            view.psyTestBtn.text = "Psycology Test"
+            view.profDevBtn.text = "Professional Development"
+            view.refConsBtn.text = "Refers and Consultation"
+            view.adminMgtText.text = "Administration Management"
+            view.logBookBtn.text = "Log Book"
+            view.caseAnlBtn.text = "Case Analysis"
+            view.endRptBtn.text = "End Report"
+            view.reflexiBtn.text = "Reflexi"
+            view.recFileBtn.text = "Record and Filing"
         }
         enterIndCoun(indCounBtn)
         enterGrpCoun(grpCounBtn)

@@ -7,7 +7,10 @@ import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
 import upsi.edu.mocos.R
+import upsi.edu.mocos.model.MiscSetting
 
 
 /**
@@ -31,8 +34,16 @@ class AboutFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_about, container, false)
+        val infoText = view.findViewById<TextView>(R.id.infoText)
 
+        if (MiscSetting.BI) {
+            infoText.text = "MoCoSS Info"
+        }
+        if (MiscSetting.BM) {
+            infoText.text = "Info MoCoSS"
+        }
+        return view
     }
 
     companion object {

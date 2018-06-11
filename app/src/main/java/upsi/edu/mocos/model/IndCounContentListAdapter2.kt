@@ -8,25 +8,20 @@ import kotlinx.android.synthetic.main.ind_coun_listadapter.view.*
 import kotlinx.android.synthetic.main.ind_coun_listadapter_2.view.*
 import upsi.edu.mocos.R
 
-class IndCounContentListAdapter(
+class IndCounContentListAdapter2(
         private var numbering: ArrayList<String>
-):RecyclerView.Adapter<IndCounContentListAdapter.ViewHolder>() {
+):RecyclerView.Adapter<IndCounContentListAdapter2.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):IndCounContentListAdapter.ViewHolder {
-        val inflatedView = parent.inflate(R.layout.ind_coun_listadapter, false)
-        val inflatedView2 = parent.inflate(R.layout.ind_coun_listadapter_2, false)
-
-        if (MiscSetting.user == "gl"||MiscSetting.user == "sl") {
-            return IndCounContentListAdapter.ViewHolder(inflatedView2)
-        }
-        return IndCounContentListAdapter.ViewHolder(inflatedView)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):IndCounContentListAdapter2.ViewHolder {
+        val inflatedView = parent.inflate(R.layout.ind_coun_listadapter_2, false)
+        return IndCounContentListAdapter2.ViewHolder(inflatedView)
     }
 
     override fun getItemCount(): Int {
         return numbering.size
     }
 
-    override fun onBindViewHolder(holder:IndCounContentListAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder:IndCounContentListAdapter2.ViewHolder, position: Int) {
         val number = numbering[position]
         holder.decoWidget(number)
 
@@ -49,22 +44,14 @@ class IndCounContentListAdapter(
         }
 
         fun decoWidget(number: String) {
-            view.numDataInd.text = number
+            view.numDataInd2.text = number
 
             if (MiscSetting.BM) {
-                view.sesRptBtnInd.text = "MuatNaik"
-                view.avBtnInd.text = "MuatNaik"
-            }
-            if (MiscSetting.BM && MiscSetting.user == "gl"||MiscSetting.user == "sl") {
                 view.sesRptBtnInd2.text = "MuatTurun"
                 view.avBtnInd2.text = "MuatTurun"
             }
 
             if (MiscSetting.BI) {
-                view.sesRptBtnInd.text = "Upload"
-                view.avBtnInd.text = "Upload"
-            }
-            if (MiscSetting.BI && MiscSetting.user == "gl"||MiscSetting.user == "sl") {
                 view.sesRptBtnInd2.text = "Download"
                 view.avBtnInd2.text = "Download"
             }

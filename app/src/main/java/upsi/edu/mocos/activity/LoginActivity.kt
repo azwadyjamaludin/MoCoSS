@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_login.view.*
 import upsi.edu.mocos.R
 import upsi.edu.mocos.R.layout.activity_login
 import upsi.edu.mocos.model.MiscSetting
@@ -16,28 +18,25 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_login)
-        initPage()
+        initPage(loginActivity)
     }
 
-    private fun initPage() {
-        val btn1 = findViewById<Button>(R.id.button1)
-        val btn2 = findViewById<Button>(R.id.button2)
-        val btn3 = findViewById<Button>(R.id.button3)
+    private fun initPage(view: View) {
 
         if (MiscSetting.BM) {
-        btn1.text = "Pensyarah Penyelia"
-        btn2.text = "Kaunselor Pembimbing"
-        btn3.text = "Kaunselor Pelatih"
+        view.button1.text = "Pensyarah Penyelia"
+        view.button2.text = "Kaunselor Pembimbing"
+        view.button3.text = "Kaunselor Pelatih"
         }
         if (MiscSetting.BI) {
-            btn1.text = "Supervising Lecturer"
-            btn2.text = "Guiding Counselor"
-            btn3.text = "Trainer Counselor"
+            view.button1.text = "Supervising Lecturer"
+            view.button2.text = "Guiding Counselor"
+            view.button3.text = "Trainer Counselor"
         }
         refreshLayout()
-        enterSL(btn1)
-        enterGL(btn2)
-        enterTC(btn3)
+        enterSL(button1)
+        enterGL(button2)
+        enterTC(button3)
     }
 
     private fun refreshLayout() {
