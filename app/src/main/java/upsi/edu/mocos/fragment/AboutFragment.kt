@@ -1,15 +1,17 @@
 package upsi.edu.mocos.fragment
 
 
+import android.content.ComponentCallbacks2
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.Button
 import upsi.edu.mocos.R
+import upsi.edu.mocos.activity.InternInfoActivity
 import upsi.edu.mocos.model.MiscSetting
 
 
@@ -35,14 +37,11 @@ class AboutFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_about, container, false)
-        val infoText = view.findViewById<TextView>(R.id.infoText)
+        val context = view.context
+        val internStdBtn = view.findViewById<Button>(R.id.internStdBtn)
 
-        if (MiscSetting.BI) {
-            infoText.text = "MoCoSS Info"
-        }
-        if (MiscSetting.BM) {
-            infoText.text = "Info MoCoSS"
-        }
+        internStd(internStdBtn)
+        enterSIInfo(internStdBtn,context)
         return view
     }
 
@@ -70,6 +69,22 @@ class AboutFragment : Fragment() {
         }
     }
 
+    private fun internStd (internStdBtn: Button) {
+        if (MiscSetting.BI) {
+            internStdBtn.text = "Internship Standard"
+        }
+        if (MiscSetting.BM) {
+            internStdBtn.text = "Piawaian Internship"
+        }
 
+    }
+
+    private fun enterSIInfo(internStdBtn: Button, context: Context) {
+        internStdBtn.setOnClickListener{
+            val siInfoIntent = Intent(context,InternInfoActivity::class.java)
+            MiscSetting.info = "is"
+            startActivity(siInfoIntent)
+        }
+    }
 
 }// Required empty public constructor

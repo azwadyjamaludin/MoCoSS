@@ -7,7 +7,7 @@
 
     <TableRow
         android:id="@+id/contentRowGrp2"
-        android:layout_width="894dp"
+        android:layout_width="1000dp"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,6 +67,6 @@
             android:id="@+id/notesGrp2"
             android:layout_width="151dp"
             android:layout_height="wrap_content"
-            android:inputType="textMultiLine"/>
+            android:inputType="textMultiLine" />
     </TableRow>
 </TableLayout>

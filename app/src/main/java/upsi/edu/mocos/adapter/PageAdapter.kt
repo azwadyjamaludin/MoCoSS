@@ -1,4 +1,4 @@
-package upsi.edu.mocos.model
+package upsi.edu.mocos.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

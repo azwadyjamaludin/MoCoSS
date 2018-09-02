@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.Switch
 import android.widget.TextView
+import kotlinx.android.synthetic.main.fragment_setting.view.*
 import upsi.edu.mocos.R
 import upsi.edu.mocos.model.MiscSetting
 
@@ -41,8 +42,8 @@ class SettingFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_setting, container, false)
 
-        val otherLang: TextView = view.findViewById(R.id.textView1)
-        val BI:Switch = view.findViewById(R.id.switch1) as Switch
+        val otherLang = view.textView1
+        val BI = view.switch1
 
         if (MiscSetting.BI) {
             BI.isChecked = true

@@ -1,6 +1,7 @@
 package upsi.edu.mocos.model
 
 import android.app.Application
+import upsi.edu.mocos.R
 
 /**
  * Created by azwady on 20/04/2018.
@@ -14,6 +15,8 @@ class MiscSetting: Application() {
         var BI: Boolean = false
         var BM: Boolean = true
         var user:String = "user"
+        var info:String = "info"
+
 
         fun applicationContext() : MiscSetting {
             return instance!!

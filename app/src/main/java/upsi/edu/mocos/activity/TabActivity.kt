@@ -5,8 +5,8 @@ import android.support.design.widget.TabLayout
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_tab.*
 import upsi.edu.mocos.R
+import upsi.edu.mocos.adapter.PageAdapter
 import upsi.edu.mocos.model.MiscSetting
-import upsi.edu.mocos.model.PageAdapter
 
 class TabActivity : AppCompatActivity() {
 
@@ -17,6 +17,31 @@ class TabActivity : AppCompatActivity() {
         configureTabLayout()
 
     }
+
+    /*override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+        when (level) {
+
+            ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN -> {
+            }
+
+            ComponentCallbacks2.TRIM_MEMORY_RUNNING_MODERATE,
+            ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW,
+            ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL -> {
+
+            }
+
+            ComponentCallbacks2.TRIM_MEMORY_BACKGROUND,
+            ComponentCallbacks2.TRIM_MEMORY_MODERATE,
+            ComponentCallbacks2.TRIM_MEMORY_COMPLETE -> {
+
+            }
+
+            else -> {
+
+            }
+        }
+    }*/
 
     private fun configureTabLayout() {
         if (MiscSetting.BM) {
@@ -30,7 +55,7 @@ class TabActivity : AppCompatActivity() {
             tabLayout.getTabAt(2)!!.setText("Info")
         }
 
-        val adapter = PageAdapter(supportFragmentManager,tabLayout.tabCount)
+        val adapter = PageAdapter(supportFragmentManager, tabLayout.tabCount)
         container.adapter = adapter
         container.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{

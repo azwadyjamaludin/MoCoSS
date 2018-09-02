@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import kotlinx.android.synthetic.main.fragment_login.view.*
 import upsi.edu.mocos.R
 import upsi.edu.mocos.activity.LoginActivity
 import upsi.edu.mocos.model.MiscSetting
@@ -28,8 +29,6 @@ class LoginFragment : Fragment(),View.OnClickListener {
     private var mParam1: String = ""
     private var mParam2: String = ""
 
-    //private var mListener: OnFragmentInteractionListener? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -42,7 +41,7 @@ class LoginFragment : Fragment(),View.OnClickListener {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_login, container, false)
 
-        val enterBtn: Button = view.findViewById(R.id.button4) as Button
+        val enterBtn: Button = view.button4
         val context = enterBtn.context
 
         if (MiscSetting.BI) {

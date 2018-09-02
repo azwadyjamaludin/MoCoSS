@@ -23,7 +23,7 @@
         <item name="android:windowBackground">@drawable/colors_matrix_2</item>
         <item name="colorPrimary">@color/orange</item>
         <item name="colorPrimaryDark">@color/purple</item>
-        <item name="colorAccent">@color/aqua</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="MyAppTheme.NoActionBar">

@@ -1,5 +1,6 @@
 package upsi.edu.mocos.activity
 
+import android.content.ComponentCallbacks2
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -7,14 +8,13 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_ind_coun.*
 import kotlinx.android.synthetic.main.activity_ind_coun.view.*
 import upsi.edu.mocos.R
-import upsi.edu.mocos.model.IndCounContentListAdapter
-import upsi.edu.mocos.model.IndCounContentListAdapter2
+import upsi.edu.mocos.adapter.listadapter.IndCounContentListAdapter
+import upsi.edu.mocos.adapter.listadapter.IndCounContentListAdapter2
 import upsi.edu.mocos.model.MiscSetting
+import upsi.edu.mocos.model.MyObject.NumberMgr
 
-class IndCounActivity : AppCompatActivity() {
+class IndCounActivity : AppCompatActivity(), ComponentCallbacks2 {
     private lateinit var layoutManager: LinearLayoutManager
-    var list = arrayListOf<String>()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,15 +27,42 @@ class IndCounActivity : AppCompatActivity() {
         attachAdapter(indCounActivity)
     }
 
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+        when (level) {
+
+            ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN -> {
+            }
+
+            ComponentCallbacks2.TRIM_MEMORY_RUNNING_MODERATE,
+            ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW,
+            ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL -> {
+
+            }
+
+            ComponentCallbacks2.TRIM_MEMORY_BACKGROUND,
+            ComponentCallbacks2.TRIM_MEMORY_MODERATE,
+            ComponentCallbacks2.TRIM_MEMORY_COMPLETE -> {
+
+            }
+
+            else -> {
+
+            }
+        }
+    }
+
     private fun attachAdapter(view: View) {
         if (MiscSetting.user == "tc") {
-            val listadapter = IndCounContentListAdapter(addElement())
+            val numbering = NumberMgr.numInput1()
+            val listadapter = IndCounContentListAdapter(numbering)
             val indCounLV = view.indCounLV
 
             indCounLV.adapter = listadapter
         }
         if (MiscSetting.user == "gc"||MiscSetting.user == "sl") {
-            val listadapter = IndCounContentListAdapter2(addElement())
+            val numbering = NumberMgr.numInput1()
+            val listadapter = IndCounContentListAdapter2(numbering)
             val indCounLV = view.indCounLV
 
             indCounLV.adapter = listadapter
@@ -74,14 +101,6 @@ class IndCounActivity : AppCompatActivity() {
             view.noteTextInd.text = "Notes"
             view.totHourTextInd.text = "Total Hour"
         }
-    }
-
-    private fun addElement():ArrayList<String> {
-        for (item in 1..120) {
-            list.add(item.toString())
-            print("list:"+list)
-        }
-        return list
     }
 }
 

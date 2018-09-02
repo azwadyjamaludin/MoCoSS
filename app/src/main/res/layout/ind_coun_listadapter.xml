@@ -8,7 +8,7 @@
 
     <TableRow
         android:id="@+id/contentRowInd"
-        android:layout_width="894dp"
+        android:layout_width="1000dp"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
             android:layout_width="144dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="time"/>
+            android:inputType="time" />
 
         <Space
             android:layout_width="wrap_content"

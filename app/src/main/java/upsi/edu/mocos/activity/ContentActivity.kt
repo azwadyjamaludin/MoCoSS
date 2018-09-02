@@ -57,6 +57,7 @@ class ContentActivity : AppCompatActivity() {
         }
         enterIndCoun(indCounBtn)
         enterGrpCoun(grpCounBtn)
+        enterLogBook(logBookBtn)
     }
 
     private fun enterIndCoun(indCounBtn: Button) {
@@ -70,6 +71,13 @@ class ContentActivity : AppCompatActivity() {
         grpCounBtn.setOnClickListener {
             val grpCounIntent = Intent(this,GrpCounActivity::class.java)
             startActivity(grpCounIntent)
+        }
+    }
+
+    private fun enterLogBook(logBookBtn: Button) {
+        logBookBtn.setOnClickListener {
+            val logBookIntent = Intent(this,LogBookActivity::class.java)
+            startActivity(logBookIntent)
         }
     }
 }
