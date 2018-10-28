@@ -3,20 +3,19 @@ package upsi.edu.mocos.activity
 import android.content.ComponentCallbacks2
 import android.os.Bundle
 import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
 import com.nshmura.recyclertablayout.RecyclerTabLayout
 import kotlinx.android.synthetic.main.activity_log_book.*
 import upsi.edu.mocos.R
 import upsi.edu.mocos.adapter.pageradapter.LogBookPagerAdapter
 import upsi.edu.mocos.model.MyObject.LogBookMgr
 
-class LogBookActivity : AppCompatActivity(), ComponentCallbacks2 {
+class LogBookActivity : MocoSSParentActivity(), ComponentCallbacks2 {
 
     private lateinit var viewPager: ViewPager
     private lateinit var pagerAdapter: LogBookPagerAdapter
     private lateinit var lBookRTL: RecyclerTabLayout
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun createActivity(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_book)
 

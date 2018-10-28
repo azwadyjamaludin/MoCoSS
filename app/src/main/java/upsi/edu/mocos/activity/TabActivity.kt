@@ -2,57 +2,32 @@ package upsi.edu.mocos.activity
 
 import android.os.Bundle
 import android.support.design.widget.TabLayout
-import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_tab.*
 import upsi.edu.mocos.R
+
 import upsi.edu.mocos.adapter.PageAdapter
 import upsi.edu.mocos.model.MiscSetting
 
-class TabActivity : AppCompatActivity() {
+class TabActivity : MocoSSParentActivity() {
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun createActivity(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tab)
         configureTabLayout()
 
     }
 
-    /*override fun onTrimMemory(level: Int) {
-        super.onTrimMemory(level)
-        when (level) {
-
-            ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN -> {
-            }
-
-            ComponentCallbacks2.TRIM_MEMORY_RUNNING_MODERATE,
-            ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW,
-            ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL -> {
-
-            }
-
-            ComponentCallbacks2.TRIM_MEMORY_BACKGROUND,
-            ComponentCallbacks2.TRIM_MEMORY_MODERATE,
-            ComponentCallbacks2.TRIM_MEMORY_COMPLETE -> {
-
-            }
-
-            else -> {
-
-            }
-        }
-    }*/
-
     private fun configureTabLayout() {
         if (MiscSetting.BM) {
             tabLayout.getTabAt(0)!!.setText("Log Masuk")
-            tabLayout.getTabAt(1)!!.setText("Tetapan")
-            tabLayout.getTabAt(2)!!.setText("Info")
+            tabLayout.getTabAt(1)!!.setText("Info")
+            tabLayout.getTabAt(2)!!.setText("Tetapan")
         }
         if (MiscSetting.BI) {
             tabLayout.getTabAt(0)!!.setText("Login")
-            tabLayout.getTabAt(1)!!.setText("Preference")
-            tabLayout.getTabAt(2)!!.setText("Info")
+            tabLayout.getTabAt(1)!!.setText("Info")
+            tabLayout.getTabAt(2)!!.setText("Setting")
         }
 
         val adapter = PageAdapter(supportFragmentManager, tabLayout.tabCount)
@@ -74,5 +49,28 @@ class TabActivity : AppCompatActivity() {
         })
 
     }
+
+    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_tab, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.myhome -> {
+                return true
+            }
+            R.id.myinfo -> {
+                return true
+            }
+            R.id.mysetting -> {
+                if (MiscSetting.BM) {
+                    return true
+                }
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+
+    }*/
 
 }

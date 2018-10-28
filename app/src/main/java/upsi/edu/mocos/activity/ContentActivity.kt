@@ -1,73 +1,87 @@
 package upsi.edu.mocos.activity
 
+
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.TextView
+import android.widget.ListView
 import kotlinx.android.synthetic.main.activity_content.*
 import kotlinx.android.synthetic.main.activity_content.view.*
 import upsi.edu.mocos.R
 import upsi.edu.mocos.model.MiscSetting
+import upsi.edu.mocos.model.MyData.DrawerData
 
-class ContentActivity : AppCompatActivity() {
+class ContentActivity : MocoSSParentActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun createActivity(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_content)
-        initPage(services)
+        setContentView(R.layout.activity_drawer_content)
+        initPage()
     }
 
-    private fun initPage(view:View) {
-
+    private fun initPage() {
+        var contentArray = arrayListOf<DrawerData>()
         if (MiscSetting.BM) {
-            view.intservtext.text = "Perkhidmatan Bersemuka"
-            view.indCounBtn.text = "Kaunseling Individu"
-            view.grpCounBtn.text = "Kaunseling Kelompok"
-            view.counTaskText.text = "Tugas Professional Kaunselor"
-            view.guidpsyBtn.text = "Aktiviti Bimbingan dan Psiko-Pendidikan"
-            view.progExBtn.text = "Pelaksanaan Program"
-            view.psyTestBtn.text = "Ujian Psikologi"
-            view.profDevBtn.text = "Perkembangan Profesional"
-            view.refConsBtn.text = "Konsultasi dan Rujukan"
-            view.adminMgtText.text = "Pengurusan Pentadbiran"
-            view.logBookBtn.text = "Buku Log"
-            view.caseAnlBtn.text = "Analisis Kes"
-            view.endRptBtn.text = "Laporan Akhir"
-            view.reflexiBtn.text = "Refleksi"
-            view.recFileBtn.text = "Fail dan Rekod"
+            contentArray.add(DrawerData("Kaunseling Individu"))
+            contentArray.add(DrawerData("Kaunseling Kelompok"))
+            contentArray.add(DrawerData("Aktiviti Bimbingan dan Psiko-Pendidikan"))
+            contentArray.add(DrawerData("Ujian Psikologi"))
+            contentArray.add(DrawerData("Perkembangan Profesional"))
+            contentArray.add(DrawerData("Konsultasi dan Rujukan"))
+            contentArray.add(DrawerData("Pengurusan Pentadbiran"))
+            contentArray.add(DrawerData("Buku Log"))
+            contentArray.add(DrawerData("Analisis Kes"))
+            contentArray.add(DrawerData("Laporan Akhir"))
+            contentArray.add(DrawerData("Refleksi"))
+            contentArray.add(DrawerData("Fail dan Rekod"))
         }
         if (MiscSetting.BI) {
-            view.intservtext.text = "Face to Face"
-            view.indCounBtn.text = "Individual Counseling"
-            view.grpCounBtn.text = "Group Counseling"
-            view.counTaskText.text = "Counselor Professional Task "
-            view.guidpsyBtn.text = "Guiding and Psyco-Education"
-            view.progExBtn.text = "Programme Execution"
-            view.psyTestBtn.text = "Psycology Test"
-            view.profDevBtn.text = "Professional Development"
-            view.refConsBtn.text = "Refers and Consultation"
-            view.adminMgtText.text = "Administration Management"
-            view.logBookBtn.text = "Log Book"
-            view.caseAnlBtn.text = "Case Analysis"
-            view.endRptBtn.text = "End Report"
-            view.reflexiBtn.text = "Reflexi"
-            view.recFileBtn.text = "Record and Filing"
+            contentArray.add(DrawerData("Individual Counseling"))
+            contentArray.add(DrawerData("Group Counseling"))
+            contentArray.add(DrawerData("Guiding and Psyco-Education"))
+            contentArray.add(DrawerData("Programme Execution"))
+            contentArray.add(DrawerData("Psycology Test"))
+            contentArray.add(DrawerData("Refers and Consultation"))
+            contentArray.add(DrawerData("Administration Management"))
+            contentArray.add(DrawerData("Log Book"))
+            contentArray.add(DrawerData("Case Analysis"))
+            contentArray.add(DrawerData("End Report"))
+            contentArray.add(DrawerData( "Reflexi"))
+            contentArray.add(DrawerData("Record and Filing"))
         }
-        enterIndCoun(indCounBtn)
-        enterGrpCoun(grpCounBtn)
-        enterLogBook(logBookBtn)
+
+        val drawerAdapter = ArrayAdapter(this,R.layout.custom_button_adapter,contentArray)
+        val leftDrawer:ListView = findViewById(R.id.leftDrawer)
+        leftDrawer.adapter = drawerAdapter
+        leftDrawer.onItemClickListener = object : AdapterView.OnItemClickListener {
+            override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                val textItem = leftDrawer.getItemAtPosition(position) as String
+                    if (textItem.equals("Kaunseling Individu") || textItem.equals("Individual Counseling")) {
+                        enterIndCoun()
+                    }
+                if (textItem.equals("Kaunseling Kelompok") || textItem.equals("Group Counseling")) {
+                    enterGrpCoun()
+                }
+                if (textItem.equals("Buku Log") || textItem.equals("Log Book")) {
+                    enterGrpCoun()
+                }
+            }
+
+        }
     }
 
-    private fun enterIndCoun(indCounBtn: Button) {
+    private fun enterIndCoun() {
         indCounBtn.setOnClickListener {
             val indCounIntent = Intent(this,IndCounActivity::class.java)
             startActivity(indCounIntent)
         }
     }
 
-    private fun enterGrpCoun(grpCounBtn: Button) {
+    private fun enterGrpCoun() {
         grpCounBtn.setOnClickListener {
             val grpCounIntent = Intent(this,GrpCounActivity::class.java)
             startActivity(grpCounIntent)
@@ -77,7 +91,45 @@ class ContentActivity : AppCompatActivity() {
     private fun enterLogBook(logBookBtn: Button) {
         logBookBtn.setOnClickListener {
             val logBookIntent = Intent(this,LogBookActivity::class.java)
-            startActivity(logBookIntent)
+            if (MiscSetting.user == "tc") {
+                startActivity(logBookIntent)
+            }else {
+                if (MiscSetting.BM) {
+                    alertBM()
+                }
+                if (MiscSetting.BI) {
+                    alertBI()
+                }
+             }
         }
+    }
+
+    private fun alertBM() {
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder
+                .setIcon(R.drawable.mocoss2)
+                .setMessage("Anda tiada akses")
+                .setCancelable(false)
+                .setNegativeButton("Batal") {
+                    dialog, which -> dialog.dismiss()
+                }
+
+        val alert = dialogBuilder.create()
+        alert.setTitle("MoCoSS")
+        alert.show()
+    }
+
+    private fun alertBI() {
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder
+                .setIcon(R.drawable.mocoss2)
+                .setMessage("No access")
+                .setCancelable(false)
+                .setNegativeButton("Cancel") {
+                    dialog, which ->  dialog.dismiss()
+                }
+        val alert = dialogBuilder.create()
+        alert.setTitle("MoCoSS")
+        alert.show()
     }
 }

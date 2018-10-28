@@ -21,6 +21,7 @@
             android:layout_width="118dp"
             android:layout_height="match_parent"
             android:textAlignment="textEnd"
+            android:textColor="@color/salmon"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -47,6 +48,7 @@
             android:layout_width="118dp"
             android:layout_height="match_parent"
             android:textAlignment="textEnd"
+            android:textColor="@color/salmon"
             android:textStyle="bold" />
 
         <EditText

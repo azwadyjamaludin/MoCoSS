@@ -1,15 +1,14 @@
 package upsi.edu.mocos.fragment
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.constraint.ConstraintLayout
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import upsi.edu.mocos.R
 import upsi.edu.mocos.activity.LoginActivity
@@ -41,17 +40,17 @@ class LoginFragment : Fragment(),View.OnClickListener {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_login, container, false)
 
-        val enterBtn: Button = view.button4
-        val context = enterBtn.context
+        val enterText: TextView = view.clickText
+        val context = enterText.context
 
         if (MiscSetting.BI) {
-            enterBtn.text = "Enter"
+            enterText.text = "Enter"
         }
         if (MiscSetting.BM) {
-            enterBtn.text = "Masuk"
+            enterText.text = "Masuk"
         }
 
-        enterBtn.setOnClickListener {
+        enterText.setOnClickListener {
             val loginIntent = Intent(context, LoginActivity::class.java)
             startActivity(loginIntent)
         }

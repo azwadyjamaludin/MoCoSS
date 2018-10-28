@@ -8,8 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
-import android.widget.Switch
-import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_setting.view.*
 import upsi.edu.mocos.R
 import upsi.edu.mocos.model.MiscSetting

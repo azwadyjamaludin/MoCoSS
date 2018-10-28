@@ -17,13 +17,14 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <!-- My application theme. -->
-    <style name="MyAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
-        <item name="windowActionBar">true</item>
-        <item name="android:windowBackground">@drawable/colors_matrix_2</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowBackground">@drawable/abstract_blue</item>
         <item name="colorPrimary">@color/orange</item>
         <item name="colorPrimaryDark">@color/purple</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
     </style>
 
     <style name="MyAppTheme.NoActionBar">

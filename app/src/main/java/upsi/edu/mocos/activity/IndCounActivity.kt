@@ -2,7 +2,6 @@ package upsi.edu.mocos.activity
 
 import android.content.ComponentCallbacks2
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import kotlinx.android.synthetic.main.activity_ind_coun.*
@@ -13,10 +12,10 @@ import upsi.edu.mocos.adapter.listadapter.IndCounContentListAdapter2
 import upsi.edu.mocos.model.MiscSetting
 import upsi.edu.mocos.model.MyObject.NumberMgr
 
-class IndCounActivity : AppCompatActivity(), ComponentCallbacks2 {
+class IndCounActivity : MocoSSParentActivity(), ComponentCallbacks2 {
     private lateinit var layoutManager: LinearLayoutManager
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun createActivity(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ind_coun)
         layoutManager = LinearLayoutManager(this)

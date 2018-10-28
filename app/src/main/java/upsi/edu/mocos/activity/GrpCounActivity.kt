@@ -2,7 +2,6 @@ package upsi.edu.mocos.activity
 
 import android.content.ComponentCallbacks2
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import kotlinx.android.synthetic.main.activity_grp_coun.*
@@ -13,7 +12,7 @@ import upsi.edu.mocos.adapter.listadapter.GrpCounContentListAdapter2
 import upsi.edu.mocos.model.MiscSetting
 import upsi.edu.mocos.model.MyObject.NumberMgr
 
-class GrpCounActivity : AppCompatActivity(), ComponentCallbacks2 {
+class GrpCounActivity : MocoSSParentActivity(), ComponentCallbacks2 {
     private lateinit var layoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {

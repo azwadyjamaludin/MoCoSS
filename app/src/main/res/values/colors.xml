@@ -5,7 +5,7 @@
     <color name="colorAccent">#ff4081</color>
     <color name="red">#ff0000</color>
     <color name="maroon">#800000</color>
-    <color name="firebrick">#B22222</color>
+    <color name="firebrick">#b22222</color>
     <color name="crimson">#dc143c</color>
     <color name="salmon">#fa8072</color>
     <color name="transparent">#29000000</color>
@@ -18,6 +18,6 @@
     <color name="aqua">#00ffff</color>
     <color name="purple">#A020F0</color>"
     <color name="orange">#ffa500</color>
-    <color name="pink">#FFC0CB</color>
+    <color name="pink">#ffc0cb</color>
     <color name="clear">#00010000</color>
 </resources>
