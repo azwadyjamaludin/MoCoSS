@@ -15,7 +15,7 @@ class LogBookActivity : MocoSSParentActivity(), ComponentCallbacks2 {
     private lateinit var pagerAdapter: LogBookPagerAdapter
     private lateinit var lBookRTL: RecyclerTabLayout
 
-    override fun createActivity(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_book)
 

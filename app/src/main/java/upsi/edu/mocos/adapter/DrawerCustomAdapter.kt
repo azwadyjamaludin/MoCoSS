@@ -23,16 +23,15 @@ class DrawerCustomAdapter(context: Context, resource:Int, list:ArrayList<DrawerD
         this.inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     }
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val retView = super.getView(position, convertView, parent)
-        val customButton = retView.findViewById<LinearLayout>(R.id.customButton)
-        val buttonText = customButton.findViewById<TextView>(R.id.buttonText)
-        buttonText.typeface = Typeface.DEFAULT_BOLD
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        var drawerData = getItem(position)
+        val retView = inflater.inflate(resource,parent,false)
+        //val customButton = retView.findViewById(R.id.customButton) as LinearLayout
+        val buttonText = retView.findViewById(R.id.customImage) as TextView
+        buttonText.text = drawerData.buttonText
+        //buttonText.typeface = Typeface.DEFAULT_BOLD
 
         return retView
     }
 
-    internal class ViewHolder {
-        //var image: ImageView? = null
-    }
 }

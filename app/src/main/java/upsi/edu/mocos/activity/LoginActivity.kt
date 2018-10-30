@@ -12,7 +12,7 @@ import upsi.edu.mocos.model.MiscSetting
 class LoginActivity : MocoSSParentActivity() {
 
 
-    override fun createActivity(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_login)
         initPage(loginActivity)

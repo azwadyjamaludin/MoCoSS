@@ -12,7 +12,7 @@ import upsi.edu.mocos.adapter.listadapter.GrpCounContentListAdapter2
 import upsi.edu.mocos.model.MiscSetting
 import upsi.edu.mocos.model.MyObject.NumberMgr
 
-class GrpCounActivity : MocoSSParentActivity(), ComponentCallbacks2 {
+class GrpCounActivity : MocoSSParentActivity() {
     private lateinit var layoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,31 +24,6 @@ class GrpCounActivity : MocoSSParentActivity(), ComponentCallbacks2 {
         initPage(grpCounActivity)
         attachAdapter(grpCounActivity)
         newText(grpCounActivity)
-    }
-
-    override fun onTrimMemory(level: Int) {
-        super.onTrimMemory(level)
-        when (level) {
-
-            ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN -> {
-            }
-
-            ComponentCallbacks2.TRIM_MEMORY_RUNNING_MODERATE,
-            ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW,
-            ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL -> {
-
-            }
-
-            ComponentCallbacks2.TRIM_MEMORY_BACKGROUND,
-            ComponentCallbacks2.TRIM_MEMORY_MODERATE,
-            ComponentCallbacks2.TRIM_MEMORY_COMPLETE -> {
-
-            }
-
-            else -> {
-
-            }
-        }
     }
 
     private fun attachAdapter(view: View) {

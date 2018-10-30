@@ -4,6 +4,7 @@ import android.content.ComponentCallbacks2
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.NavigationView
 import android.support.v7.app.AppCompatActivity
 import upsi.edu.mocos.R
 import upsi.edu.mocos.model.PageNavigate

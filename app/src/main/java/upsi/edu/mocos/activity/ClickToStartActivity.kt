@@ -9,7 +9,7 @@ import upsi.edu.mocos.model.PageNavigate
 class ClickToStartActivity : MocoSSParentActivity() {
     val pageNavigate = PageNavigate.TabPage
 
-    override fun createActivity(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_click_to_start)
         clickImageToStart()

@@ -13,7 +13,7 @@ import upsi.edu.mocos.model.MyObject.NumberMgr
 class InternInfoActivity : MocoSSParentActivity() {
     private lateinit var layoutManager: LinearLayoutManager
 
-    override fun createActivity(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intern_info)
 

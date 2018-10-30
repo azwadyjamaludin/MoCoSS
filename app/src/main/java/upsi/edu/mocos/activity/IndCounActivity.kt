@@ -15,7 +15,7 @@ import upsi.edu.mocos.model.MyObject.NumberMgr
 class IndCounActivity : MocoSSParentActivity(), ComponentCallbacks2 {
     private lateinit var layoutManager: LinearLayoutManager
 
-    override fun createActivity(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ind_coun)
         layoutManager = LinearLayoutManager(this)

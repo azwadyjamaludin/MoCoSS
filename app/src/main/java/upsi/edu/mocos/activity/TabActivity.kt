@@ -11,7 +11,7 @@ import upsi.edu.mocos.model.MiscSetting
 class TabActivity : MocoSSParentActivity() {
 
 
-    override fun createActivity(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tab)
         configureTabLayout()
