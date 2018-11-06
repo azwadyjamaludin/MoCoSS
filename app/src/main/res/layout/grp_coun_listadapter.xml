@@ -7,7 +7,7 @@
 
     <TableRow
         android:id="@+id/contentRowGrp"
-        android:layout_width="1000dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

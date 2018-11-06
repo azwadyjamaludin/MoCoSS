@@ -17,16 +17,19 @@
 
     <HorizontalScrollView
         android:id="@+id/grpCounHSV"
-        android:layout_width="700dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintBottom_toTopOf="@+id/grpCounTL2"
+        app:layout_constraintEnd_toEndOf="@+id/grpCounTB"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grpCounTB">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableLayout
             android:id="@+id/grpCounTL"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TableRow
@@ -118,12 +121,12 @@
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/grpCounLV"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="vertical"
-                app:layout_constraintBottom_toTopOf="@+id/indCounLL2"
+
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/indCounTB">
+                app:layout_constraintTop_toBottomOf="@+id/titleRowGrp">
 
 
             </android.support.v7.widget.RecyclerView>
