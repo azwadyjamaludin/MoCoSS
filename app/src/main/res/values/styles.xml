@@ -21,9 +21,9 @@
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowBackground">@drawable/abstract_blue</item>
-        <item name="colorPrimary">@color/orange</item>
-        <item name="colorPrimaryDark">@color/purple</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/salmon</item>
+        <item name="colorPrimaryDark">@color/orange</item>
+        <item name="colorAccent">@color/firebrick</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
     </style>
 

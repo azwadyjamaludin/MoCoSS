@@ -34,4 +34,5 @@ class InternInfoActivity : MocoSSParentActivity() {
         internInfoRV.adapter = rvAdapter
 
     }
+
 }

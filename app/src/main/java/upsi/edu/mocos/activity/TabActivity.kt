@@ -7,6 +7,7 @@ import upsi.edu.mocos.R
 
 import upsi.edu.mocos.adapter.PageAdapter
 import upsi.edu.mocos.model.MiscSetting
+import upsi.edu.mocos.model.PageNavigate
 
 class TabActivity : MocoSSParentActivity() {
 
@@ -48,6 +49,10 @@ class TabActivity : MocoSSParentActivity() {
             }
         })
 
+    }
+
+    override fun onBackPressed() {
+        goToPage(PageNavigate.StartPage,this)
     }
 
     /*override fun onCreateOptionsMenu(menu: Menu): Boolean {

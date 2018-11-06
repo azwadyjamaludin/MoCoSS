@@ -6,11 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".activity.ClickToStartActivity">
 
-    <ImageView
+    <TextView
         android:id="@+id/clickToStart"
         android:layout_width="129dp"
         android:layout_height="109dp"
-        android:src="@drawable/mocoss2"
+        android:gravity="center"
+        android:textColor="@color/red"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

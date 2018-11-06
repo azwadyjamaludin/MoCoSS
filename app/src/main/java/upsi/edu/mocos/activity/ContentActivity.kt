@@ -3,35 +3,27 @@ package upsi.edu.mocos.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.NavigationView
-import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.Toolbar
 import android.view.Gravity
-import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.ListView
-import kotlinx.android.synthetic.main.activity_content.*
-import kotlinx.android.synthetic.main.activity_content.view.*
 import kotlinx.android.synthetic.main.activity_drawer_content.*
 import upsi.edu.mocos.R
-import upsi.edu.mocos.R.layout.drawer_toolbar_include
-import upsi.edu.mocos.adapter.DrawerCustomAdapter
+import upsi.edu.mocos.adapter.pageradapter.DrawerCustomAdapter
 import upsi.edu.mocos.model.MiscSetting
 import upsi.edu.mocos.model.MyData.DrawerData
 
-class ContentActivity : MocoSSParentActivity() {
+class ContentActivity : MocoSSParentActivity()  {
 
     lateinit var drawerToggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drawer_content)
-        //setSupportActionBar(adcToolbar as Toolbar)
+        setSupportActionBar(adcToolbar as Toolbar)
         initPage()
     }
 
@@ -66,28 +58,29 @@ class ContentActivity : MocoSSParentActivity() {
             contentArray.add(DrawerData("Record and Filing"))
         }
 
-        val drawerAdapter = DrawerCustomAdapter(this,R.layout.custom_button_adapter,contentArray)
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
+        var drawerAdapter = DrawerCustomAdapter(this, contentArray)
+
         drawerToggle = ActionBarDrawerToggle(this,drawerLayout, adcToolbar as Toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawerLayout.addDrawerListener(drawerToggle)
-        drawerLayout.openDrawer(drawerLayout)
+        drawerLayout.openDrawer(Gravity.START)
         drawerToggle.syncState()
 
         val drawerList:ListView = findViewById(R.id.drawerList)
         drawerList.adapter = drawerAdapter
+
         drawerList.onItemClickListener = object : AdapterView.OnItemClickListener {
+
             override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                val textItem = drawerList.getItemAtPosition(position) as String
-                    if (textItem.equals("Kaunseling Individu") || textItem.equals("Individual Counseling")) {
-                        drawerLayout.closeDrawer(Gravity.START,false)
-                        enterIndCoun()
-                    }
-                if (textItem.equals("Kaunseling Kelompok") || textItem.equals("Group Counseling")) {
-                    drawerLayout.closeDrawer(Gravity.START,false)
+                var textItem = contentArray[position].buttonText
+
+                if (textItem.equals("Kaunseling Individu") || textItem.equals("Individual Counseling")) {
+                    //drawerLayout.closeDrawer(Gravity.START)
+                    enterIndCoun()
+                } else if (textItem.equals("Kaunseling Kelompok") || textItem.equals("Group Counseling")) {
+                    //drawerLayout.closeDrawer(Gravity.START)
                     enterGrpCoun()
-                }
-                if (textItem.equals("Buku Log") || textItem.equals("Log Book")) {
-                    drawerLayout.closeDrawer(Gravity.START,false)
+                } else if (textItem.equals("Buku Log") || textItem.equals("Log Book")) {
+                    //drawerLayout.closeDrawer(Gravity.START)
                     enterLogBook()
                 }
                 else {
@@ -131,7 +124,7 @@ class ContentActivity : MocoSSParentActivity() {
     private fun alertBM() {
         val dialogBuilder = AlertDialog.Builder(this)
         dialogBuilder
-                .setIcon(R.drawable.mocoss2)
+                .setIcon(R.drawable.mocoss_img)
                 .setMessage("Tiada akses")
                 .setCancelable(false)
                 .setNegativeButton("Batal") {
@@ -146,7 +139,7 @@ class ContentActivity : MocoSSParentActivity() {
     private fun alertBI() {
         val dialogBuilder = AlertDialog.Builder(this)
         dialogBuilder
-                .setIcon(R.drawable.mocoss2)
+                .setIcon(R.drawable.mocoss_img)
                 .setMessage("No access")
                 .setCancelable(false)
                 .setNegativeButton("Cancel") {
@@ -160,10 +153,10 @@ class ContentActivity : MocoSSParentActivity() {
     private fun alertOtherBM() {
         val dialogBuilder = AlertDialog.Builder(this)
         dialogBuilder
-                .setIcon(R.drawable.mocoss2)
+                .setIcon(R.drawable.mocoss_img)
                 .setMessage("Dalam pembangunan")
                 .setCancelable(false)
-                .setNegativeButton("Batal") {
+                .setNegativeButton("KELUAR") {
                     dialog, which -> dialog.dismiss()
                 }
 
@@ -175,10 +168,10 @@ class ContentActivity : MocoSSParentActivity() {
     private fun alertOtherBI() {
         val dialogBuilder = AlertDialog.Builder(this)
         dialogBuilder
-                .setIcon(R.drawable.mocoss2)
+                .setIcon(R.drawable.mocoss_img)
                 .setMessage("Under construction")
                 .setCancelable(false)
-                .setNegativeButton("Cancel") {
+                .setNegativeButton("EXIT") {
                     dialog, which ->  dialog.dismiss()
                 }
         val alert = dialogBuilder.create()

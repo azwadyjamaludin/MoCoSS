@@ -3,45 +3,57 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
+        android:id="@+id/drawerLinear"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/drawerToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
             <include
                 android:id="@+id/adcToolbar"
                 layout="@layout/drawer_toolbar_include" />
 
-        </LinearLayout>
-
     </LinearLayout>
+
+    <ListView
+        android:id="@+id/drawerList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/silver"
+        android:choiceMode="singleChoice"
+        android:divider="@color/aqua"
+        android:dividerHeight="2dp"></ListView>
     
-    <FrameLayout
+    <!--<FrameLayout
         android:id="@+id/drawerFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </FrameLayout>
+    </FrameLayout>-->
 
-    <ListView
+    <!--<android.support.design.widget.NavigationView
+        android:id="@+id/naviView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        android:menu="@layout/custom_list_layout">
+
+    </android.support.design.widget.NavigationView>-->
+
+    <!--<ListView
         android:id="@+id/drawerList"
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/whitesmoke"
-        android:fitSystemWindows="true"
         android:choiceMode="singleChoice"
         android:divider="@android:color/darker_gray"
         android:dividerHeight="2dp">
-
-    </ListView>
+    </ListView>-->
 
 </android.support.v4.widget.DrawerLayout>

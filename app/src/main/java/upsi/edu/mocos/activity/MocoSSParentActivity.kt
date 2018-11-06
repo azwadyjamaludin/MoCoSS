@@ -18,10 +18,14 @@ abstract class MocoSSParentActivity : AppCompatActivity(), ComponentCallbacks2 {
 
     }
 
-    fun goToTabPage(pageNavigate: PageNavigate,context: Context) {
+    fun goToPage(pageNavigate: PageNavigate,context: Context) {
         if (pageNavigate == PageNavigate.TabPage ) {
-                val toPage = Intent(context, TabActivity::class.java)
-                startActivity(toPage)
+                val toTabPage = Intent(context, TabActivity::class.java)
+                startActivity(toTabPage)
+        }
+        if (pageNavigate == PageNavigate.StartPage) {
+                val toStartPage = Intent(context,ClickToStartActivity::class.java)
+                startActivity(toStartPage)
         }
     }
 

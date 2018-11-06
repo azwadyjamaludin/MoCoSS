@@ -7,14 +7,52 @@
     android:layout_height="match_parent"
     tools:context="upsi.edu.mocos.activity.LoginActivity">
 
-    <Button
+    <upsi.edu.mocos.ui_component.CustomButton
+        android:id="@+id/slUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside">
+
+    </upsi.edu.mocos.ui_component.CustomButton>
+
+    <upsi.edu.mocos.ui_component.CustomButton
+        android:id="@+id/gcUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/tcUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slUser">
+
+    </upsi.edu.mocos.ui_component.CustomButton>
+
+    <upsi.edu.mocos.ui_component.CustomButton
+        android:id="@+id/tcUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="228dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </upsi.edu.mocos.ui_component.CustomButton>
+
+    <!--<Button
         android:id="@+id/button1"
         android:layout_width="119dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-
         android:layout_marginTop="162dp"
+
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,6 +81,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/button2" />-->
 
 </android.support.constraint.ConstraintLayout>

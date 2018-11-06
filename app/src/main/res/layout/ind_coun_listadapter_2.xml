@@ -48,7 +48,10 @@
         <Button
             android:id="@+id/sesRptBtnInd2"
             android:layout_width="151dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="35dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/abstract_geo"
+            android:textAllCaps="false" />
 
         <Space
             android:layout_width="wrap_content"
@@ -57,7 +60,10 @@
         <Button
             android:id="@+id/avBtnInd2"
             android:layout_width="151dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="35dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/abstract_geo"
+            android:textAllCaps="false" />
 
         <Space
             android:layout_width="wrap_content"
