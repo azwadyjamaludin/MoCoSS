@@ -25,6 +25,7 @@
         <item name="colorPrimaryDark">@color/orange</item>
         <item name="colorAccent">@color/firebrick</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <item name="android:alertDialogTheme">@style/customAlertDialog</item>
     </style>
 
     <style name="MyAppTheme.NoActionBar">
@@ -35,5 +36,16 @@
     <style name="MyAppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="MyAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    
+    <style name="MyTabText" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/aqua</item>
+    </style>
+
+    <style name="customAlertDialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
 
 </resources>

@@ -25,6 +25,8 @@ class SettingFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
 
     private var mParam1: String = ""
     private var mParam2: String = ""
+    var mEnglishFlag = "en"
+    var mMalayFlag = "ms"
 
     //private var mListener: OnFragmentInteractionListener? = null
 
@@ -42,30 +44,44 @@ class SettingFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
 
         val otherLang = view.textView1
         val BI = view.switch1
+        BI.text = "English"
+        val BM = view.switch2
+        BM.text = "Bahasa Melayu"
 
         if (MiscSetting.BI) {
             BI.isChecked = true
-            BI.text = "BI"
-            otherLang.text = "Other Language"
+            BM.isChecked = false
+            otherLang.text = getString(R.string.otherLangEN)
+            //otherLang.visibility = View.GONE
         }
         if (MiscSetting.BM) {
             BI.isChecked = false
-            BI.text = "BI"
-            otherLang.text = "Bahasa Lain"
+            BM.isChecked = true
+            otherLang.text = getString(R.string.otherLangMY)
+            //otherLang.visibility = View.GONE
         }
 
         BI.setOnCheckedChangeListener ({ _: CompoundButton, isChecked ->
             if (BI.isChecked) {
                 MiscSetting.BM = false
                 MiscSetting.BI = true
-
             }else {
-                MiscSetting.BI = false
                 MiscSetting.BM = true
-
+                MiscSetting.BI = false
             }
             refreshLayout()
         })
+        BM.setOnCheckedChangeListener({ _:CompoundButton, isChecked ->
+            if (BM.isChecked){
+                MiscSetting.BI = false
+                MiscSetting.BM = true
+            } else {
+                MiscSetting.BI = true
+                MiscSetting.BM = false
+            }
+            refreshLayout()
+        })
+
         return view
     }
 

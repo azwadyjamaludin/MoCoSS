@@ -1,7 +1,6 @@
 package upsi.edu.mocos.model
 
 import android.app.Application
-import upsi.edu.mocos.R
 
 /**
  * Created by azwady on 20/04/2018.
@@ -25,8 +24,8 @@ class MiscSetting: Application() {
 
     init {
         instance = this
-
     }
 
-
 }
+
+

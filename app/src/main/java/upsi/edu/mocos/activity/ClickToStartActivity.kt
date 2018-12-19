@@ -8,7 +8,7 @@ import upsi.edu.mocos.R
 import upsi.edu.mocos.model.MiscSetting
 import upsi.edu.mocos.model.PageNavigate
 import android.content.Intent
-
+import java.util.*
 
 
 class ClickToStartActivity : MocoSSParentActivity() {
@@ -29,18 +29,15 @@ class ClickToStartActivity : MocoSSParentActivity() {
 
     fun clickImageToStart() {
         val image : TextView = clickToStart
-        if (MiscSetting.BM) {
-            image.text = "Sentuh untuk mula"
-            image.setOnClickListener({
-                goToPage(PageNavigate.TabPage,this)
-            })
-        }
         if (MiscSetting.BI) {
-            image.text = "Tap to start"
+            image.text = getString(R.string.tapToStartEN)
+        }
+        if (MiscSetting.BM) {
+            image.text = getString(R.string.tapToStartMY)
+        }
             image.setOnClickListener({
                 goToPage(PageNavigate.TabPage,this)
             })
-        }
 
     }
 

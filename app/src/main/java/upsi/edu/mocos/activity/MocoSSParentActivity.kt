@@ -4,9 +4,7 @@ import android.content.ComponentCallbacks2
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.NavigationView
 import android.support.v7.app.AppCompatActivity
-import upsi.edu.mocos.R
 import upsi.edu.mocos.model.PageNavigate
 
 abstract class MocoSSParentActivity : AppCompatActivity(), ComponentCallbacks2 {
@@ -31,7 +29,6 @@ abstract class MocoSSParentActivity : AppCompatActivity(), ComponentCallbacks2 {
 
     open fun createActivity (savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //window.setBackgroundDrawableResource(R.drawable.abstract_blue)
     }
 
     override fun onTrimMemory(level: Int) {

@@ -21,14 +21,14 @@ class TabActivity : MocoSSParentActivity() {
 
     private fun configureTabLayout() {
         if (MiscSetting.BM) {
-            tabLayout.getTabAt(0)!!.setText("Log Masuk")
-            tabLayout.getTabAt(1)!!.setText("Info")
-            tabLayout.getTabAt(2)!!.setText("Tetapan")
+            tabLayout.getTabAt(0)!!.setText(getString(R.string.loginTabMY))
+            tabLayout.getTabAt(1)!!.setText(getString(R.string.infoTabMY))
+            tabLayout.getTabAt(2)!!.setText(getString(R.string.settingTabMY))
         }
         if (MiscSetting.BI) {
-            tabLayout.getTabAt(0)!!.setText("Login")
-            tabLayout.getTabAt(1)!!.setText("Info")
-            tabLayout.getTabAt(2)!!.setText("Setting")
+            tabLayout.getTabAt(0)!!.setText(getString(R.string.loginTabEN))
+            tabLayout.getTabAt(1)!!.setText(getString(R.string.infoTabEN))
+            tabLayout.getTabAt(2)!!.setText(getString(R.string.settingTabEN))
         }
 
         val adapter = PageAdapter(supportFragmentManager, tabLayout.tabCount)

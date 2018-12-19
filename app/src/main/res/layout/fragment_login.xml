@@ -4,7 +4,6 @@
     android:id="@+id/frameLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:tag="@string/loginFragmentTag"
     tools:context="upsi.edu.mocos.fragment.LoginFragment">
 
     <ImageView
