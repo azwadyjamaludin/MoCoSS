@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.design.widget.TabLayout
 import kotlinx.android.synthetic.main.activity_tab.*
 import upsi.edu.mocos.R
-
 import upsi.edu.mocos.adapter.PageAdapter
 import upsi.edu.mocos.model.MiscSetting
 import upsi.edu.mocos.model.PageNavigate
@@ -16,7 +15,7 @@ class TabActivity : MocoSSParentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tab)
         configureTabLayout()
-
+        //initLocationService()
     }
 
     private fun configureTabLayout() {
@@ -54,28 +53,5 @@ class TabActivity : MocoSSParentActivity() {
     override fun onBackPressed() {
         goToPage(PageNavigate.StartPage,this)
     }
-
-    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_tab, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.myhome -> {
-                return true
-            }
-            R.id.myinfo -> {
-                return true
-            }
-            R.id.mysetting -> {
-                if (MiscSetting.BM) {
-                    return true
-                }
-            }
-            else -> return super.onOptionsItemSelected(item)
-        }
-
-    }*/
 
 }

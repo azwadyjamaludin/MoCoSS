@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_login.*
@@ -17,8 +18,8 @@ import upsi.edu.mocos.model.PageNavigate
 import upsi.edu.mocos.ui_component.CustomButton
 
 class LoginActivity : MocoSSParentActivity() {
-    var userName:String = ""
-    var passWord:String = ""
+    var userString : String = ""
+    var passString : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,143 +75,162 @@ class LoginActivity : MocoSSParentActivity() {
         val context = this
         val builder = AlertDialog.Builder(context)
         val userPassDialog = LayoutInflater.from(this).inflate(R.layout.dialog_user_pass_input, null)
+        val userName = userPassDialog.findViewById<EditText>(R.id.user)
+        val passWord = userPassDialog.findViewById<EditText>(R.id.pass)
+        val enterBtn = userPassDialog.findViewById<Button>(R.id.enterButton)
+
         builder.setView(userPassDialog)
         builder.setIcon(R.drawable.mocoss_img)
         builder.setTitle(getString(R.string.app_name))
+        val dialog = builder.create()
         val slIntent = Intent(this,ContentActivity::class.java)
+
         if (MiscSetting.BI) {
-            builder.setPositiveButton("Enter") {dialogInterface, i ->
-                userName = userPassDialog.findViewById<EditText>(R.id.user).text.toString()
-                passWord = userPassDialog.findViewById<EditText>(R.id.pass).text.toString()
-                if (userName.equals("sltest") && passWord.equals("sltest")) {
+                enterBtn.setText("Enter")
+                enterBtn.setOnClickListener ({
+                    userString = userName.text.toString()
+                    passString = passWord.text.toString()
+                    if (userString.equals("sltest") && passString.equals("sltest")) {
+                    dialog.dismiss()
                     MiscSetting.user = "sl"
                     startActivity(slIntent)
-                }else {
-                    dialogDismissEN()
-                }
-            }
+                    }else {
+                    dialogWrCr()
+                    }
+                })
         }
         if (MiscSetting.BM) {
-            builder.setPositiveButton("Masuk") {dialogInterface, i ->
-                userName = userPassDialog.findViewById<EditText>(R.id.user).text.toString()
-                passWord = userPassDialog.findViewById<EditText>(R.id.pass).text.toString()
-                if (userName.equals("sltest") && passWord.equals("sltest")) {
-                    MiscSetting.user = "sl"
-                    startActivity(slIntent)
-                }else {
-                    dialogDismissMY()
-                }
-            }
+                enterBtn.setText("Masuk")
+                enterBtn.setOnClickListener({
+                    userString = userName.text.toString()
+                    passString = passWord.text.toString()
+                    if (userString.equals("sltest") && passString.equals("sltest")) {
+                        dialog.dismiss()
+                        MiscSetting.user = "sl"
+                        startActivity(slIntent)
+                    }else {
+                        dialogWrCr()
+                    }
+                })
         }
-
-        builder.show()
+        dialog.show()
     }
 
     fun gcUserPassDialog() {
         val context = this
         val builder = AlertDialog.Builder(context)
         val userPassDialog = LayoutInflater.from(this).inflate(R.layout.dialog_user_pass_input, null)
+        val userName = userPassDialog.findViewById<EditText>(R.id.user)
+        val passWord = userPassDialog.findViewById<EditText>(R.id.pass)
+        val enterBtn = userPassDialog.findViewById<Button>(R.id.enterButton)
+
         builder.setView(userPassDialog)
         builder.setIcon(R.drawable.mocoss_img)
         builder.setTitle(getString(R.string.app_name))
+        val dialog = builder.create()
         val gcIntent = Intent(this,ContentActivity::class.java)
+
         if (MiscSetting.BI) {
-            builder.setPositiveButton("Enter") {dialogInterface, i ->
-                userName = userPassDialog.findViewById<EditText>(R.id.user).text.toString()
-                passWord = userPassDialog.findViewById<EditText>(R.id.pass).text.toString()
-                if (userName.equals("gctest") && passWord.equals("gctest")) {
-                    MiscSetting.user = "gc"
-                    startActivity(gcIntent)
-                }else {
-                    dialogDismissEN()
-                }
-            }
+                enterBtn.setText("Enter")
+                enterBtn.setOnClickListener ({
+                    userString = userName.text.toString()
+                    passString = passWord.text.toString()
+                    if (userString.equals("gctest") && passString.equals("gctest")) {
+                        dialog.dismiss()
+                        MiscSetting.user = "gc"
+                        startActivity(gcIntent)
+                    } else {
+                        dialogWrCr()
+                    }
+                })
         }
         if (MiscSetting.BM) {
-            builder.setPositiveButton("Masuk") {dialogInterface, i ->
-                userName = userPassDialog.findViewById<EditText>(R.id.user).text.toString()
-                passWord = userPassDialog.findViewById<EditText>(R.id.pass).text.toString()
-                if (userName.equals("gctest") && passWord.equals("gctest")) {
+                enterBtn.setText("Masuk")
+                enterBtn.setOnClickListener({
+                    userString = userName.text.toString()
+                    passString = passWord.text.toString()
+                    if (userString.equals("gctest") && passString.equals("gctest")) {
+                    dialog.dismiss()
                     MiscSetting.user = "gc"
                     startActivity(gcIntent)
-                }else {
-                    dialogDismissMY()
-                }
-            }
+                    }else {
+                    dialogWrCr()
+                    }
+                })
         }
-
-        builder.show()
+        dialog.show()
     }
 
     fun tcUserPassDialog() {
         val context = this
         val builder = AlertDialog.Builder(context)
         val userPassDialog = LayoutInflater.from(this).inflate(R.layout.dialog_user_pass_input, null)
+        val userName = userPassDialog.findViewById<EditText>(R.id.user)
+        val passWord = userPassDialog.findViewById<EditText>(R.id.pass)
+        val enterBtn = userPassDialog.findViewById<Button>(R.id.enterButton)
+
         builder.setView(userPassDialog)
         builder.setIcon(R.drawable.mocoss_img)
         builder.setTitle(getString(R.string.app_name))
+        val dialog = builder.create()
         val tcIntent = Intent(this,ContentActivity::class.java)
+
         if (MiscSetting.BI) {
-            builder.setPositiveButton("Enter") {dialogInterface, i ->
-                userName = userPassDialog.findViewById<EditText>(R.id.user).text.toString()
-                passWord = userPassDialog.findViewById<EditText>(R.id.pass).text.toString()
-                if (userName.equals("tctest") && passWord.equals("tctest")) {
+                enterBtn.setText("Enter")
+                enterBtn.setOnClickListener({
+                    userString = userName.text.toString()
+                    passString = passWord.text.toString()
+                    if (userString.equals("tctest") && passString.equals("tctest")) {
+                    dialog.dismiss()
                     MiscSetting.user = "tc"
                     startActivity(tcIntent)
-                }else {
-                    dialogDismissEN()
-                }
-            }
+                    }else {
+                    dialogWrCr()
+                    }
+                })
         }
         if (MiscSetting.BM) {
-            builder.setPositiveButton("Masuk") {dialogInterface, i ->
-                userName = userPassDialog.findViewById<EditText>(R.id.user).text.toString()
-                passWord = userPassDialog.findViewById<EditText>(R.id.pass).text.toString()
-                if (userName.equals("tctest") && passWord.equals("tctest")) {
+                enterBtn.setText("Masuk")
+                enterBtn.setOnClickListener({
+                    userString = userName.text.toString()
+                    passString = passWord.text.toString()
+                    if (userString.equals("tctest") && passString.equals("tctest")) {
+                    dialog.dismiss()
                     MiscSetting.user = "tc"
                     startActivity(tcIntent)
-                }else {
-                    dialogDismissMY()
-                }
-            }
+                    }else {
+                    dialogWrCr()
+                    }
+                })
         }
-
-        builder.show()
+        dialog.show()
     }
 
-    fun dialogDismissEN() {
+    fun dialogWrCr() {
         val context = this
         val builder = AlertDialog.Builder(context)
-        val dismissDialog = LayoutInflater.from(this).inflate(R.layout.dialog_wr_cr_en,null)
+        val dismissDialog = LayoutInflater.from(this).inflate(R.layout.dialog_no_input,null)
         val wrCrText = dismissDialog.findViewById<TextView>(R.id.wrongCredText)
-        //wrCrText.visibility = View.INVISIBLE
+        val dismissBtn = dismissDialog.findViewById<Button>(R.id.dismissButton)
 
         builder.setView(dismissDialog)
-        builder.setIcon(R.drawable.mocoss_img)
-        builder.setTitle(getString(R.string.app_name))
+        val dialog = builder.create()
 
-
-            builder.setPositiveButton("Dismiss") {dialogInterface, i ->
-                        wrCrText.visibility = View.VISIBLE
-            }
-        builder.show()
-    }
-
-    fun dialogDismissMY() {
-        val context = this
-        val builder = AlertDialog.Builder(context)
-        val dismissDialog = LayoutInflater.from(this).inflate(R.layout.dialog_wr_cr_my,null)
-        val wrCrText2 = dismissDialog.findViewById<TextView>(R.id.wrongCredText2)
-        //wrCrText2.visibility = View.INVISIBLE
-
-        builder.setView(dismissDialog)
-        builder.setIcon(R.drawable.mocoss_img)
-        builder.setTitle(getString(R.string.app_name))
-
-
-        builder.setPositiveButton("Dismiss") {dialogInterface, i ->
-            wrCrText2.visibility = View.VISIBLE
+        if (MiscSetting.BI) {
+            wrCrText.setText(R.string.wrongUserPassDialogEN)
+            dismissBtn.setText(R.string.dismissButtonEN)
+            dismissBtn.setOnClickListener({
+                dialog.dismiss()
+            })
         }
-        builder.show()
+        if (MiscSetting.BM) {
+            wrCrText.setText(R.string.wrongUserPassDialogMY)
+            dismissBtn.setText(R.string.dismissButtonMY)
+            dismissBtn.setOnClickListener({
+                dialog.dismiss()
+            })
+        }
+
+        dialog.show()
     }
 }

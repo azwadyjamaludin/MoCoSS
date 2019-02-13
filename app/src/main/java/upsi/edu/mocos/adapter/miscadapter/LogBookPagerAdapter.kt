@@ -1,4 +1,4 @@
-package upsi.edu.mocos.adapter.pageradapter
+package upsi.edu.mocos.adapter.miscadapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

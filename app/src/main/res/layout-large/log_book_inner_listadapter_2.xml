@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/innerListAdapter"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TableRow
+        android:id="@+id/lbContentRow_2nd"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/numDataLB_2nd"
+        android:layout_width="18dp"
+        android:layout_height="match_parent"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/timeEditLB_2nd"
+        android:layout_width="118dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/activityEditLB_2nd"
+        android:layout_width="354dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/notesEditLB_2nd"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    </TableRow>
+</TableLayout>

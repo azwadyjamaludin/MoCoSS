@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/InnerListActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.InnerListActivity">
+
+    <LinearLayout
+        android:id="@+id/lbTitleRow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Space
+            android:layout_width="40dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/dateTextLB"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@color/whitesmoke"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/dateEditLB"
+            android:layout_width="134dp"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="10"
+            android:inputType="date" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lbTitleRow3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/lbHSV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbTitleRow2">
+
+        <Space
+            android:layout_width="40dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/dayTextLB"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@color/whitesmoke"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/dayEditLB"
+            android:layout_width="134dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/lbHSV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbTitleRow3">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:id="@+id/lbTitleRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/orange">
+
+                <TextView
+                    android:id="@+id/numTextLB"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/timeTextLB"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/activityLB"
+                    android:layout_width="360dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/notesTextLB"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <ListView
+                android:id="@+id/innerLBLV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </TableLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>

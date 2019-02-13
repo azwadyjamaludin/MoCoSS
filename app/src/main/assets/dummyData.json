@@ -1,0 +1,158 @@
+{
+    "dummyInd": [
+        {
+            "sessionDate": "02/10/2018",
+            "clientCode": "RKI-1810002",
+            "sessionHourEnd": "15:00:00",
+            "tableId": 1,
+            "sessionHourStart": "14:00:00",
+            "sessionNum": 1
+        },
+        {
+            "sessionDate": "02/10/2018",
+            "clientCode": "RKI-1810003",
+            "sessionHourEnd": "17:30:00",
+            "tableId": 6,
+            "sessionHourStart": "16:30:00",
+            "sessionNum": 1
+        },
+        {
+            "sessionDate": "02/10/2018",
+            "clientCode": "RKI-1810001",
+            "sessionHourEnd": "10:30:00",
+            "tableId": 7,
+            "sessionHourStart": "09:30:00",
+            "sessionNum": 1
+        },
+        {
+            "sessionDate": "03/10/2018",
+            "clientCode": "RKI-1810004",
+            "sessionHourEnd": "11:30:00",
+            "tableId": 5,
+            "sessionHourStart": "10:30:00",
+            "sessionNum": 1
+        },
+        {
+            "sessionDate": "09/10/2018",
+            "clientCode": "RKI-1810003",
+            "sessionHourEnd": "12:00:00",
+            "tableId": 3,
+            "sessionHourStart": "11:00:00",
+            "sessionNum": 2
+        },
+        {
+            "sessionDate": "12/10/2018",
+            "clientCode": "RKI-1810004",
+            "sessionHourEnd": "10:30:00",
+            "tableId": 4,
+            "sessionHourStart": "09:30:00",
+            "sessionNum": 2
+        },
+        {
+            "sessionDate": "18/18/2018",
+            "clientCode": "RKI-1810001",
+            "sessionHourEnd": "17:00:00",
+            "tableId": 2,
+            "sessionHourStart": "16:00:00",
+            "sessionNum": 2
+        },
+        {
+            "sessionDate": "14/11/2018",
+            "clientCode": "RKI-1811001",
+            "sessionHourEnd": "12:00:00",
+            "tableId": 8,
+            "sessionHourStart": "11:00:00",
+            "sessionNum": 1
+        },
+        {
+            "sessionDate": "14/11/2018",
+            "clientCode": "RKI-1811002",
+            "sessionHourEnd": "16:00:00",
+            "tableId": 9,
+            "sessionHourStart": "15:00:00",
+            "sessionNum": 1
+        },
+        {
+            "sessionDate": "18/11/2018",
+            "clientCode": "RKI-1811003",
+            "sessionHourEnd": "10:00:00",
+            "tableId": 10,
+            "sessionHourStart": "09:00:00",
+            "sessionNum": 1
+        },
+        {
+            "sessionDate": "20/11/2018",
+            "clientCode": "RKI-1811004",
+            "sessionHourEnd": "11:00:00",
+            "tableId": 11,
+            "sessionHourStart": "10:00:00",
+            "sessionNum": 1
+        }
+    ],
+    "dummyGrp": [
+        {
+            "clientGroupCode": "RKK-180921010",
+            "sessionDate": "02/09/2018",
+            "sessionHourEnd": "16:00:00",
+            "tableId": 10,
+            "sessionHourStart": "15:00:00",
+            "sessionNum": 1
+        },
+        {
+            "clientGroupCode": "RKK-181002001",
+            "sessionDate": "02/10/2018",
+            "sessionHourEnd": "12:00:00",
+            "tableId": 5,
+            "sessionHourStart": "10:30:00",
+            "sessionNum": 1
+        },
+        {
+            "clientGroupCode": "RKK-181015002",
+            "sessionDate": "15/10/2018",
+            "sessionHourEnd": "16:30:00",
+            "tableId": 6,
+            "sessionHourStart": "15:00:00",
+            "sessionNum": 1
+        },
+        {
+            "clientGroupCode": "RKK-181002001",
+            "sessionDate": "16/10/2018",
+            "sessionHourEnd": "15:30:00",
+            "tableId": 4,
+            "sessionHourStart": "14:00:00",
+            "sessionNum": 2
+        },
+        {
+            "clientGroupCode": "RKK-181122001",
+            "sessionDate": "22/10/2018",
+            "sessionHourEnd": "12:00:00",
+            "tableId": 1,
+            "sessionHourStart": "10:30:00",
+            "sessionNum": 1
+        },
+        {
+            "clientGroupCode": "RKK-181023003",
+            "sessionDate": "23/10/2018",
+            "sessionHourEnd": "12:00:00",
+            "tableId": 2,
+            "sessionHourStart": "10:30:00",
+            "sessionNum": 1
+        },
+        {
+            "clientGroupCode": "RKK-181015002",
+            "sessionDate": "16/11/2018",
+            "sessionHourEnd": "17:30:00",
+            "tableId": 3,
+            "sessionHourStart": "16:00:00",
+            "sessionNum": 2
+        },
+        {
+            "clientGroupCode": "RKK-180921010",
+            "sessionDate": "19/11/2018",
+            "sessionHourEnd": "12:30:00",
+            "tableId": 9,
+            "sessionHourStart": "11:00:00",
+            "sessionNum": 2
+        }
+    ]
+}

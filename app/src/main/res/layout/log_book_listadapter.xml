@@ -1,54 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/logBookTL"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:scrollbars="horizontal|vertical">
+    android:orientation="vertical">
+
 
     <LinearLayout
         android:id="@+id/lbTitleRow2"
-        android:orientation= "horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Space
             android:layout_width="30dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginStart="140dp" />
 
         <TextView
             android:id="@+id/dateTextLB"
-            android:layout_width="118dp"
-            android:layout_height="match_parent"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@color/whitesmoke"
             android:textAlignment="textEnd"
-            android:textColor="@color/salmon"
-            android:textSize="14dp"
+            android:textColor="@color/black"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/dateEditLB"
             android:layout_width="134dp"
             android:layout_height="wrap_content"
+            android:autofillHints=""
             android:ems="10"
             android:inputType="date" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/lbTitleRow3"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/lbHSV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbTitleRow2">
 
         <Space
             android:layout_width="30dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginStart="140dp" />
 
         <TextView
             android:id="@+id/dayTextLB"
-            android:layout_width="118dp"
-            android:layout_height="match_parent"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@color/whitesmoke"
             android:textAlignment="textEnd"
-            android:textColor="@color/salmon"
+            android:textColor="@color/black"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <EditText
@@ -59,330 +74,78 @@
             android:inputType="text" />
     </LinearLayout>
 
-    <TableRow
-        android:id="@+id/lbTitleRow"
-        android:layout_width="match_parent"
+    <HorizontalScrollView
+        android:id="@+id/lbHSV"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/orange">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbTitleRow3">
 
-        <TextView
-            android:id="@+id/numTextLB"
-            android:layout_width="18dp"
-            android:layout_height="match_parent"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/timeTextLB"
-            android:layout_width="118dp"
-            android:layout_height="match_parent"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            <TableRow
+                android:id="@+id/lbTitleRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/orange">
 
-        <TextView
-            android:id="@+id/activityLB"
-            android:layout_width="354dp"
-            android:layout_height="match_parent"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/numTextLB"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="140dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/notesTextLB"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/timeTextLB"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
-    </TableRow>
+                <TextView
+                    android:id="@+id/activityLB"
+                    android:layout_width="354dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
-    <TableRow
-        android:id="@+id/lbContentRow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/notesTextLB"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/numDataLB"
-            android:layout_width="18dp"
-            android:layout_height="match_parent"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            </TableRow>
 
-        <EditText
-            android:id="@+id/timeEditLB"
-            android:layout_width="118dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time" />
+            <LinearLayout
+                android:id="@+id/buttonRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/activityEditLB"
-            android:layout_width="354dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text" />
+                <Button
+                    android:id="@+id/tabForDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/abstract_geo"
+                    android:text="BTN"
+                    android:textAllCaps="false" />
+            </LinearLayout>
 
-        <EditText
-            android:id="@+id/notesEditLB"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textMultiLine" />
+        </TableLayout>
+    </HorizontalScrollView>
 
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/lbContentRow2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/numDataLB2"
-            android:layout_width="18dp"
-            android:layout_height="match_parent"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/timeEditLB2"
-            android:layout_width="118dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time" />
-
-        <EditText
-            android:id="@+id/activityEditLB2"
-            android:layout_width="354dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/notesEditLB2"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textMultiLine" />
-
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/lbContentRow3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/numDataLB3"
-            android:layout_width="18dp"
-            android:layout_height="match_parent"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/timeEditLB3"
-            android:layout_width="118dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time" />
-
-        <EditText
-            android:id="@+id/activityEditLB3"
-            android:layout_width="354dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/notesEditLB3"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textMultiLine" />
-
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/lbContentRow4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/numDataLB4"
-            android:layout_width="18dp"
-            android:layout_height="match_parent"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/timeEditLB4"
-            android:layout_width="118dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time" />
-
-        <EditText
-            android:id="@+id/activityEditLB4"
-            android:layout_width="354dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/notesEditLB4"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textMultiLine" />
-
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/lbContentRow5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/numDataLB5"
-            android:layout_width="18dp"
-            android:layout_height="match_parent"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/timeEditLB5"
-            android:layout_width="118dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time" />
-
-        <EditText
-            android:id="@+id/activityEditLB5"
-            android:layout_width="354dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/notesEditLB5"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textMultiLine" />
-
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/lbContentRow6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/numDataLB6"
-            android:layout_width="18dp"
-            android:layout_height="match_parent"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/timeEditLB6"
-            android:layout_width="118dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time" />
-
-        <EditText
-            android:id="@+id/activityEditLB6"
-            android:layout_width="354dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/notesEditLB6"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textMultiLine" />
-
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/lbContentRow7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/numDataLB7"
-            android:layout_width="18dp"
-            android:layout_height="match_parent"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/timeEditLB7"
-            android:layout_width="118dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time" />
-
-        <EditText
-            android:id="@+id/activityEditLB7"
-            android:layout_width="354dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/notesEditLB7"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textMultiLine" />
-
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/lbContentRow8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/numDataLB8"
-            android:layout_width="18dp"
-            android:layout_height="match_parent"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/timeEditLB8"
-            android:layout_width="118dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time" />
-
-        <EditText
-            android:id="@+id/activityEditLB8"
-            android:layout_width="354dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/notesEditLB8"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textMultiLine" />
-
-    </TableRow>
 </LinearLayout>

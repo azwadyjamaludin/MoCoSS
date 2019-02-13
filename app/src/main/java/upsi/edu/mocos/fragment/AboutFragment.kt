@@ -1,7 +1,6 @@
 package upsi.edu.mocos.fragment
 
 
-import android.content.ComponentCallbacks2
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,9 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import upsi.edu.mocos.R
 import upsi.edu.mocos.activity.InternInfoActivity
 import upsi.edu.mocos.model.MiscSetting
+import java.io.IOException
+import java.io.InputStreamReader
 
 
 /**
@@ -24,6 +26,7 @@ class AboutFragment : Fragment() {
 
     private var mParam1: String = ""
     private var mParam2: String = ""
+    private var result = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,9 +42,11 @@ class AboutFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_about, container, false)
         val context = view.context
         val internStdBtn = view.findViewById<Button>(R.id.internStdBtn)
+        val addressText = view.findViewById<TextView>(R.id.addressText)
+        addressText.visibility = View.INVISIBLE
+        //addressText.text = addressBundle(context)
+        internStd(internStdBtn,context)
 
-        internStd(internStdBtn)
-        enterSIInfo(internStdBtn,context)
         return view
     }
 
@@ -69,7 +74,7 @@ class AboutFragment : Fragment() {
         }
     }
 
-    private fun internStd (internStdBtn: Button) {
+    private fun internStd (internStdBtn: Button, context: Context) {
         if (MiscSetting.BI) {
             internStdBtn.text = "Internship Standard"
         }
@@ -77,14 +82,28 @@ class AboutFragment : Fragment() {
             internStdBtn.text = "Piawaian Internship"
         }
 
-    }
-
-    private fun enterSIInfo(internStdBtn: Button, context: Context) {
-        internStdBtn.setOnClickListener{
-            val siInfoIntent = Intent(context,InternInfoActivity::class.java)
+        internStdBtn.setOnClickListener {
+            val siInfoIntent = Intent(context, InternInfoActivity::class.java)
             MiscSetting.info = "is"
             startActivity(siInfoIntent)
         }
+    }
+
+    @Throws(IOException::class)
+    private fun addressBundle(context: Context): String {
+        val READ_BLOCK_SIZE = 100
+
+        val inputStream = context.openFileInput("address.txt")
+        val InputRead = InputStreamReader(inputStream)
+        val inputBuffer = CharArray(READ_BLOCK_SIZE)
+        var charRead: Int = 0
+        while ({charRead = InputRead.read(inputBuffer);charRead}() > 0) {
+            // char to string conversion
+            val readstring = String(inputBuffer, 0, charRead)
+            result += readstring
+        }
+        InputRead.close()
+        return result
     }
 
 }// Required empty public constructor

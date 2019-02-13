@@ -44,7 +44,6 @@
 
     <style name="customAlertDialog">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowIsFloating">true</item>
     </style>
 

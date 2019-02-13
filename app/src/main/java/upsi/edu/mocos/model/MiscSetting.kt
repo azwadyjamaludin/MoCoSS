@@ -16,7 +16,6 @@ class MiscSetting: Application() {
         var user:String = "user"
         var info:String = "info"
 
-
         fun applicationContext() : MiscSetting {
             return instance!!
         }

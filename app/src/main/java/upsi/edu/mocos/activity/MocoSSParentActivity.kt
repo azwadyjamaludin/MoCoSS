@@ -25,6 +25,14 @@ abstract class MocoSSParentActivity : AppCompatActivity(), ComponentCallbacks2 {
                 val toStartPage = Intent(context,ClickToStartActivity::class.java)
                 startActivity(toStartPage)
         }
+        if (pageNavigate == PageNavigate.LoginPage) {
+                val toLoginPage = Intent(context,LoginActivity::class.java)
+                startActivity(toLoginPage)
+        }
+        if (pageNavigate == PageNavigate.ContentPage) {
+                val toContentPage = Intent(context,ContentActivity::class.java)
+                startActivity(toContentPage)
+        }
     }
 
     open fun createActivity (savedInstanceState: Bundle?) {

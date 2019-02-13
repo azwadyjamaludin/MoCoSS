@@ -6,7 +6,7 @@ import android.support.v4.view.ViewPager
 import com.nshmura.recyclertablayout.RecyclerTabLayout
 import kotlinx.android.synthetic.main.activity_log_book.*
 import upsi.edu.mocos.R
-import upsi.edu.mocos.adapter.pageradapter.LogBookPagerAdapter
+import upsi.edu.mocos.adapter.miscadapter.LogBookPagerAdapter
 import upsi.edu.mocos.model.MyObject.LogBookMgr
 
 class LogBookActivity : MocoSSParentActivity(), ComponentCallbacks2 {

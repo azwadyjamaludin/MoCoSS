@@ -1,0 +1,53 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="upsi.edu.mocos.fragment.LoginFragment">
+
+    <ImageView
+        android:id="@+id/upsiImg"
+        android:layout_width="99dp"
+        android:layout_height="84dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginStart="75dp"
+        android:layout_weight="1"
+        android:src="@drawable/upsi"
+        app:layout_constraintBottom_toTopOf="@+id/clickText"
+        app:layout_constraintEnd_toStartOf="@+id/mocossImg"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/mocossImg"
+        android:layout_width="98dp"
+        android:layout_height="81dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginStart="37dp"
+        android:layout_weight="1"
+        android:src="@drawable/mocoss_img"
+        app:layout_constraintBottom_toTopOf="@+id/clickText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/upsiImg" />
+
+    <TextView
+        android:id="@+id/clickText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+
+        android:textColor="@color/aqua"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.478" />
+
+</android.support.constraint.ConstraintLayout>

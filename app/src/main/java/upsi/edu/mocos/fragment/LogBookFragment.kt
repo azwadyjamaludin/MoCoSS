@@ -8,9 +8,13 @@ import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_log_book.view.*
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import upsi.edu.mocos.R
 import upsi.edu.mocos.adapter.listadapter.LogBookListAdapter
+import upsi.edu.mocos.adapter.listadapter.LogBookListAdapter2
 import upsi.edu.mocos.model.MyData.LogBook
 import upsi.edu.mocos.model.MiscSetting
 import upsi.edu.mocos.model.MyObject.NumberMgr
@@ -41,6 +45,9 @@ class LogBookFragment : Fragment(),View.OnClickListener {
 
         if (MiscSetting.user == "tc") {
             attachRVAdapter(view)
+        }
+        if (MiscSetting.user == "sl"||MiscSetting.user == "gc") {
+            attachRVAdapter_2(view)
         }
         return view
     }
@@ -90,12 +97,29 @@ class LogBookFragment : Fragment(),View.OnClickListener {
     }
 
     private fun attachRVAdapter(view: View) {
-
+        doAsync {
             val numbering = NumberMgr.numInput3()
             val listadapter = LogBookListAdapter(numbering)
             val logBookRV = view.logBookRV
 
             logBookRV.adapter = listadapter
+                uiThread {
+                    Toast.makeText(view.context,"doAsync",Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+    private fun attachRVAdapter_2(view: View) {
+        doAsync {
+            val numbering = NumberMgr.numInput3()
+            val listadapter = LogBookListAdapter2(numbering)
+            val logBookRV = view.logBookRV
+
+            logBookRV.adapter = listadapter
+                uiThread {
+                    Toast.makeText(view.context,"doAsync",Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 
 }

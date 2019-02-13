@@ -5,8 +5,8 @@
     <string name="navigation_drawer_close">Close Drawer</string>
 
     <!--Localization-->
-    <string name="tapToStartEN">Tap to Start</string>
-    <string name="tapToStartMY">Sentuh untuk mula</string>
+    <string name="tapToStartEN">Tap logo to start</string>
+    <string name="tapToStartMY">Sentuh logo untuk mula</string>
 
     <string name="otherLangEN">Language Setting</string>
     <string name="otherLangMY">Tetapan Bahasa</string>
@@ -25,7 +25,45 @@
     <string name="gcUserMY">Kaunselor Pembimbing</string>
     <string name="tcUserMY">Kaunselor Pelatih</string>
 
+    <string name="content1MY">Kaunseling Individu</string>
+    <string name="content2MY">Kaunseling Kelompok</string>
+    <string name="content3MY">Aktiviti Bimbingan dan Psiko-Pendidikan</string>
+    <string name="content4MY">Ujian Psikologi</string>
+    <string name="content5MY">Perkembangan Profesional</string>
+    <string name="content6MY">Konsultasi dan Rujukan</string>
+    <string name="content7MY">Pengurusan Pentadbiran</string>
+    <string name="content8MY">Buku Log</string>
+    <string name="content9MY">Analisis Kes</string>
+    <string name="content10MY">Laporan Akhir</string>
+    <string name="content11MY">Refleksi</string>
+    <string name="content12MY">Fail dan Rekod</string>
+    <string name="content13MY">Log Keluar</string>
+    <string name="content1EN">Individual Counseling</string>
+    <string name="content2EN">Group Counseling</string>
+    <string name="content3EN">Guiding and Psyco-Education</string>
+    <string name="content4EN">Psychology Test</string>
+    <string name="content5EN">Professional Development</string>
+    <string name="content6EN">Refers and Consultation</string>
+    <string name="content7EN">Administration Management</string>
+    <string name="content8EN">Log Book</string>
+    <string name="content9EN">Case Analysis</string>
+    <string name="content10EN">End Report</string>
+    <string name="content11EN">Reflexion</string>
+    <string name="content12EN">Record and Filing</string>
+    <string name="content13EN">Log Out</string>
+
     <string name="wrongUserPassDialogEN">Wrong credentials, Please key in again</string>
     <string name="wrongUserPassDialogMY">Data tidak tepat, Sila masukkan semula</string>
+    <string name="dismissButtonEN">Dismiss</string>
+    <string name="dismissButtonMY">Keluar</string>
+
+    <string name="uploadFileMY">MuatNaik</string>
+    <string name="uploadFileEN">Upload</string>
+    <string name="downloadFileMY">MuatTurun</string>
+    <string name="downloadFileEN">Download</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>
