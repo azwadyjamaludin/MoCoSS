@@ -5,7 +5,7 @@
     android:id="@+id/indCounActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="upsi.edu.mocos.activity.IndCounActivity">
+    tools:context="upsi.edu.mocos.activity.IndCoun.IndCounActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/indCounTB"

@@ -1,6 +1,7 @@
 package upsi.edu.mocos.adapter.listadapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.RecyclerView
 import android.text.SpannableStringBuilder
@@ -14,6 +15,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.grp_coun_listadapter.view.*
 import kotlinx.android.synthetic.main.grp_coun_listadapter_2.view.*
 import upsi.edu.mocos.R
+import upsi.edu.mocos.activity.GrpCoun.GrpCounActivity
 import upsi.edu.mocos.model.MiscSetting
 import upsi.edu.mocos.model.MyData.JSONGrpData
 import upsi.edu.mocos.model.MyData.NumberData
@@ -21,7 +23,8 @@ import upsi.edu.mocos.model.inflate
 
 class GrpCounContentListAdapter (
         private var numbering: ArrayList<NumberData>,
-        private var jsonArrayGrp: ArrayList<JSONGrpData>
+        private var jsonArrayGrp: ArrayList<JSONGrpData>,
+        val origin: GrpCounActivity
 ): RecyclerView.Adapter<GrpCounContentListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -38,12 +41,14 @@ class GrpCounContentListAdapter (
         val dateEdit = jsonArrayGrp[position].sessionDate
         val sessionCode = jsonArrayGrp[position].clientGroupCode
         val sessionHour = jsonArrayGrp[position].sessionHour
-        holder.decoWidget(number,dateEdit,sessionCode,sessionHour)
+        holder.decoWidget(number,dateEdit,sessionCode,sessionHour,origin)
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         private var view: View = view
         private var context  = view.context
+        //private var origin:GrpCounActivity = origin
+
 
         init {
             view.setOnClickListener(this)
@@ -57,7 +62,7 @@ class GrpCounContentListAdapter (
             private val NUMBERING_KEY = "NUMBERING"
         }
 
-        fun decoWidget(number:String,dateEdit:String,sessionCode:String,sessionHour:String) {
+        fun decoWidget(number:String,dateEdit:String,sessionCode:String,sessionHour:String,origin: GrpCounActivity) {
             var dateEdit = SpannableStringBuilder(dateEdit)
             var sesCodeEdit = SpannableStringBuilder(sessionCode)
             var sessionHour = SpannableStringBuilder(sessionHour)
@@ -70,22 +75,22 @@ class GrpCounContentListAdapter (
             if (MiscSetting.BM) {
                 view.sesRptBtnGrp.text = context.getString(R.string.uploadFileMY)
                 view.sesRptBtnGrp.setOnClickListener({
-                    alertOtherBM()
+                    grpCoudUpMY(origin)
                 })
                 view.avBtnGrp.text = context.getString(R.string.uploadFileMY)
                 view.avBtnGrp.setOnClickListener({
-                    alertOtherBM()
+                    grpCoudUpMY(origin)
                 })
             }
 
             if (MiscSetting.BI) {
                 view.sesRptBtnGrp.text = context.getString(R.string.uploadFileEN)
                 view.sesRptBtnGrp.setOnClickListener({
-                    alertOtherBI()
+                    grpCounUpEN(origin)
                 })
                 view.avBtnGrp.text = context.getString(R.string.uploadFileEN)
                 view.avBtnGrp.setOnClickListener({
-                    alertOtherBI()
+                    grpCounUpEN(origin)
                 })
             }
 
@@ -97,6 +102,40 @@ class GrpCounContentListAdapter (
 
         private fun alertOtherBI() {
             Toast.makeText(context,"Under construction",Toast.LENGTH_SHORT)
+        }
+
+        private fun grpCounUpEN(origin: GrpCounActivity) {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "*/*"
+            intent.addCategory(Intent.CATEGORY_OPENABLE)
+
+            try {
+                origin.startActivityForResult(
+                        Intent.createChooser(intent, "Select a File to Upload"),
+                        origin.FILE_SELECT_CODE)
+            } catch (ex: android.content.ActivityNotFoundException) {
+                // Potentially direct the user to the Market with a Dialog
+                Toast.makeText(origin, "Please install a File Manager.",
+                        Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+        private fun grpCoudUpMY(origin: GrpCounActivity) {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "*/*"
+            intent.addCategory(Intent.CATEGORY_OPENABLE)
+
+            try {
+                origin.startActivityForResult(
+                        Intent.createChooser(intent, "Sila pilih fail untuk muat naik"),
+                        origin.FILE_SELECT_CODE)
+            } catch (ex: android.content.ActivityNotFoundException) {
+                // Potentially direct the user to the Market with a Dialog
+                Toast.makeText(origin, "Sila install 'File Manager'.",
+                        Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
 }

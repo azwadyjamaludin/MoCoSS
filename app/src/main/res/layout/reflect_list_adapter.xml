@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/reflectTL"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TableRow
+        android:id="@+id/reflectTR"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/reflectWeekText"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/reflectAttachBtn"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/abstract_geo"
+            android:textAllCaps="false" />
+
+    </TableRow>
+
+</TableLayout>

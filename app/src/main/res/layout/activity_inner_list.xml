@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.InnerListActivity">
+    tools:context=".activity.logBook.InnerListActivity">
 
     <LinearLayout
         android:id="@+id/lbTitleRow2"
@@ -81,6 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/lbTitleRow3">
 
         <TableLayout
+            android:id="@+id/lbTableLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -133,6 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </TableLayout>
+
     </HorizontalScrollView>
 
 </LinearLayout>

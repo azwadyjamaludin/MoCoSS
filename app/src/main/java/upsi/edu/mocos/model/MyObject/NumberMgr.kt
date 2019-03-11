@@ -1,6 +1,7 @@
 package upsi.edu.mocos.model.MyObject
 
 import android.util.Log
+import upsi.edu.mocos.model.MiscSetting
 import upsi.edu.mocos.model.MyData.InnerListData
 import upsi.edu.mocos.model.MyData.NumberData
 
@@ -13,15 +14,22 @@ object NumberMgr {
         initString = "NumberMgr"
     }
 
-    fun numInput1():ArrayList<NumberData> {
+    fun numInputReflect():ArrayList<NumberData> {
         var numInt: Int
         val numList: ArrayList<NumberData> = arrayListOf()
-        for (item in 1..120) {
-            numInt = item
-            numData = numInt.toString()
-            numList.add(NumberData(numData))
+        for (item in 1..16) {
+            if (MiscSetting.BI) {
+                numInt = item
+                numData = numInt.toString()
+                numList.add(NumberData("week"+"-"+numData+":"))
+            }
+            if (MiscSetting.BM) {
+                numInt = item
+                numData = numInt.toString()
+                numList.add(NumberData("minggu"+"-"+numData+":"))
+            }
         }
-        Log.d("numList",numList.toString())
+        Log.d("weekList",numList.toString())
         return numList
     }
 

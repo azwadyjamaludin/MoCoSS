@@ -8,7 +8,7 @@ import upsi.edu.mocos.adapter.PageAdapter
 import upsi.edu.mocos.model.MiscSetting
 import upsi.edu.mocos.model.PageNavigate
 
-class TabActivity : MocoSSParentActivity() {
+class TabActivity : MoCoSSParentActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

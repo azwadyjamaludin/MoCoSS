@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".model.MiscSetting"
@@ -29,6 +30,17 @@
             </intent-filter>
         </activity>
         -->
+        <provider
+            android:name="com.ianhanniballake.localstorage.LocalStorageProvider"
+            android:authorities="com.ianhanniballake.localstorage.documents"
+            android:enabled="@bool/use_provider"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:permission="android.permission.MANAGE_DOCUMENTS" >
+            <intent-filter>
+                <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
+            </intent-filter>
+        </provider>
         <activity
             android:name=".activity.ClickToStartActivity"
             android:screenOrientation="portrait">
@@ -49,20 +61,85 @@
             android:name=".activity.ContentActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.IndCounActivity"
+            android:name=".activity.IndCoun.IndCounActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".activity.GrpCounActivity"
+            android:name=".activity.GrpCoun.GrpCounActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".activity.LogBookActivity"
+            android:name=".activity.logBook.LogBookActivity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".activity.InternInfoActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.InnerListActivity"
-            android:screenOrientation="landscape" >
+        <activity
+            android:name=".activity.logBook.InnerListActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.UserInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.IndCoun.IndCounScoreActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.GrpCoun.GrpCounScoreActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.AdmMgt.AdmMgtActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CaseAnal.CaseAnalActivity"
+            android:screenOrientation="portrait">
         </activity>
+        <!--android:enabled="@bool/use_activity"
+        android:label="@string/choose_file"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.GET_CONTENT" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.OPENABLE" />
+
+            <data android:mimeType="*/*" />
+        </intent-filter>/>-->
+        <activity
+            android:name=".activity.ProfDev.ProfDevActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PsyEdu.PsyEduActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PsyTest.PsyTestActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.RefCons.RefConsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.Reflect.ReflectActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AdmMgt.AdmMgtScoreActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CaseAnal.CaseAnalScoreActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.logBook.LogBookScoreActivity" />
+        <activity
+            android:name=".activity.ProfDev.ProfDevScoreActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.Reflect.ReflectScoreActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PsyEdu.PsyEduScoreActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PsyTest.PsyTestScoreActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.RefCons.RefConsScoreActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.FullMarkActivity"></activity>
     </application>
 
 </manifest>

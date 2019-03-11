@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import upsi.edu.mocos.R
@@ -39,9 +40,13 @@ class LoginFragment : Fragment(),View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_login, container, false)
+        val context = view.context
+        val enterText:TextView = view.clickText
+        val upsiImg:ImageView = view.upsiImg
+        upsiImg.visibility = View.INVISIBLE
 
-        val enterText: TextView = view.clickText
-        val context = enterText.context
+        val mocossImg:ImageView = view.mocossImg
+        mocossImg.visibility = View.INVISIBLE
 
         if (MiscSetting.BI) {
             enterText.text = "Enter"

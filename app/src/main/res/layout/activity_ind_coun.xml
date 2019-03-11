@@ -5,7 +5,7 @@
     android:id="@+id/indCounActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="upsi.edu.mocos.activity.IndCounActivity">
+    tools:context="upsi.edu.mocos.activity.IndCoun.IndCounActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/indCounTB"
@@ -151,7 +151,8 @@
         <TableRow
             android:id="@+id/totalRowInd"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp">
 
             <TextView
                 android:id="@+id/totHourTextInd"
@@ -170,6 +171,7 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+
 
         </TableRow>
 

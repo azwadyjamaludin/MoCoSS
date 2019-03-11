@@ -17,7 +17,7 @@ import upsi.edu.mocos.model.MiscSetting
 import upsi.edu.mocos.model.PageNavigate
 import upsi.edu.mocos.ui_component.CustomButton
 
-class LoginActivity : MocoSSParentActivity() {
+class LoginActivity : MoCoSSParentActivity() {
     var userString : String = ""
     var passString : String = ""
 
@@ -83,7 +83,7 @@ class LoginActivity : MocoSSParentActivity() {
         builder.setIcon(R.drawable.mocoss_img)
         builder.setTitle(getString(R.string.app_name))
         val dialog = builder.create()
-        val slIntent = Intent(this,ContentActivity::class.java)
+        val slIntent = Intent(this,UserInfoActivity::class.java)
 
         if (MiscSetting.BI) {
                 enterBtn.setText("Enter")
@@ -128,7 +128,7 @@ class LoginActivity : MocoSSParentActivity() {
         builder.setIcon(R.drawable.mocoss_img)
         builder.setTitle(getString(R.string.app_name))
         val dialog = builder.create()
-        val gcIntent = Intent(this,ContentActivity::class.java)
+        val gcIntent = Intent(this,UserInfoActivity::class.java)
 
         if (MiscSetting.BI) {
                 enterBtn.setText("Enter")
@@ -173,7 +173,7 @@ class LoginActivity : MocoSSParentActivity() {
         builder.setIcon(R.drawable.mocoss_img)
         builder.setTitle(getString(R.string.app_name))
         val dialog = builder.create()
-        val tcIntent = Intent(this,ContentActivity::class.java)
+        val tcIntent = Intent(this,UserInfoActivity::class.java)
 
         if (MiscSetting.BI) {
                 enterBtn.setText("Enter")

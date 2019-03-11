@@ -5,12 +5,13 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import kotlinx.android.synthetic.main.activity_intern_info.*
 import kotlinx.android.synthetic.main.activity_intern_info.view.*
+import org.jetbrains.anko.doAsync
 import upsi.edu.mocos.R
 import upsi.edu.mocos.adapter.listadapter.InternInfoListAdapter
 import upsi.edu.mocos.model.MyObject.ImgMgr
 import upsi.edu.mocos.model.MyObject.NumberMgr
 
-class InternInfoActivity : MocoSSParentActivity() {
+class InternInfoActivity : MoCoSSParentActivity() {
     private lateinit var layoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,13 +27,14 @@ class InternInfoActivity : MocoSSParentActivity() {
 
 
     private fun attachRVAdapter(view: View) {
+        doAsync {
         val interinfoList = ImgMgr.imgInput()
         val numbering = NumberMgr.increaseCached()
         val rvAdapter = InternInfoListAdapter(interinfoList,numbering)
 
         val internInfoRV = view.internInfoRV
         internInfoRV.adapter = rvAdapter
-
+        }
     }
 
 }

@@ -3,6 +3,7 @@ package upsi.edu.mocos.fragment
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageInfo
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import kotlinx.android.synthetic.main.fragment_about.*
 import upsi.edu.mocos.R
 import upsi.edu.mocos.activity.InternInfoActivity
 import upsi.edu.mocos.model.MiscSetting
@@ -42,11 +44,12 @@ class AboutFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_about, container, false)
         val context = view.context
         val internStdBtn = view.findViewById<Button>(R.id.internStdBtn)
+        val versionInfoText = view.findViewById<TextView>(R.id.versionInfoText)
         val addressText = view.findViewById<TextView>(R.id.addressText)
         addressText.visibility = View.INVISIBLE
         //addressText.text = addressBundle(context)
         internStd(internStdBtn,context)
-
+        appVersion(versionInfoText,context)
         return view
     }
 
@@ -87,6 +90,18 @@ class AboutFragment : Fragment() {
             MiscSetting.info = "is"
             startActivity(siInfoIntent)
         }
+    }
+
+    private fun appVersion(versionInfoText:TextView, context: Context) {
+
+        val pInfo : PackageInfo = context.packageManager.getPackageInfo(context.packageName,0)
+        if (MiscSetting.BI) {
+            versionInfoText.text = "version "+pInfo.versionName
+        }
+        if (MiscSetting.BM) {
+            versionInfoText.text = "versi "+pInfo.versionName
+        }
+
     }
 
     @Throws(IOException::class)

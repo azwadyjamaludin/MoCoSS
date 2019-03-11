@@ -5,25 +5,38 @@
     android:id="@+id/logBookActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.LogBookActivity">
+    tools:context=".activity.logBook.LogBookActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/logBookTB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toTopOf="@+id/logBookRTL"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.nshmura.recyclertablayout.RecyclerTabLayout
         android:id="@+id/logBookRTL"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:background="@color/stroke"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/logBookTB" />
 
 
     <android.support.v4.view.ViewPager
         android:id="@+id/logBookVP"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/logBookRTL">
 
     </android.support.v4.view.ViewPager>
 </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,8 @@
 package upsi.edu.mocos.adapter.listadapter
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.RecyclerView
 import android.text.SpannableStringBuilder
@@ -14,6 +16,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.ind_coun_listadapter.view.*
 import kotlinx.android.synthetic.main.ind_coun_listadapter_2.view.*
 import upsi.edu.mocos.R
+import upsi.edu.mocos.activity.IndCoun.IndCounActivity
 import upsi.edu.mocos.model.MiscSetting
 import upsi.edu.mocos.model.MyData.JSONIndData
 import upsi.edu.mocos.model.MyData.NumberData
@@ -21,11 +24,13 @@ import upsi.edu.mocos.model.inflate
 
 class IndCounContentListAdapter(
         private var numbering: ArrayList<NumberData>,
-        private var jsonArrayInd: ArrayList<JSONIndData>
+        private var jsonArrayInd: ArrayList<JSONIndData>,
+        val origin: IndCounActivity
 ):RecyclerView.Adapter<IndCounContentListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflatedView = parent.inflate(R.layout.ind_coun_listadapter, false)
+
             return ViewHolder(inflatedView)
     }
 
@@ -38,7 +43,7 @@ class IndCounContentListAdapter(
         val dateEdit = jsonArrayInd[position].sessionDate
         val sessionCode = jsonArrayInd[position].clientCode
         val sessionHour = jsonArrayInd[position].sessionHour
-        holder.decoWidget(number,dateEdit,sessionCode,sessionHour)
+        holder.decoWidget(number,dateEdit,sessionCode,sessionHour,origin)
 
     }
 
@@ -46,6 +51,7 @@ class IndCounContentListAdapter(
     class ViewHolder(view: View): RecyclerView.ViewHolder(view), View.OnClickListener {
         private var view: View = view
         private var context = view.context
+
 
         init {
             view.setOnClickListener(this)
@@ -59,7 +65,7 @@ class IndCounContentListAdapter(
             private val NUMBERING_KEY = "NUMBERING"
         }
 
-        fun decoWidget(number:String,dateEdit:String,sessionCode:String, sessionHour:String) {
+        fun decoWidget(number:String,dateEdit:String,sessionCode:String, sessionHour:String, origin: IndCounActivity) {
 
             var dateEdit = SpannableStringBuilder(dateEdit)
             var sesCodeEdit = SpannableStringBuilder(sessionCode)
@@ -73,22 +79,22 @@ class IndCounContentListAdapter(
             if (MiscSetting.BM) {
                 view.sesRptBtnInd.text = context.getString(R.string.uploadFileMY)
                 view.sesRptBtnInd.setOnClickListener({
-                    alertOtherBM()
+                    indCoudUpMY(origin)
                 })
                 view.avBtnInd.text = context.getString(R.string.uploadFileMY)
                 view.avBtnInd.setOnClickListener({
-                    alertOtherBM()
+                    indCoudUpMY(origin)
                 })
             }
 
             if (MiscSetting.BI) {
                 view.sesRptBtnInd.text = context.getString(R.string.uploadFileEN)
                 view.sesRptBtnInd.setOnClickListener({
-                    alertOtherBI()
+                    indCounUpEN(origin)
                 })
                 view.avBtnInd.text = context.getString(R.string.uploadFileEN)
                 view.avBtnInd.setOnClickListener({
-                    alertOtherBI()
+                    indCounUpEN(origin)
                 })
             }
 
@@ -100,6 +106,40 @@ class IndCounContentListAdapter(
 
         private fun alertOtherBI() {
             Toast.makeText(context,"Under Construction",Toast.LENGTH_SHORT)
+        }
+
+        private fun indCounUpEN(origin: IndCounActivity) {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "*/*"
+            intent.addCategory(Intent.CATEGORY_OPENABLE)
+
+            try {
+                origin.startActivityForResult(
+                        Intent.createChooser(intent, "Select a File to Upload"),
+                        origin.FILE_SELECT_CODE)
+            } catch (ex: android.content.ActivityNotFoundException) {
+                // Potentially direct the user to the Market with a Dialog
+                Toast.makeText(origin, "Please install a File Manager.",
+                        Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+        private fun indCoudUpMY(origin: IndCounActivity) {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "*/*"
+            intent.addCategory(Intent.CATEGORY_OPENABLE)
+
+            try {
+                origin.startActivityForResult(
+                        Intent.createChooser(intent, "Sila pilih fail untuk muat naik"),
+                        origin.FILE_SELECT_CODE)
+            } catch (ex: android.content.ActivityNotFoundException) {
+                // Potentially direct the user to the Market with a Dialog
+                Toast.makeText(origin, "Sila install 'File Manager'.",
+                        Toast.LENGTH_SHORT).show()
+            }
+
         }
 
     }

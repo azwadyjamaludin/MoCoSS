@@ -1,20 +1,15 @@
 package upsi.edu.mocos.adapter.listadapter
 
-import android.content.Context
 import android.content.Intent
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
 import kotlinx.android.synthetic.main.log_book_listadapter.view.*
 import upsi.edu.mocos.R
-import upsi.edu.mocos.activity.InnerListActivity
-import upsi.edu.mocos.adapter.miscadapter.LogBookListInnerCustomAdapter
+import upsi.edu.mocos.activity.logBook.InnerListActivity
 import upsi.edu.mocos.model.MiscSetting
 import upsi.edu.mocos.model.MyData.NumberData
-import upsi.edu.mocos.model.MyObject.NumberMgr
 import upsi.edu.mocos.model.inflate
 
 class LogBookListAdapter(
@@ -64,8 +59,8 @@ class LogBookListAdapter(
                 view.notesTextLB.text = "Catatan"
                 view.tabForDetail.text = "Tab Untuk Butiran Lanjut"
                 view.tabForDetail.setOnClickListener ({
-                    val toPageInnerList =Intent(context,InnerListActivity::class.java)
-                    toPageInnerList.putExtra("dateText",dateText)
+                    val toPageInnerList =Intent(context, InnerListActivity::class.java)
+                    toPageInnerList.putExtra("dateTextMY",dateText)
                     context.startActivity(toPageInnerList)
                 })
 
@@ -79,8 +74,8 @@ class LogBookListAdapter(
                 view.notesTextLB.text = "Notes"
                 view.tabForDetail.text = "Tab For Details"
                 view.tabForDetail.setOnClickListener ({
-                    val toPageInnerList =Intent(context,InnerListActivity::class.java)
-                    toPageInnerList.putExtra("dateText",dateText)
+                    val toPageInnerList =Intent(context, InnerListActivity::class.java)
+                    toPageInnerList.putExtra("dateTextEN",dateText)
                     context.startActivity(toPageInnerList)
                 })
             }

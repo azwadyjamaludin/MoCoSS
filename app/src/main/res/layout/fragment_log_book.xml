@@ -5,7 +5,7 @@
     android:id="@+id/logBookFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.LogBookFragment">
+    tools:context=".fragment.logBook.LogBookFragment">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/logBookTB"

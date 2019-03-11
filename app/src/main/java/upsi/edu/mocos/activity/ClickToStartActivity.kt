@@ -2,35 +2,34 @@ package upsi.edu.mocos.activity
 
 import android.content.Context
 import android.content.DialogInterface
-import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_click_to_start.*
-import upsi.edu.mocos.R
-import upsi.edu.mocos.model.MiscSetting
-import upsi.edu.mocos.model.PageNavigate
 import android.content.Intent
-import android.content.pm.PackageInfo
+import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.provider.Settings
 import android.support.v7.app.AlertDialog
 import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_start_app.*
+import upsi.edu.mocos.R
 import upsi.edu.mocos.model.LocationService
+import upsi.edu.mocos.model.MiscSetting
+import upsi.edu.mocos.model.PageNavigate
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStreamWriter
-import java.util.*
 
 
-class ClickToStartActivity : MocoSSParentActivity() {
+class ClickToStartActivity : MoCoSSParentActivity() {
     internal lateinit var locationService: LocationService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_click_to_start)
-        clickImageToStart()
-        appVersion()
+        setContentView(R.layout.activity_start_app)
+        clickImageToStart(contentActivity)
+
         //initLocationService()
         }
 
@@ -41,19 +40,15 @@ class ClickToStartActivity : MocoSSParentActivity() {
         startActivity(exit)
     }
 
-    fun clickImageToStart() {
-        val image : TextView = clickToStart
-        val mocosslogo: ImageView = mocossLogo
+    fun clickImageToStart(view: View) {
+
 
         if (MiscSetting.BI) {
-            image.text = getString(R.string.tapToStartEN)
+            startDialogEN(view)
         }
         if (MiscSetting.BM) {
-            image.text = getString(R.string.tapToStartMY)
+            startDialogMY(view)
         }
-            mocosslogo.setOnClickListener {
-                goToPage(PageNavigate.TabPage,this)
-            }
 
     }
 
@@ -128,16 +123,28 @@ class ClickToStartActivity : MocoSSParentActivity() {
         }
     }
 
-    private fun appVersion() {
 
-        val pInfo : PackageInfo = packageManager.getPackageInfo(packageName,0)
-        if (MiscSetting.BI) {
-            versionText.text = "version "+pInfo.versionName
-        }
-        if (MiscSetting.BM) {
-            versionText.text = "versi "+pInfo.versionName
-        }
 
+    private fun startDialogMY(view:View) {
+        val wrCrTextUPSI = view.findViewById<TextView>(R.id.wrongCredTextUPSI)
+        val dismissBtnUPSI = view.findViewById<Button>(R.id.dismissButtonUPSI)
+
+        wrCrTextUPSI.setText("UNIVERSITI NO.1 PENDIDIKAN")
+        dismissBtnUPSI.setText("Teruskan")
+        dismissBtnUPSI.setOnClickListener({
+            goToPage(PageNavigate.TabPage,this)
+        })
+    }
+
+    private fun startDialogEN(view: View) {
+        val wrCrTextUPSI = view.findViewById<TextView>(R.id.wrongCredTextUPSI)
+        val dismissBtnUPSI = view.findViewById<Button>(R.id.dismissButtonUPSI)
+
+        wrCrTextUPSI.setText("NO.1 EDUCATION UNIVERSITY")
+        dismissBtnUPSI.setText("Proceed")
+        dismissBtnUPSI.setOnClickListener({
+            goToPage(PageNavigate.TabPage,this)
+        })
     }
 
 }

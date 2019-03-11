@@ -1,20 +1,15 @@
 package upsi.edu.mocos.adapter.listadapter
 
-import android.content.Context
 import android.content.Intent
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
 import kotlinx.android.synthetic.main.log_book_listadapter_2.view.*
 import upsi.edu.mocos.R
-import upsi.edu.mocos.activity.InnerListActivity
-import upsi.edu.mocos.adapter.miscadapter.LogBookListInnerCustomAdapter2
+import upsi.edu.mocos.activity.logBook.InnerListActivity
 import upsi.edu.mocos.model.MiscSetting
 import upsi.edu.mocos.model.MyData.NumberData
-import upsi.edu.mocos.model.MyObject.NumberMgr
 import upsi.edu.mocos.model.inflate
 
 class LogBookListAdapter2(
@@ -70,7 +65,7 @@ class LogBookListAdapter2(
                 view.tabForDetail_2nd.text = "Tab Untuk Butiran Lanjut"
                 view.tabForDetail_2nd.setOnClickListener ({
                     val toPageInnerList = Intent(context, InnerListActivity::class.java)
-                    toPageInnerList.putExtra("dateText",dateText)
+                    toPageInnerList.putExtra("dateTextMY2",dateText)
                     context.startActivity(toPageInnerList)
                 })
 
@@ -84,8 +79,8 @@ class LogBookListAdapter2(
                 view.notesTextLB_2nd.text = "Notes"
                 view.tabForDetail_2nd.text = "Tab For Details"
                 view.tabForDetail_2nd.setOnClickListener ({
-                    val toPageInnerList =Intent(context,InnerListActivity::class.java)
-                    toPageInnerList.putExtra("dateText",dateText)
+                    val toPageInnerList =Intent(context, InnerListActivity::class.java)
+                    toPageInnerList.putExtra("dateTextEN2",dateText)
                     context.startActivity(toPageInnerList)
                 })
             }

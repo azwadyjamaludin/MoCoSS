@@ -3,7 +3,7 @@ package upsi.edu.mocos.adapter.miscadapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import upsi.edu.mocos.fragment.LogBookFragment
+import upsi.edu.mocos.fragment.logBook.LogBookFragment
 import upsi.edu.mocos.model.MyData.LogBook
 import kotlin.collections.ArrayList
 

@@ -17,6 +17,8 @@
     <string name="loginTabMY">Log Masuk</string>
     <string name="infoTabMY">Info</string>
     <string name="settingTabMY">Tetapan</string>
+    <string name="scoreEN">Scoring</string>
+    <string name="scoreMY">Permarkahan</string>
 
     <string name="slUserEN">Supervisor Lecturer</string>
     <string name="gcUserEN">Guiding Counselor</string>
@@ -38,6 +40,7 @@
     <string name="content11MY">Refleksi</string>
     <string name="content12MY">Fail dan Rekod</string>
     <string name="content13MY">Log Keluar</string>
+    <string name="content14MY">Markah Penuh</string>
     <string name="content1EN">Individual Counseling</string>
     <string name="content2EN">Group Counseling</string>
     <string name="content3EN">Guiding and Psyco-Education</string>
@@ -48,9 +51,10 @@
     <string name="content8EN">Log Book</string>
     <string name="content9EN">Case Analysis</string>
     <string name="content10EN">End Report</string>
-    <string name="content11EN">Reflexion</string>
+    <string name="content11EN">Reflection</string>
     <string name="content12EN">Record and Filing</string>
     <string name="content13EN">Log Out</string>
+    <string name="content14EN">Final Score</string>
 
     <string name="wrongUserPassDialogEN">Wrong credentials, Please key in again</string>
     <string name="wrongUserPassDialogMY">Data tidak tepat, Sila masukkan semula</string>
@@ -61,9 +65,7 @@
     <string name="uploadFileEN">Upload</string>
     <string name="downloadFileMY">MuatTurun</string>
     <string name="downloadFileEN">Download</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="attachFileMY">Kepilkan</string>
+    <string name="attachFileEN">Attachment</string>
 
 </resources>
