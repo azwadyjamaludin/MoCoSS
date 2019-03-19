@@ -19,11 +19,11 @@ class UserInfoActivity : MoCoSSParentActivity() {
             tcInfo(userInfoActivity)
         }
         if(MiscSetting.user == "sl") {
-            initPageSLGC(userInfoActivity)
+            initPageSL(userInfoActivity)
             slInfo(userInfoActivity)
         }
         if (MiscSetting.user == "gc") {
-            initPageSLGC(userInfoActivity)
+            initPageGC(userInfoActivity)
             gcInfo(userInfoActivity)
         }
 
@@ -61,27 +61,55 @@ class UserInfoActivity : MoCoSSParentActivity() {
         }
     }
 
-    private fun initPageSLGC(view: View) {
+    private fun initPageGC(view: View) {
         val userInfoTB = view.userInfoTB
         val fullName = view.fullName
         val idNo = view.idNo
         val internLoc = view.internLoc
         val nextPageBtn = view.nextPage
         if (MiscSetting.BM) {
-            userInfoTB.title = "Butir penyelia / pembimbing"
+            userInfoTB.title = "Butir pembimbing"
             fullName.text = "Nama penuh:"
             idNo.text = "Nombor ID:"
-            internLoc.text = "Tempat penyelia / pembimbing:"
+            internLoc.text = "Tempat pembimbing:"
             nextPageBtn.customText.text = "Muka seterusnya"
             nextPageBtn.customText.setOnClickListener ({
                 goToPage(PageNavigate.ContentPage,this)
             })
         }
         if (MiscSetting.BI) {
-            userInfoTB.title = "Supervisor's / guider's detail"
+            userInfoTB.title = "Guider's detail"
             fullName.text = "Full name:"
             idNo.text = "ID Number:"
-            internLoc.text = "Supervisor's / guider's location:"
+            internLoc.text = "Guider's location:"
+            nextPageBtn.customText.text = "Next page"
+            nextPageBtn.customText.setOnClickListener ({
+                goToPage(PageNavigate.ContentPage,this)
+            })
+        }
+    }
+
+    private fun initPageSL(view: View) {
+        val userInfoTB = view.userInfoTB
+        val fullName = view.fullName
+        val idNo = view.idNo
+        val internLoc = view.internLoc
+        val nextPageBtn = view.nextPage
+        if (MiscSetting.BM) {
+            userInfoTB.title = "Butir penyelia"
+            fullName.text = "Nama penuh:"
+            idNo.text = "Nombor ID:"
+            internLoc.text = "Tempat penyelia:"
+            nextPageBtn.customText.text = "Muka seterusnya"
+            nextPageBtn.customText.setOnClickListener ({
+                goToPage(PageNavigate.ContentPage,this)
+            })
+        }
+        if (MiscSetting.BI) {
+            userInfoTB.title = "Supervisor's detail"
+            fullName.text = "Full name:"
+            idNo.text = "ID Number:"
+            internLoc.text = "Supervisor's location:"
             nextPageBtn.customText.text = "Next page"
             nextPageBtn.customText.setOnClickListener ({
                 goToPage(PageNavigate.ContentPage,this)

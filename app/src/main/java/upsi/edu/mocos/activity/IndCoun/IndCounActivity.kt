@@ -33,12 +33,12 @@ import com.ipaulpro.afilechooser.utils.FileUtils
 import com.shockwave.pdfium.PdfDocument
 
 
-class IndCounActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadCompleteListener {
+class IndCounActivity : MoCoSSParentActivity() {
     private lateinit var layoutManager: LinearLayoutManager
     var jsonDataInd:ArrayList<JSONIndData> = arrayListOf()
     var numbering:ArrayList<NumberData> = arrayListOf()
     var totalHourInd:ArrayList<Int> = arrayListOf()
-    val FILE_SELECT_CODE = 0
+    val REQUEST_CHOOSER = 1234
     var pageNumber: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +53,22 @@ class IndCounActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadComp
         attachAdapter(indCounActivity)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            REQUEST_CHOOSER -> if (resultCode == Activity.RESULT_OK) {
+                // Get the Uri of the selected file
+                val uri = data!!.data
+                Log.d("TAG", "File Uri: " + uri!!.toString())
+                // Get the path
+                val path = FileUtils.getPath(this, uri)
+                Log.d("TAG", "File Path: " + path!!)
+                // Get the file instance
+                // File file = new File(path);
+                // Initiate the upload
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
             menuInflater.inflate(R.menu.ind_coun_menu, menu)
@@ -97,6 +113,7 @@ class IndCounActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadComp
         goToPage(PageNavigate.ContentPage,this@IndCounActivity)
     }
 
+
     private fun attachAdapter(view: View) {
         val origin = this
             doAsync {
@@ -111,48 +128,13 @@ class IndCounActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadComp
         if (MiscSetting.user == "gc"||MiscSetting.user == "sl") {
             numbering = NumberMgr.increaseCached()
             jsonDataInd = JSONMgr.parseJSONIndData(this@IndCounActivity)
-            val listadapter = IndCounContentListAdapter2(numbering,jsonDataInd)
+            val listadapter = IndCounContentListAdapter2(numbering,jsonDataInd,origin)
             val indCounLV = view.indCounLV
 
             indCounLV.adapter = listadapter
         }
         view.totalHourInd.text = totalHour()
             }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        when (requestCode) {
-            FILE_SELECT_CODE -> if (resultCode == Activity.RESULT_OK) {
-                // Get the Uri of the selected file
-                val uri = data!!.data
-                Log.d("TAG", "File Uri: " + uri!!.toString())
-                // Get the path
-                val path = FileUtils.getPath(this, uri)
-                Log.d("TAG", "File Path: " + path!!)
-                // Get the file instance
-                // File file = new File(path);
-                // Initiate the upload
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data)
-    }
-
-    override fun onPageChanged(page: Int, pageCount: Int) {
-        pageNumber = page
-    }
-
-    override fun loadComplete(nbPages: Int) {
-        var pdfView: PDFView? = null
-        val meta = pdfView!!.getDocumentMeta()
-        printBookmarksTree(pdfView!!.getTableOfContents(), "-")
-    }
-
-    fun printBookmarksTree(tree: List<PdfDocument.Bookmark>, sep: String) {
-        for (b in tree) {
-            if (b.hasChildren()) {
-                printBookmarksTree(b.getChildren(), "$sep-")
-            }
-        }
     }
 
     private fun initPage(view: View) {

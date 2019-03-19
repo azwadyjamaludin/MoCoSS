@@ -9,10 +9,9 @@ import android.os.Message
 import android.provider.Settings
 import android.support.v7.app.AlertDialog
 import android.util.Log
-import android.view.View
+import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_start_app.*
 import upsi.edu.mocos.R
 import upsi.edu.mocos.model.LocationService
 import upsi.edu.mocos.model.MiscSetting
@@ -28,26 +27,21 @@ class ClickToStartActivity : MoCoSSParentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_app)
-        clickImageToStart(contentActivity)
-
+        clickImageToStart()
         //initLocationService()
         }
 
     override fun onBackPressed() {
-        val exit = Intent(Intent.ACTION_MAIN)
-        exit.addCategory(Intent.CATEGORY_HOME)
-        exit.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(exit)
+
     }
 
-    fun clickImageToStart(view: View) {
-
+    fun clickImageToStart() {
 
         if (MiscSetting.BI) {
-            startDialogEN(view)
+            startDialogEN()
         }
         if (MiscSetting.BM) {
-            startDialogMY(view)
+            startDialogMY()
         }
 
     }
@@ -125,27 +119,40 @@ class ClickToStartActivity : MoCoSSParentActivity() {
 
 
 
-    private fun startDialogMY(view:View) {
-        val wrCrTextUPSI = view.findViewById<TextView>(R.id.wrongCredTextUPSI)
-        val dismissBtnUPSI = view.findViewById<Button>(R.id.dismissButtonUPSI)
+    private fun startDialogMY() {
+        val dialogBuilder = AlertDialog.Builder(this)
+        val startDialog = LayoutInflater.from(this).inflate(R.layout.dialog_start_activity,null)
+        val mottoTextUPSI = startDialog.findViewById<TextView>(R.id.mottoTextDialUPSI)
+        val dismissBtnUPSI = startDialog.findViewById<Button>(R.id.dismissButtonDialUPSI)
 
-        wrCrTextUPSI.setText("UNIVERSITI NO.1 PENDIDIKAN")
+        dialogBuilder.setView(startDialog)
+        dialogBuilder.setCancelable(false)
+        val alert = dialogBuilder.create()
+        mottoTextUPSI.setText("UNIVERSITI NO.1 PENDIDIKAN")
         dismissBtnUPSI.setText("Teruskan")
         dismissBtnUPSI.setOnClickListener({
+            alert.dismiss()
             goToPage(PageNavigate.TabPage,this)
         })
+        alert.show()
     }
 
-    private fun startDialogEN(view: View) {
-        val wrCrTextUPSI = view.findViewById<TextView>(R.id.wrongCredTextUPSI)
-        val dismissBtnUPSI = view.findViewById<Button>(R.id.dismissButtonUPSI)
+    private fun startDialogEN() {
+        val dialogBuilder = AlertDialog.Builder(this)
+        val startDialog = LayoutInflater.from(this).inflate(R.layout.dialog_start_activity,null)
+        val mottoTextUPSI = startDialog.findViewById<TextView>(R.id.mottoTextDialUPSI)
+        val dismissBtnUPSI = startDialog.findViewById<Button>(R.id.dismissButtonDialUPSI)
 
-        wrCrTextUPSI.setText("NO.1 EDUCATION UNIVERSITY")
+        dialogBuilder.setView(startDialog)
+        dialogBuilder.setCancelable(false)
+        val alert = dialogBuilder.create()
+        mottoTextUPSI.setText("NO.1 EDUCATION UNIVERSITY")
         dismissBtnUPSI.setText("Proceed")
         dismissBtnUPSI.setOnClickListener({
+            alert.dismiss()
             goToPage(PageNavigate.TabPage,this)
         })
+        alert.show()
     }
-
 }
 

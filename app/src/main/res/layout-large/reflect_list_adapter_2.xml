@@ -13,7 +13,7 @@
 
         <TextView
             android:id="@+id/reflectWeekText2"
-            android:layout_width="150dp"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:textAlignment="textEnd"
             android:textColor="@color/white" />
@@ -24,6 +24,16 @@
             android:layout_height="match_parent"
             android:background="@drawable/abstract_geo"
             android:textAllCaps="false" />
+
+        <CheckBox
+            android:id="@+id/shareReflect"
+            android:layout_width="78dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:text="@string/shareEN"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
     </TableRow>
 
 </TableLayout>

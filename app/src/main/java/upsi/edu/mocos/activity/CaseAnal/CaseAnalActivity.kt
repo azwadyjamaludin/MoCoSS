@@ -1,8 +1,12 @@
 package upsi.edu.mocos.activity.CaseAnal
 
 import android.app.Activity
+import android.content.ClipData
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.os.StrictMode
+import android.support.v4.content.FileProvider
 import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,46 +14,60 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.CompoundButton
 import android.widget.TextView
 import android.widget.Toast
-import com.github.barteksc.pdfviewer.PDFView
-import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener
-import com.github.barteksc.pdfviewer.listener.OnPageChangeListener
-import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
 import com.ipaulpro.afilechooser.utils.FileUtils
-import com.shockwave.pdfium.PdfDocument
 import kotlinx.android.synthetic.main.activity_case_anal.*
 import kotlinx.android.synthetic.main.activity_case_anal.view.*
-import kotlinx.android.synthetic.main.activity_case_anal_2.*
-import kotlinx.android.synthetic.main.activity_case_anal_2.view.*
+import upsi.edu.mocos.BuildConfig
 import upsi.edu.mocos.R
 import upsi.edu.mocos.activity.MoCoSSParentActivity
+import upsi.edu.mocos.model.DummyData
 import upsi.edu.mocos.model.MiscSetting
-import upsi.edu.mocos.model.MyObject.DummyMgr
 import upsi.edu.mocos.model.PageNavigate
+import java.net.URI
 
 
-class CaseAnalActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadCompleteListener {
-
-    val dm:DummyMgr = DummyMgr
-    //var numberList:ArrayList<NumberData> = NumberMgr.increaseCached()
+class CaseAnalActivity : MoCoSSParentActivity() {
+    val REQUEST_CHOOSER = 1234
+    val dd: DummyData = DummyData("DummyData")
     private val FILE_SELECT_CODE = 0
-    var pageNumber: Int = 0
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (MiscSetting.user == "tc") {
-            setContentView(R.layout.activity_case_anal)
-            initPage(caseAnalCL)
+        setContentView(R.layout.activity_case_anal)
+        initPage(caseAnalCL)
 
+        if (MiscSetting.user == "tc") {
             newText(caseAnalCL)
         }
         if (MiscSetting.user == "gc" || MiscSetting.user == "sl") {
-            setContentView(R.layout.activity_case_anal_2)
-            initPage2(caseAnal2CL)
-            newText2(caseAnal2CL)
+            newText2(caseAnalCL)
         }
+    }
+
+    override fun onBackPressed() {
+        goToPage(PageNavigate.ContentPage,this@CaseAnalActivity)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            REQUEST_CHOOSER -> if (resultCode == Activity.RESULT_OK) {
+                // Get the Uri of the selected file
+                val uri = data!!.data
+                Log.d("TAG", "File Uri: " + uri!!.toString())
+                // Get the path
+                val path = FileUtils.getPath(this, uri)
+                Log.d("TAG", "File Path: " + path!!)
+                // Get the file instance
+                // File file = new File(path);
+                // Initiate the upload
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -59,11 +77,14 @@ class CaseAnalActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadCom
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         val score: MenuItem = menu!!.findItem(R.id.scoreCaseAnal)
+        //val share: MenuItem = menu!!.findItem(R.id.shareCase)
         if (MiscSetting.BM) {
             score.title = getString(R.string.scoreMY)
+            //share.title = getString(R.string.shareMY)
         }
         if (MiscSetting.BI) {
             score.title = getString(R.string.scoreEN)
+            //share.title = getString(R.string.shareEN)
         }
         return super.onPrepareOptionsMenu(menu)
     }
@@ -85,48 +106,15 @@ class CaseAnalActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadCom
                 }
                 return true
             }
+            /*R.id.shareCase -> {
+                return true
+            }*/
             else -> return super.onOptionsItemSelected(item)
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        when (requestCode) {
-            FILE_SELECT_CODE -> if (resultCode == Activity.RESULT_OK) {
-                // Get the Uri of the selected file
-                val uri = data!!.data
-                Log.d("TAG", "File Uri: " + uri!!.toString())
-                // Get the path
-                val path = FileUtils.getPath(this, uri)
-                Log.d("TAG", "File Path: " + path!!)
-                // Get the file instance
-                // File file = new File(path);
-                // Initiate the upload
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data)
-    }
 
-    override fun onBackPressed() {
-        goToPage(PageNavigate.ContentPage,this@CaseAnalActivity)
-    }
 
-    override fun onPageChanged(page: Int, pageCount: Int) {
-        pageNumber = page
-    }
-
-    override fun loadComplete(nbPages: Int) {
-        var pdfView: PDFView = findViewById(R.id.caseAnalPDF)
-        val meta = pdfView!!.getDocumentMeta()
-        printBookmarksTree(pdfView!!.getTableOfContents(), "-")
-    }
-
-    fun printBookmarksTree(tree: List<PdfDocument.Bookmark>, sep: String) {
-        for (b in tree) {
-            if (b.hasChildren()) {
-                printBookmarksTree(b.getChildren(), "$sep-")
-            }
-        }
-    }
 
     private fun initPage(view: View) {
         val caseAnalTB = view.caseAnalTB
@@ -138,18 +126,12 @@ class CaseAnalActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadCom
         }
         setSupportActionBar(caseAnalTB)
         supportActionBar
+        ignoreExpose()
     }
 
-    private fun initPage2(view: View) {
-        val caseAnal2TB = view.caseAnal2TB
-        if (MiscSetting.BM) {
-            caseAnal2TB.title = getString(R.string.content9MY)
-        }
-        if (MiscSetting.BI) {
-            caseAnal2TB.title = getString(R.string.content9EN)
-        }
-        setSupportActionBar(caseAnal2TB)
-        supportActionBar
+    private fun ignoreExpose() {
+        val builder:StrictMode.VmPolicy.Builder = StrictMode.VmPolicy.Builder()
+        StrictMode.setVmPolicy(builder.build())
     }
 
     private fun newText(view: View) {
@@ -157,19 +139,12 @@ class CaseAnalActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadCom
         val caseAnal2Text = view.caseAnal2Text
         val caseAnalUpload = view.caseAnalUpload
         val caseAnalUpload2 = view.caseAnalUpload2
-        val shareButton = view.shareButton
-        shareButton.visibility = View.INVISIBLE
-        val shareButton2 = view.shareButton2
-        shareButton2.visibility = View.INVISIBLE
-        //var mShareActionProvider = ShareActionProvider(view.context)
 
         if (MiscSetting.BM) {
             caseAnalText.text = "Analisis Kes 1"
             caseAnal2Text.text = "Analisis Kes 2"
             caseAnalUpload.text = getString(R.string.uploadFileMY)
             caseAnalUpload2.text = getString(R.string.uploadFileMY)
-            /*shareButton.text = "Kongsi"
-            shareButton2.text = "Kongsi"*/
             caseAnalUpload.setOnClickListener({
                 caseAnal1MY()
             })
@@ -182,8 +157,6 @@ class CaseAnalActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadCom
             caseAnal2Text.text = "Case Analysis 2"
             caseAnalUpload.text = getString(R.string.uploadFileEN)
             caseAnalUpload2.text = getString(R.string.uploadFileEN)
-            /*shareButton.text = "Share"
-            shareButton2.text = "Share"*/
             caseAnalUpload.setOnClickListener({
                 caseAnal1()
             })
@@ -191,73 +164,80 @@ class CaseAnalActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadCom
                 caseAnal2()
             })
         }
-
-        /*shareButton.setOnClickListener({
-            val shareIntent = Intent(Intent.ACTION_SEND)
-            shareIntent.type = "application/pdf"
-            shareIntent.putExtra(Intent.EXTRA_STREAM, dm.writeCA1(this))
-            //mShareActionProvider.setShareIntent(shareIntent)
-            startActivity(Intent.createChooser(shareIntent, "Share file using"))
-        })
-        shareButton2.setOnClickListener({
-            val shareIntent = Intent(Intent.ACTION_SEND)
-            shareIntent.type = "application/pdf"
-            shareIntent.putExtra(Intent.EXTRA_STREAM, dm.writeCA2(this))
-            //mShareActionProvider.setShareIntent(shareIntent)
-            startActivity(Intent.createChooser(shareIntent, "Share file using"))
-        })*/
     }
 
     private fun newText2(view: View) {
-        val caseAnal2Text1 = view.caseAnal2Text1
-        val caseAnal2Text2 = view.caseAnal2Text2
-        val caseAnalDownload = view.caseAnalDownload
-        val caseAnalDownload2 = view.caseAnalDownload2
-        val share2Button = view.share2Button
-        share2Button.visibility = View.INVISIBLE
-        val share2Button2 = view.share2Button2
-        share2Button2.visibility = View.INVISIBLE
-        //var mShareActionProvider = ShareActionProvider(view.context)
+        val caseAnalText = view.caseAnalText
+        val caseAnal2Text = view.caseAnal2Text
+        val caseAnalUpload = view.caseAnalUpload
+        val caseAnalUpload2 = view.caseAnalUpload2
+        val share2CB = view.share2CB
+        share2CB.visibility = View.VISIBLE
+        val share2CB2 = view.share2CB2
+        share2CB2.visibility = View.VISIBLE
 
         if (MiscSetting.BM) {
-            caseAnal2Text1.text = "Analisis Kes 1"
-            caseAnal2Text2.text = "Analisis Kes 2"
-            caseAnalDownload.text = getString(R.string.downloadFileMY)
-            caseAnalDownload2.text = getString(R.string.downloadFileMY)
-            //share2Button.text = "Kongsi"
-            //share2Button2.text = "Kongsi"
-
+            caseAnalText.text = "Analisis Kes 1"
+            caseAnal2Text.text = "Analisis Kes 2"
+            caseAnalUpload.text = getString(R.string.downloadFileMY)
+            caseAnalUpload.setOnClickListener({
+                case2Anal1(view)
+            })
+            caseAnalUpload2.text = getString(R.string.downloadFileMY)
+            caseAnalUpload2.setOnClickListener({
+                case2Anal2(view)
+            })
+            share2CB.text = getString(R.string.shareMY)
+            share2CB.setOnCheckedChangeListener({ _: CompoundButton, isChecked ->
+                if (share2CB.isChecked) {
+                    val shareIntent = Intent(android.content.Intent.ACTION_SEND)
+                    shareIntent.setDataAndType(Uri.fromFile(dd.writeCA1(this)), "application/pdf")
+                    share2CB.isChecked = false
+                    startActivity(Intent.createChooser(shareIntent, "Kongsi fail dengan"))
+                }
+            })
+            share2CB2.text = getString(R.string.shareMY)
+            share2CB2.setOnCheckedChangeListener({ _: CompoundButton, isChecked ->
+                if (share2CB2.isChecked) {
+                    val shareIntent = Intent(android.content.Intent.ACTION_SEND)
+                    shareIntent.setDataAndType(Uri.fromFile(dd.writeCA2(this)), "application/pdf")
+                    share2CB2.isChecked = false
+                    startActivity(Intent.createChooser(shareIntent, "Kongsi fail dengan"))
+                }
+            })
         }
         if (MiscSetting.BI) {
-            caseAnal2Text1.text = "Case Analysis 1"
-            caseAnal2Text2.text = "Case Analysis 2"
-            caseAnalDownload.text = getString(R.string.downloadFileEN)
-            caseAnalDownload2.text = getString(R.string.downloadFileEN)
-            //share2Button.text = "Share"
-            //share2Button2.text = "Share"
+            caseAnalText.text = "Case Analysis 1"
+            caseAnal2Text.text = "Case Analysis 2"
+            caseAnalUpload.text = getString(R.string.downloadFileEN)
+            caseAnalUpload.setOnClickListener({
+                case2Anal1(view)
+            })
+            caseAnalUpload2.text = getString(R.string.downloadFileEN)
+            caseAnalUpload2.setOnClickListener({
+                case2Anal2(view)
+            })
+            share2CB.text = getString(R.string.shareEN)
+            share2CB.setOnCheckedChangeListener({ _: CompoundButton, isChecked ->
+                if (share2CB.isChecked) {
+                    val shareIntent = Intent(android.content.Intent.ACTION_SEND)
+                    shareIntent.setDataAndType(Uri.fromFile(dd.writeCA1(this)), "application/pdf")
+                    shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    share2CB.isChecked = false
+                    startActivity(Intent.createChooser(shareIntent, "Share file using"))
+                }
+            })
+            share2CB2.text = getString(R.string.shareEN)
+            share2CB2.setOnCheckedChangeListener({ _: CompoundButton, isChecked ->
+                if (share2CB2.isChecked) {
+                    val shareIntent = Intent(android.content.Intent.ACTION_SEND)
+                    shareIntent.setDataAndType(Uri.fromFile(dd.writeCA2(this)), "application/pdf")
+                    shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    share2CB2.isChecked = false
+                    startActivity(Intent.createChooser(shareIntent, "Share file using"))
+                }
+            })
         }
-
-        caseAnalDownload.setOnClickListener({
-            case2Anal1(view)
-        })
-        caseAnalDownload2.setOnClickListener({
-            case2Anal2(view)
-        })
-
-        /*share2Button.setOnClickListener({
-            val shareIntent = Intent(android.content.Intent.ACTION_SEND)
-            shareIntent.type = "application/pdf"
-            shareIntent.putExtra(android.content.Intent.EXTRA_STREAM, dm.writeCA1(this))
-            mShareActionProvider.setShareIntent(shareIntent)
-            startActivity(Intent.createChooser(shareIntent, "Share file using"))
-        })
-        share2Button2.setOnClickListener({
-            val shareIntent = Intent(android.content.Intent.ACTION_SEND)
-            shareIntent.type = "application/pdf"
-            shareIntent.putExtra(android.content.Intent.EXTRA_STREAM, dm.writeCA2(this))
-            mShareActionProvider.setShareIntent(shareIntent)
-            startActivity(Intent.createChooser(shareIntent, "Share file using"))
-        })*/
     }
 
     private fun caseAnal1() {
@@ -327,34 +307,15 @@ class CaseAnalActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadCom
     }
 
     private fun case2Anal1(view: View) {
-
-        var pdfView = view.caseAnalPDF
-        pdfView.visibility = View.VISIBLE
-        pdfView.fromAsset("CaseAnalysis1.pdf")
-                .defaultPage(this!!.pageNumber)
-                .enableSwipe(true)
-                .swipeHorizontal(false)
-                .onPageChange(this)
-                .enableAnnotationRendering(true)
-                .onLoad(this)
-                .scrollHandle(DefaultScrollHandle(this))
-                .load()
+        val pdfViewIntent = Intent(view.context,CaseAnalPDFActivity::class.java)
+        pdfViewIntent.putExtra("CA","CA1")
+        startActivity(pdfViewIntent)
     }
 
     private fun case2Anal2(view: View) {
-
-        var pdfView = view.caseAnalPDF
-        pdfView.visibility = View.VISIBLE
-        pdfView.fromAsset("CaseAnalysis2.pdf")
-                .defaultPage(this!!.pageNumber)
-                .enableSwipe(true)
-                .swipeHorizontal(false)
-                .onPageChange(this)
-                .enableAnnotationRendering(true)
-                .onLoad(this)
-                .scrollHandle(DefaultScrollHandle(this))
-                .load()
-
+        val pdfViewIntent = Intent(view.context,CaseAnalPDFActivity::class.java)
+        pdfViewIntent.putExtra("CA","CA2")
+        startActivity(pdfViewIntent)
     }
 
     private fun alertOtherBM() {

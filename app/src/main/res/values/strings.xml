@@ -19,6 +19,8 @@
     <string name="settingTabMY">Tetapan</string>
     <string name="scoreEN">Scoring</string>
     <string name="scoreMY">Permarkahan</string>
+    <string name="shareEN">Share</string>
+    <string name="shareMY">Kongsi</string>
 
     <string name="slUserEN">Supervisor Lecturer</string>
     <string name="gcUserEN">Guiding Counselor</string>

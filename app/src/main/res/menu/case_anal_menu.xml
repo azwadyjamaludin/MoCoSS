@@ -7,4 +7,7 @@
         android:icon="@drawable/exam_score"
         android:title="menu1"
         app:showAsAction="withText" />
+    <!--<item
+        android:id="@+id/shareCase"
+        android:title="menu2" />-->
 </menu>

@@ -31,12 +31,12 @@ import upsi.edu.mocos.model.MyObject.JSONMgr
 import upsi.edu.mocos.model.MyObject.NumberMgr
 import upsi.edu.mocos.model.PageNavigate
 
-class GrpCounActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadCompleteListener {
+class GrpCounActivity : MoCoSSParentActivity() {
     private lateinit var layoutManager: LinearLayoutManager
     var jsonGrpData:ArrayList<JSONGrpData> = arrayListOf()
     var numbering:ArrayList<NumberData> = arrayListOf()
     var totalHourGrp:ArrayList<Int> = arrayListOf()
-    val FILE_SELECT_CODE = 0
+    val REQUEST_CHOOSER = 1234
     var pageNumber: Int = 0
 
 
@@ -50,6 +50,23 @@ class GrpCounActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadComp
         initPage(grpCounActivity)
         attachAdapter(grpCounActivity)
         newText(grpCounActivity)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            REQUEST_CHOOSER -> if (resultCode == Activity.RESULT_OK) {
+                // Get the Uri of the selected file
+                val uri = data!!.data
+                Log.d("TAG", "File Uri: " + uri!!.toString())
+                // Get the path
+                val path = FileUtils.getPath(this, uri)
+                Log.d("TAG", "File Path: " + path!!)
+                // Get the file instance
+                // File file = new File(path);
+                // Initiate the upload
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -95,40 +112,7 @@ class GrpCounActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadComp
 
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        when (requestCode) {
-            FILE_SELECT_CODE -> if (resultCode == Activity.RESULT_OK) {
-                // Get the Uri of the selected file
-                val uri = data!!.data
-                Log.d("TAG", "File Uri: " + uri!!.toString())
-                // Get the path
-                val path = FileUtils.getPath(this, uri)
-                Log.d("TAG", "File Path: " + path!!)
-                // Get the file instance
-                // File file = new File(path);
-                // Initiate the upload
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data)
-    }
 
-    override fun onPageChanged(page: Int, pageCount: Int) {
-        pageNumber = page
-    }
-
-    override fun loadComplete(nbPages: Int) {
-        var pdfView: PDFView? = null
-        val meta = pdfView!!.getDocumentMeta()
-        printBookmarksTree(pdfView!!.getTableOfContents(), "-")
-    }
-
-    fun printBookmarksTree(tree: List<PdfDocument.Bookmark>, sep: String) {
-        for (b in tree) {
-            if (b.hasChildren()) {
-                printBookmarksTree(b.getChildren(), "$sep-")
-            }
-        }
-    }
 
     private fun attachAdapter(view: View) {
         val origin = this
@@ -144,7 +128,7 @@ class GrpCounActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadComp
         if (MiscSetting.user == "gc"||MiscSetting.user == "sl") {
             numbering = NumberMgr.increaseCached()
             jsonGrpData = JSONMgr.parseJSONGrpData(this@GrpCounActivity)
-            val listadapter = GrpCounContentListAdapter2(numbering,jsonGrpData)
+            val listadapter = GrpCounContentListAdapter2(numbering,jsonGrpData,origin)
             val grpCounLV = view.grpCounLV
 
             grpCounLV.adapter = listadapter

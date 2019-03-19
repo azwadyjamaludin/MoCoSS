@@ -1,5 +1,6 @@
 package upsi.edu.mocos.adapter.listadapter
 
+import android.content.Intent
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -9,8 +10,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
+import kotlinx.android.synthetic.main.activity_grp_coun.*
 import kotlinx.android.synthetic.main.grp_coun_listadapter_2.view.*
 import upsi.edu.mocos.R
+import upsi.edu.mocos.activity.GrpCoun.GrpCounActivity
+import upsi.edu.mocos.activity.GrpCoun.GrpCounPDFActivity
 import upsi.edu.mocos.model.MiscSetting
 import upsi.edu.mocos.model.MyData.JSONGrpData
 import upsi.edu.mocos.model.MyData.NumberData
@@ -18,7 +23,8 @@ import upsi.edu.mocos.model.inflate
 
 class GrpCounContentListAdapter2 (
         private var numbering: ArrayList<NumberData>,
-        private var jsonArrayGrp: ArrayList<JSONGrpData>
+        private var jsonArrayGrp: ArrayList<JSONGrpData>,
+        val origin: GrpCounActivity
 ): RecyclerView.Adapter<GrpCounContentListAdapter2.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,7 +41,7 @@ class GrpCounContentListAdapter2 (
         val dateEdit = jsonArrayGrp[position].sessionDate
         val sessionCode = jsonArrayGrp[position].clientGroupCode
         val sessionHour = jsonArrayGrp[position].sessionHour
-        holder.decoWidget(number,dateEdit,sessionCode,sessionHour)
+        holder.decoWidget(number,dateEdit,sessionCode,sessionHour,origin)
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
@@ -54,7 +60,7 @@ class GrpCounContentListAdapter2 (
             private val NUMBERING_KEY = "NUMBERING"
         }
 
-        fun decoWidget(number:String,dateEdit:String,sessionCode:String,sessionHour:String) {
+        fun decoWidget(number:String,dateEdit:String,sessionCode:String,sessionHour:String,origin: GrpCounActivity) {
             view.numDataGrp2.text = number
             view.dateEditGrp2.text = dateEdit
             view.sesCodeEditGrp2.text = sessionCode
@@ -63,7 +69,9 @@ class GrpCounContentListAdapter2 (
             if (MiscSetting.BM) {
                 view.sesRptBtnGrp2.text = context.getString(R.string.downloadFileMY)
                 view.sesRptBtnGrp2.setOnClickListener({
-                    alertOtherBM()
+                    val grpCounPDFIntent = Intent(origin,GrpCounPDFActivity::class.java)
+                    grpCounPDFIntent.putExtra("downGrp","downMY")
+                    origin.startActivity(grpCounPDFIntent)
                 })
                 view.avBtnGrp2.text = context.getString(R.string.downloadFileMY)
                 view.avBtnGrp2.setOnClickListener({
@@ -73,7 +81,9 @@ class GrpCounContentListAdapter2 (
             if (MiscSetting.BI) {
                 view.sesRptBtnGrp2.text = context.getString(R.string.downloadFileEN)
                 view.sesRptBtnGrp2.setOnClickListener({
-                    alertOtherBI()
+                    val grpCounPDFIntent = Intent(origin,GrpCounPDFActivity::class.java)
+                    grpCounPDFIntent.putExtra("downGrp","downEN")
+                    origin.startActivity(grpCounPDFIntent)
                 })
                 view.avBtnGrp2.text = context.getString(R.string.downloadFileEN)
                 view.avBtnGrp2.setOnClickListener({

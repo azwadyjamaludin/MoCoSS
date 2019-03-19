@@ -5,74 +5,8 @@
     android:id="@+id/contentActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="upsi.edu.mocos.activity.ContentActivity">
+    tools:context="upsi.edu.mocos.activity.ClickToStartActivity">
 
-    <LinearLayout
-        android:id="@+id/imgLL"
-        android:layout_width="340dp"
-        android:layout_height="290dp"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="39dp"
-        android:background="@drawable/shape_dialog"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <ImageView
-            android:id="@+id/upsiIV"
-            android:layout_width="159dp"
-            android:layout_height="228dp"
-            android:paddingRight="5dp"
-            app:srcCompat="@drawable/upsi_logo" />
-
-        <ImageView
-            android:id="@+id/mocossIV"
-            android:layout_width="wrap_content"
-            android:layout_height="228dp"
-            android:layout_weight="1"
-            android:paddingStart="5dp"
-            app:srcCompat="@drawable/mocoss_img" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/textLL"
-        android:layout_width="370dp"
-        android:layout_height="130dp"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="39dp"
-        android:layout_marginBottom="99dp"
-        android:background="@drawable/shape_dialog"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgLL">
-
-        <TextView
-            android:id="@+id/wrongCredTextUPSI"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/dismissButtonUPSI"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/radius_shape"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textStyle="bold" />
-
-    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>

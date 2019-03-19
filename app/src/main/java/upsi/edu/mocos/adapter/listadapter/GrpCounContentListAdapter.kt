@@ -112,7 +112,7 @@ class GrpCounContentListAdapter (
             try {
                 origin.startActivityForResult(
                         Intent.createChooser(intent, "Select a File to Upload"),
-                        origin.FILE_SELECT_CODE)
+                        origin.REQUEST_CHOOSER)
             } catch (ex: android.content.ActivityNotFoundException) {
                 // Potentially direct the user to the Market with a Dialog
                 Toast.makeText(origin, "Please install a File Manager.",
@@ -129,7 +129,7 @@ class GrpCounContentListAdapter (
             try {
                 origin.startActivityForResult(
                         Intent.createChooser(intent, "Sila pilih fail untuk muat naik"),
-                        origin.FILE_SELECT_CODE)
+                        origin.REQUEST_CHOOSER)
             } catch (ex: android.content.ActivityNotFoundException) {
                 // Potentially direct the user to the Market with a Dialog
                 Toast.makeText(origin, "Sila install 'File Manager'.",

@@ -18,29 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/MyAppTheme">
         <service android:name=".model.LocationService" />
-        <!--
-        <activity android:name=".activity.SplashActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name"
-            android:theme="@style/MyAppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        -->
-        <provider
-            android:name="com.ianhanniballake.localstorage.LocalStorageProvider"
-            android:authorities="com.ianhanniballake.localstorage.documents"
-            android:enabled="@bool/use_provider"
-            android:exported="true"
-            android:grantUriPermissions="true"
-            android:permission="android.permission.MANAGE_DOCUMENTS" >
-            <intent-filter>
-                <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
-            </intent-filter>
-        </provider>
         <activity
             android:name=".activity.ClickToStartActivity"
             android:screenOrientation="portrait">
@@ -89,11 +67,14 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.CaseAnal.CaseAnalActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <!--android:enabled="@bool/use_activity"
-        android:label="@string/choose_file"
-        android:exported="true">
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.ipaulpro.afilechooser.FileChooserActivity"
+            android:icon="@drawable/ic_chooser"
+            android:enabled="@bool/use_activity"
+            android:label="@string/choose_file"
+            android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.GET_CONTENT" />
 
@@ -101,7 +82,9 @@
             <category android:name="android.intent.category.OPENABLE" />
 
             <data android:mimeType="*/*" />
-        </intent-filter>/>-->
+        </intent-filter>/>
+        </activity>
+
         <activity
             android:name=".activity.ProfDev.ProfDevActivity"
             android:screenOrientation="portrait" />
@@ -139,7 +122,11 @@
         <activity
             android:name=".activity.RefCons.RefConsScoreActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.FullMarkActivity"></activity>
+        <activity android:name=".activity.FullMarkActivity" />
+        <activity android:name=".activity.CaseAnal.CaseAnalPDFActivity" />
+        <activity android:name=".activity.Reflect.ReflectPDFActivity" />
+        <activity android:name=".activity.IndCoun.IndCounPDFActivity" />
+        <activity android:name=".activity.GrpCoun.GrpCounPDFActivity"></activity>
     </application>
 
 </manifest>

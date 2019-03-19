@@ -3,9 +3,9 @@ package upsi.edu.mocos.activity.Reflect
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.os.StrictMode
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
-import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
@@ -13,11 +13,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import com.github.barteksc.pdfviewer.PDFView
-import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener
-import com.github.barteksc.pdfviewer.listener.OnPageChangeListener
 import com.ipaulpro.afilechooser.utils.FileUtils
-import com.shockwave.pdfium.PdfDocument
 import kotlinx.android.synthetic.main.activity_reflect.*
 import kotlinx.android.synthetic.main.activity_reflect.view.*
 import org.jetbrains.anko.doAsync
@@ -29,11 +25,11 @@ import upsi.edu.mocos.model.MiscSetting
 import upsi.edu.mocos.model.MyData.NumberData
 import upsi.edu.mocos.model.MyObject.NumberMgr
 
-class ReflectActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadCompleteListener {
+class ReflectActivity : MoCoSSParentActivity() {
 
     private lateinit var layoutManager: LinearLayoutManager
     var numbering:ArrayList<NumberData> = arrayListOf()
-    val FILE_SELECT_CODE = 0
+    val REQUEST_CHOOSER = 1234
     var pageNumber: Int = 0
 
 
@@ -47,6 +43,23 @@ class ReflectActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadComp
         initPage(reflectCL)
         attachAdapter(reflectCL)
         newText(reflectCL)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            REQUEST_CHOOSER -> if (resultCode == Activity.RESULT_OK) {
+                // Get the Uri of the selected file
+                val uri = data!!.data
+                Log.d("TAG", "File Uri: " + uri!!.toString())
+                // Get the path
+                val path = FileUtils.getPath(this, uri)
+                Log.d("TAG", "File Path: " + path!!)
+                // Get the file instance
+                // File file = new File(path);
+                // Initiate the upload
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -86,41 +99,6 @@ class ReflectActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadComp
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        when (requestCode) {
-            FILE_SELECT_CODE -> if (resultCode == Activity.RESULT_OK) {
-                // Get the Uri of the selected file
-                val uri = data!!.data
-                Log.d("TAG", "File Uri: " + uri!!.toString())
-                // Get the path
-                val path = FileUtils.getPath(this, uri)
-                Log.d("TAG", "File Path: " + path!!)
-                // Get the file instance
-                // File file = new File(path);
-                // Initiate the upload
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data)
-    }
-
-    override fun onPageChanged(page: Int, pageCount: Int) {
-        pageNumber = page
-    }
-
-    override fun loadComplete(nbPages: Int) {
-        var pdfView: PDFView = findViewById(R.id.reflectPDF)
-        val meta = pdfView.getDocumentMeta()
-        printBookmarksTree(pdfView.getTableOfContents(), "-")
-    }
-
-    fun printBookmarksTree(tree: List<PdfDocument.Bookmark>, sep: String) {
-        for (b in tree) {
-            if (b.hasChildren()) {
-                printBookmarksTree(b.getChildren(), "$sep-")
-            }
-        }
-    }
-
     private fun initPage(view: View) {
         val reflectTB = view.reflectTB
 
@@ -132,6 +110,12 @@ class ReflectActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadComp
         }
         setSupportActionBar(reflectTB)
         supportActionBar
+        ignoreExpose()
+    }
+
+    private fun ignoreExpose() {
+        val builder: StrictMode.VmPolicy.Builder = StrictMode.VmPolicy.Builder()
+        StrictMode.setVmPolicy(builder.build())
     }
 
 

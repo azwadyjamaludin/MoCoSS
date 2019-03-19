@@ -67,7 +67,7 @@ val origin:ReflectActivity
                             try {
                                 origin.startActivityForResult(
                                         Intent.createChooser(intent, "Pilih fail untuk muat naik"),
-                                        origin.FILE_SELECT_CODE)
+                                        origin.REQUEST_CHOOSER)
                             } catch (ex: android.content.ActivityNotFoundException) {
                                 // Potentially direct the user to the Market with a Dialog
                                 Toast.makeText(context, "Sila install 'File Manager'.",
@@ -85,7 +85,7 @@ val origin:ReflectActivity
                             try {
                                 origin.startActivityForResult(
                                         Intent.createChooser(intent, "Select a File to Upload"),
-                                        origin.FILE_SELECT_CODE)
+                                        origin.REQUEST_CHOOSER)
                             } catch (ex: android.content.ActivityNotFoundException) {
                                 // Potentially direct the user to the Market with a Dialog
                                 Toast.makeText(context, "Please install a File Manager.",
