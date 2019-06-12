@@ -17,6 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MyAppTheme">
+
         <service android:name=".model.LocationService" />
 
         <activity
@@ -68,23 +69,22 @@
         <activity
             android:name=".activity.CaseAnal.CaseAnalActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name="com.ipaulpro.afilechooser.FileChooserActivity"
-            android:icon="@drawable/ic_chooser"
             android:enabled="@bool/use_activity"
-            android:label="@string/choose_file"
-            android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.GET_CONTENT" />
+            android:exported="true"
+            android:icon="@drawable/ic_chooser"
+            android:label="@string/choose_file">
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
 
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.OPENABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.OPENABLE" />
 
-            <data android:mimeType="*/*" />
-        </intent-filter>/>
+                <data android:mimeType="*/*" />
+            </intent-filter>
+            />
         </activity>
-
         <activity
             android:name=".activity.ProfDev.ProfDevActivity"
             android:screenOrientation="portrait" />
@@ -93,7 +93,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.PsyTest.PsyTestActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.RefCons.RefConsActivity"
             android:screenOrientation="portrait" />
@@ -122,11 +122,22 @@
         <activity
             android:name=".activity.RefCons.RefConsScoreActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.FullMarkActivity" />
+        <activity
+            android:name=".activity.FullMarkActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.RefCons.ConsDetailActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.RefCons.RefDetailActivity"
+            android:screenOrientation="landscape" />
         <activity android:name=".activity.CaseAnal.CaseAnalPDFActivity" />
         <activity android:name=".activity.Reflect.ReflectPDFActivity" />
         <activity android:name=".activity.IndCoun.IndCounPDFActivity" />
-        <activity android:name=".activity.GrpCoun.GrpCounPDFActivity"></activity>
+        <activity android:name=".activity.GrpCoun.GrpCounPDFActivity" />
+        <activity android:name=".activity.PsyTest.PsyTestPDFActivity"/>
+        <activity android:name=".activity.RefCons.RefDetailPDFActivity" />
+        <activity android:name=".activity.RefCons.ConsDetailPDFActivity" />
     </application>
 
 </manifest>

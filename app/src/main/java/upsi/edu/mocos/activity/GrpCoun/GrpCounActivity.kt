@@ -37,7 +37,6 @@ class GrpCounActivity : MoCoSSParentActivity() {
     var numbering:ArrayList<NumberData> = arrayListOf()
     var totalHourGrp:ArrayList<Int> = arrayListOf()
     val REQUEST_CHOOSER = 1234
-    var pageNumber: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -118,7 +117,7 @@ class GrpCounActivity : MoCoSSParentActivity() {
         val origin = this
             doAsync {
         if (MiscSetting.user == "tc") {
-            numbering = NumberMgr.increaseCached()
+            numbering = NumberMgr.numInputGrp()
             jsonGrpData = JSONMgr.parseJSONGrpData(this@GrpCounActivity)
             val listadapter = GrpCounContentListAdapter(numbering,jsonGrpData,origin)
             val grpCounLV = view.grpCounLV
@@ -126,7 +125,7 @@ class GrpCounActivity : MoCoSSParentActivity() {
             grpCounLV.adapter = listadapter
         }
         if (MiscSetting.user == "gc"||MiscSetting.user == "sl") {
-            numbering = NumberMgr.increaseCached()
+            numbering = NumberMgr.numInputGrp()
             jsonGrpData = JSONMgr.parseJSONGrpData(this@GrpCounActivity)
             val listadapter = GrpCounContentListAdapter2(numbering,jsonGrpData,origin)
             val grpCounLV = view.grpCounLV
@@ -154,25 +153,25 @@ class GrpCounActivity : MoCoSSParentActivity() {
     fun newText(view: View) {
 
         if(MiscSetting.BM) {
-            view.numTextGrp.text = "Bil."
-            view.dateTextGrp.text = "Tarikh"
+            view.numTextGrp.text = getString(R.string.numberMy)
+            view.dateTextGrp.text = getString(R.string.dateMy)
             view.sescodeTextGrp.text = "Kod Sesi"
             view.seshourTextGrp.text = "Jam Sesi"
             view.sesrptTextGrp.text = "Laporan Sesi"
             view.avTextGrp.text = "Rekod Audio/Video"
-            view.noteTextGrp.text = "Catatan"
-            view.totHourTextGrp.text = "Jumlah Jam:"
+            view.noteTextGrp.text = getString(R.string.notesMY)
+            view.totHourTextGrp.text = getString(R.string.totalHourMY)
 
         }
         if(MiscSetting.BI) {
-            view.numTextGrp.text = "No."
-            view.dateTextGrp.text = "Date"
+            view.numTextGrp.text = getString(R.string.numberEN)
+            view.dateTextGrp.text = getString(R.string.dateEN)
             view.sescodeTextGrp.text = "Session Code"
             view.seshourTextGrp.text = "Session Hour"
             view.sesrptTextGrp.text = "Session Report"
             view.avTextGrp.text = "Audio/Video Record"
-            view.noteTextGrp.text = "Notes"
-            view.totHourTextGrp.text = "Total Hour:"
+            view.noteTextGrp.text = getString(R.string.notesEN)
+            view.totHourTextGrp.text = getString(R.string.totalHourEN)
         }
 
     }

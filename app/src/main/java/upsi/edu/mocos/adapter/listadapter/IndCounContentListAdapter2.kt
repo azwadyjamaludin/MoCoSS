@@ -2,6 +2,7 @@ package upsi.edu.mocos.adapter.listadapter
 
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
+import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +30,7 @@ class IndCounContentListAdapter2(
     }
 
     override fun getItemCount(): Int {
-        return jsonArrayInd.size
+        return numbering.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -37,7 +38,8 @@ class IndCounContentListAdapter2(
         val dateEdit = jsonArrayInd[position].sessionDate
         val sessionCode = jsonArrayInd[position].clientCode
         val sessionHour = jsonArrayInd[position].sessionHour
-        holder.decoWidget(number,dateEdit,sessionCode,sessionHour,origin)
+        val notesInd = jsonArrayInd[position].sessionNote
+        holder.decoWidget(number,dateEdit,sessionCode,sessionHour,notesInd,origin)
     }
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view), View.OnClickListener {
@@ -57,11 +59,14 @@ class IndCounContentListAdapter2(
             private val NUMBERING_KEY = "NUMBERING"
         }
 
-        fun decoWidget(number: String,dateEdit:String,sessionCode:String, sessionHour:String,origin: IndCounActivity) {
+        fun decoWidget(number: String,dateEdit:String,sessionCode:String, sessionHour:String,notesInd:String,origin: IndCounActivity) {
+            val notesInd = SpannableStringBuilder(notesInd)
+
             view.numDataInd2.text = number
             view.dateEditInd2.text = dateEdit
             view.sesCodeEditInd2.text = sessionCode
             view.sesHourEditInd2.text = sessionHour
+            view.notesInd2.text = notesInd
 
             if (MiscSetting.BM) {
                 view.sesRptBtnInd2.text = context.getString(R.string.downloadFileMY)

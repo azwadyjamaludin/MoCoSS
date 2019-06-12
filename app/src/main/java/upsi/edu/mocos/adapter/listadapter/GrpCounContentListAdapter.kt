@@ -33,7 +33,7 @@ class GrpCounContentListAdapter (
     }
 
     override fun getItemCount(): Int {
-        return jsonArrayGrp.size
+        return numbering.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -106,7 +106,25 @@ class GrpCounContentListAdapter (
 
         private fun grpCounUpEN(origin: GrpCounActivity) {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.type = "*/*"
+            intent.type = "applicaton/pdf"
+            intent.addCategory(Intent.CATEGORY_OPENABLE)
+
+            try {
+                origin.startActivityForResult(
+                        Intent.createChooser(intent, "Select a File to Upload"),
+                        origin.REQUEST_CHOOSER)
+            } catch (ex: android.content.ActivityNotFoundException) {
+                // Potentially direct the user to the Market with a Dialog
+                Toast.makeText(origin, "Please install a File Manager.",
+                        Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+        private fun grpCounUpVidEN(origin: GrpCounActivity) {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "video/*"
+            intent.type = "audio/*"
             intent.addCategory(Intent.CATEGORY_OPENABLE)
 
             try {
@@ -123,7 +141,25 @@ class GrpCounContentListAdapter (
 
         private fun grpCoudUpMY(origin: GrpCounActivity) {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.type = "*/*"
+            intent.type = "application/pdf"
+            intent.addCategory(Intent.CATEGORY_OPENABLE)
+
+            try {
+                origin.startActivityForResult(
+                        Intent.createChooser(intent, "Sila pilih fail untuk muat naik"),
+                        origin.REQUEST_CHOOSER)
+            } catch (ex: android.content.ActivityNotFoundException) {
+                // Potentially direct the user to the Market with a Dialog
+                Toast.makeText(origin, "Sila install 'File Manager'.",
+                        Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+        private fun grpCounUpVidMY(origin: GrpCounActivity) {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "video/*"
+            intent.type = "audio/*"
             intent.addCategory(Intent.CATEGORY_OPENABLE)
 
             try {

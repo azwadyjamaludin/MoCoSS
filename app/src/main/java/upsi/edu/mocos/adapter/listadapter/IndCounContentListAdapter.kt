@@ -35,7 +35,7 @@ class IndCounContentListAdapter(
     }
 
     override fun getItemCount(): Int {
-        return jsonArrayInd.size
+        return numbering.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -43,7 +43,8 @@ class IndCounContentListAdapter(
         val dateEdit = jsonArrayInd[position].sessionDate
         val sessionCode = jsonArrayInd[position].clientCode
         val sessionHour = jsonArrayInd[position].sessionHour
-        holder.decoWidget(number,dateEdit,sessionCode,sessionHour,origin)
+        val note = jsonArrayInd[position].sessionNote
+        holder.decoWidget(number,dateEdit,sessionCode,sessionHour,note,origin)
 
     }
 
@@ -65,7 +66,7 @@ class IndCounContentListAdapter(
             private val NUMBERING_KEY = "NUMBERING"
         }
 
-        fun decoWidget(number:String,dateEdit:String,sessionCode:String, sessionHour:String, origin: IndCounActivity) {
+        fun decoWidget(number:String,dateEdit:String,sessionCode:String, sessionHour:String, sessionNote:String,origin: IndCounActivity) {
 
             var dateEdit = SpannableStringBuilder(dateEdit)
             var sesCodeEdit = SpannableStringBuilder(sessionCode)
@@ -75,6 +76,7 @@ class IndCounContentListAdapter(
             view.dateEditInd.text = dateEdit
             view.sesCodeEditInd.text = sesCodeEdit
             view.sesHourEditInd.text = sesHourEdit
+            view.notesInd.text = sessionNote
 
             if (MiscSetting.BM) {
                 view.sesRptBtnInd.text = context.getString(R.string.uploadFileMY)
@@ -83,7 +85,7 @@ class IndCounContentListAdapter(
                 })
                 view.avBtnInd.text = context.getString(R.string.uploadFileMY)
                 view.avBtnInd.setOnClickListener({
-                    indCoudUpMY(origin)
+                    indCoudUpVidMY(origin)
                 })
             }
 
@@ -94,7 +96,7 @@ class IndCounContentListAdapter(
                 })
                 view.avBtnInd.text = context.getString(R.string.uploadFileEN)
                 view.avBtnInd.setOnClickListener({
-                    indCounUpEN(origin)
+                    indCounUpVidEN(origin)
                 })
             }
 
@@ -110,7 +112,25 @@ class IndCounContentListAdapter(
 
         private fun indCounUpEN(origin: IndCounActivity) {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.type = "*/*"
+            intent.type = "application/pdf"
+            intent.addCategory(Intent.CATEGORY_OPENABLE)
+
+            try {
+                origin.startActivityForResult(
+                        Intent.createChooser(intent, "Select a File to Upload"),
+                        origin.REQUEST_CHOOSER)
+            } catch (ex: android.content.ActivityNotFoundException) {
+                // Potentially direct the user to the Market with a Dialog
+                Toast.makeText(origin, "Please install a File Manager.",
+                        Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+        private fun indCounUpVidEN(origin: IndCounActivity) {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "video/*"
+            intent.type = "audio/*"
             intent.addCategory(Intent.CATEGORY_OPENABLE)
 
             try {
@@ -127,7 +147,25 @@ class IndCounContentListAdapter(
 
         private fun indCoudUpMY(origin: IndCounActivity) {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.type = "*/*"
+            intent.type = "application/pdf"
+            intent.addCategory(Intent.CATEGORY_OPENABLE)
+
+            try {
+                origin.startActivityForResult(
+                        Intent.createChooser(intent, "Sila pilih fail untuk muat naik"),
+                        origin.REQUEST_CHOOSER)
+            } catch (ex: android.content.ActivityNotFoundException) {
+                // Potentially direct the user to the Market with a Dialog
+                Toast.makeText(origin, "Sila install 'File Manager'.",
+                        Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+        private fun indCoudUpVidMY(origin: IndCounActivity) {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "video/*"
+            intent.type = "audio/*"
             intent.addCategory(Intent.CATEGORY_OPENABLE)
 
             try {

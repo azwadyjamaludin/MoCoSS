@@ -45,6 +45,30 @@ object NumberMgr {
         return innerList
     }
 
+    fun numInputInd():ArrayList<NumberData> {
+        var numInt: Int
+        val numList: ArrayList<NumberData> = arrayListOf()
+        for (item in 1..120) {
+            numInt = item
+            numData = numInt.toString()
+            numList.add(NumberData(numData))
+        }
+        Log.d("numList",numList.toString())
+        return numList
+    }
+
+    fun numInputGrp():ArrayList<NumberData> {
+        var numInt: Int
+        val numList: ArrayList<NumberData> = arrayListOf()
+        for (item in 1..60) {
+            numInt = item
+            numData = numInt.toString()
+            numList.add(NumberData(numData))
+        }
+        Log.d("numList",numList.toString())
+        return numList
+    }
+
     fun numInput3():ArrayList<NumberData> {
         var numInt: Int
         val numList: ArrayList<NumberData> = arrayListOf()

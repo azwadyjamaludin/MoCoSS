@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import upsi.edu.mocos.activity.RefCons.ConsDetailActivity
+import upsi.edu.mocos.activity.RefCons.RefDetailActivity
 import upsi.edu.mocos.model.PageNavigate
 
 abstract class MoCoSSParentActivity : AppCompatActivity(), ComponentCallbacks2 {
@@ -30,12 +32,20 @@ abstract class MoCoSSParentActivity : AppCompatActivity(), ComponentCallbacks2 {
                 startActivity(toLoginPage)
         }
         if (pageNavigate == PageNavigate.UserInfoPage) {
-            val toUserInfoPage = Intent(context,UserInfoActivity::class.java)
-            startActivity(toUserInfoPage)
+                val toUserInfoPage = Intent(context,UserInfoActivity::class.java)
+                startActivity(toUserInfoPage)
         }
         if (pageNavigate == PageNavigate.ContentPage) {
                 val toContentPage = Intent(context,ContentActivity::class.java)
                 startActivity(toContentPage)
+        }
+        if (pageNavigate == PageNavigate.RefDetailPage) {
+                val toRefDetailPage = Intent(context,RefDetailActivity::class.java)
+                startActivity(toRefDetailPage)
+        }
+        if (pageNavigate == PageNavigate.ConsDetailPage) {
+                val toConsDetailPage = Intent(context,ConsDetailActivity::class.java)
+                startActivity(toConsDetailPage)
         }
     }
 

@@ -1,16 +1,11 @@
 package upsi.edu.mocos.activity.IndCoun
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener
 import com.github.barteksc.pdfviewer.listener.OnPageChangeListener
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
-import com.ipaulpro.afilechooser.utils.FileUtils
 import com.shockwave.pdfium.PdfDocument
-import kotlinx.android.synthetic.main.activity_ind_coun.*
 import kotlinx.android.synthetic.main.activity_ind_coun_pdf.*
 import kotlinx.android.synthetic.main.activity_ind_coun_pdf.view.*
 import upsi.edu.mocos.R
@@ -31,8 +26,8 @@ class IndCounPDFActivity : MoCoSSParentActivity(), OnPageChangeListener, OnLoadC
     }
 
     override fun loadComplete(nbPages: Int) {
-        val meta: PdfDocument.Meta = indCounPDF.getDocumentMeta()
-        printBookmarksTree(indCounPDF.getTableOfContents(), "-")
+        val meta: PdfDocument.Meta = indCounPDF.documentMeta
+        printBookmarksTree(indCounPDF.tableOfContents, "-")
     }
 
     fun printBookmarksTree(tree: List<PdfDocument.Bookmark>, sep: String) {

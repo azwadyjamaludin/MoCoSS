@@ -39,7 +39,6 @@ class IndCounActivity : MoCoSSParentActivity() {
     var numbering:ArrayList<NumberData> = arrayListOf()
     var totalHourInd:ArrayList<Int> = arrayListOf()
     val REQUEST_CHOOSER = 1234
-    var pageNumber: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -119,14 +118,14 @@ class IndCounActivity : MoCoSSParentActivity() {
             doAsync {
         if (MiscSetting.user == "tc") {
             jsonDataInd = JSONMgr.parseJSONIndData(this@IndCounActivity)
-            numbering = NumberMgr.increaseCached()
+            numbering = NumberMgr.numInputInd()
             val listadapter = IndCounContentListAdapter(numbering,jsonDataInd,origin)
             val indCounLV = view.indCounLV
 
             indCounLV.adapter = listadapter
         }
         if (MiscSetting.user == "gc"||MiscSetting.user == "sl") {
-            numbering = NumberMgr.increaseCached()
+            numbering = NumberMgr.numInputInd()
             jsonDataInd = JSONMgr.parseJSONIndData(this@IndCounActivity)
             val listadapter = IndCounContentListAdapter2(numbering,jsonDataInd,origin)
             val indCounLV = view.indCounLV
@@ -152,25 +151,25 @@ class IndCounActivity : MoCoSSParentActivity() {
 
     private fun newText(view: View) {
         if(MiscSetting.BM) {
-            view.numTextInd.text = "Bil."
-            view.dateTextInd.text = "Tarikh"
+            view.numTextInd.text = getString(R.string.numberMy)
+            view.dateTextInd.text = getString(R.string.dateMy)
             view.sescodeTextInd.text = "Kod Sesi"
             view.seshourTextInd.text = "Jam Sesi"
             view.sesrptTextInd.text = "Laporan Sesi"
             view.avTextInd.text = "Rekod Audio/Video"
-            view.noteTextInd.text = "Catatan"
-            view.totHourTextInd.text = "Jumlah Jam:"
+            view.noteTextInd.text = getString(R.string.notesMY)
+            view.totHourTextInd.text = getString(R.string.totalHourMY)
 
         }
         if(MiscSetting.BI) {
-            view.numTextInd.text = "No."
-            view.dateTextInd.text = "Date"
+            view.numTextInd.text = getString(R.string.numberEN)
+            view.dateTextInd.text = getString(R.string.dateEN)
             view.sescodeTextInd.text = "Session Code"
             view.seshourTextInd.text = "Session Hour"
             view.sesrptTextInd.text = "Session Report"
             view.avTextInd.text = "Audio/Video Record"
-            view.noteTextInd.text = "Notes"
-            view.totHourTextInd.text = "Total Hour:"
+            view.noteTextInd.text = getString(R.string.notesEN)
+            view.totHourTextInd.text = getString(R.string.totalHourEN)
         }
 
     }

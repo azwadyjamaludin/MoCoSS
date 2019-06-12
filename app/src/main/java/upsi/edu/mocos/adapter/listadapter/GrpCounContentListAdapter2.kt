@@ -33,7 +33,7 @@ class GrpCounContentListAdapter2 (
     }
 
     override fun getItemCount(): Int {
-        return jsonArrayGrp.size
+        return numbering.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

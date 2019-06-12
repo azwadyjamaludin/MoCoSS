@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_ref_cons.view.*
 import upsi.edu.mocos.R
 import upsi.edu.mocos.activity.MoCoSSParentActivity
 import upsi.edu.mocos.model.MiscSetting
+import upsi.edu.mocos.model.PageNavigate
 
 class RefConsActivity : MoCoSSParentActivity() {
 
@@ -21,6 +22,8 @@ class RefConsActivity : MoCoSSParentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ref_cons)
         initPage(refConsCL)
+        refconsText(refConsCL)
+        initBtn(refConsCL)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -71,6 +74,31 @@ class RefConsActivity : MoCoSSParentActivity() {
         }
         setSupportActionBar(refConsTB)
         supportActionBar
+    }
+
+    private fun refconsText(view: View) {
+        if (MiscSetting.BM) {
+            view.referTV.text = "Rujukan"
+            view.consTV.text = "Konsultasi"
+        }
+        if (MiscSetting.BI) {
+            view.referTV.text = "Refer"
+            view.consTV.text = "Consultation"
+        }
+
+    }
+
+    private fun initBtn(view: View) {
+        val referBtn = view.referBtn
+        val consBtn = view.consBtn
+
+        referBtn.setOnClickListener {
+            goToPage(PageNavigate.RefDetailPage,this@RefConsActivity)
+        }
+        consBtn.setOnClickListener {
+            goToPage(PageNavigate.ConsDetailPage,this@RefConsActivity)
+        }
+
     }
 
     private fun alertOtherBM() {

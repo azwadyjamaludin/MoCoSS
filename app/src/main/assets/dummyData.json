@@ -12,7 +12,7 @@
             "sessionDate": "02/10/2018",
             "clientCode": "RKI-1810003",
             "sessionHourEnd": "17:30:00",
-            "tableId": 6,
+            "tableId": 2,
             "sessionHourStart": "16:30:00",
             "sessionNum": 1
         },
@@ -20,7 +20,7 @@
             "sessionDate": "02/10/2018",
             "clientCode": "RKI-1810001",
             "sessionHourEnd": "10:30:00",
-            "tableId": 7,
+            "tableId": 3,
             "sessionHourStart": "09:30:00",
             "sessionNum": 1
         },
@@ -28,7 +28,7 @@
             "sessionDate": "03/10/2018",
             "clientCode": "RKI-1810004",
             "sessionHourEnd": "11:30:00",
-            "tableId": 5,
+            "tableId": 4,
             "sessionHourStart": "10:30:00",
             "sessionNum": 1
         },
@@ -36,7 +36,7 @@
             "sessionDate": "09/10/2018",
             "clientCode": "RKI-1810003",
             "sessionHourEnd": "12:00:00",
-            "tableId": 3,
+            "tableId": 5,
             "sessionHourStart": "11:00:00",
             "sessionNum": 2
         },
@@ -44,16 +44,8 @@
             "sessionDate": "12/10/2018",
             "clientCode": "RKI-1810004",
             "sessionHourEnd": "10:30:00",
-            "tableId": 4,
+            "tableId": 6,
             "sessionHourStart": "09:30:00",
-            "sessionNum": 2
-        },
-        {
-            "sessionDate": "18/18/2018",
-            "clientCode": "RKI-1810001",
-            "sessionHourEnd": "17:00:00",
-            "tableId": 2,
-            "sessionHourStart": "16:00:00",
             "sessionNum": 2
         },
         {
@@ -81,6 +73,14 @@
             "sessionNum": 1
         },
         {
+            "sessionDate": "18/18/2018",
+            "clientCode": "RKI-1810001",
+            "sessionHourEnd": "17:00:00",
+            "tableId": 7,
+            "sessionHourStart": "16:00:00",
+            "sessionNum": 2
+        },
+        {
             "sessionDate": "20/11/2018",
             "clientCode": "RKI-1811004",
             "sessionHourEnd": "11:00:00",
@@ -89,12 +89,125 @@
             "sessionNum": 1
         }
     ],
+    "dummyPsyTest": [
+        {
+            "psytestDate": "02/10/2018",
+            "psytestTimeEnd": "10:30:00",
+            "studentCode": "RKI-1808006",
+            "inventName": "VAK Style",
+            "tableId": 10,
+            "psytestTimeStart": "09:30:00"
+        },
+        {
+            "psytestDate": "03/09/2018",
+            "psytestTimeEnd": "12:00:00",
+            "studentCode": "RKI-1809002",
+            "inventName": "DASS 21",
+            "tableId": 1,
+            "psytestTimeStart": "11:00:00"
+        },
+        {
+            "psytestDate": "03/09/2018",
+            "psytestTimeEnd": "17:00:00",
+            "studentCode": "RKK-180815001",
+            "inventName": "IGB",
+            "tableId": 2,
+            "psytestTimeStart": "16:00:00"
+        },
+        {
+            "psytestDate": "04/09/2018",
+            "psytestTimeEnd": "12:00:00",
+            "studentCode": "RKK-180904001",
+            "inventName": "VAK Style",
+            "tableId": 3,
+            "psytestTimeStart": "11:00:00"
+        },
+        {
+            "psytestDate": "04/09/2018",
+            "psytestTimeEnd": "16:30:00",
+            "studentCode": "RKK-180904002",
+            "inventName": "IPS",
+            "tableId": 4,
+            "psytestTimeStart": "15:30:00"
+        },
+        {
+            "psytestDate": "07/09/2018",
+            "psytestTimeEnd": "09:30:00",
+            "studentCode": "RKI-1809006",
+            "inventName": "VAK Style",
+            "tableId": 5,
+            "psytestTimeStart": "08:30:00"
+        },
+        {
+            "psytestDate": "12/09/2018",
+            "psytestTimeEnd": "13:00:00",
+            "studentCode": "RKI-1809007",
+            "inventName": "DASS 21",
+            "tableId": 7,
+            "psytestTimeStart": "12:00:00"
+        },
+        {
+            "psytestDate": "13/09/2018",
+            "psytestTimeEnd": "11:30:00",
+            "studentCode": "RBI-1808001",
+            "inventName": "SELF-ESTEEM-ROSENBERG",
+            "tableId": 8,
+            "psytestTimeStart": "10:30:00"
+        },
+        {
+            "psytestDate": "14/09/2018",
+            "psytestTimeEnd": "11:30:00",
+            "studentCode": "RKI-1809009",
+            "inventName": "IPS",
+            "tableId": 9,
+            "psytestTimeStart": "10:30:00"
+        }
+    ],
+    "dummyRefer": [
+        {
+            "referStud": "Ahmad Arif Najmi Bin Muhammad",
+            "tableId": 6,
+            "referReason": "Disiplin - Kes Khas"
+        },
+        {
+            "referStud": "Izatul Nurshahanis Rozizan",
+            "tableId": 2,
+            "referReason": "Tindakan Tatatertib - Meniru"
+        },
+        {
+            "referStud": "Muhammad Firdaus Bin Mohd Nizam",
+            "tableId": 1,
+            "referReason": "Tindakan Tatatertib - Meniru"
+        },
+        {
+            "referStud": "Nur Aqammar Ilyana  Absal Evastrie",
+            "tableId": 5,
+            "referReason": "Disiplin - Kes Khas"
+        },
+        {
+            "referStud": "Shaifful Hafizzee Bin Mohd Zhamree",
+            "tableId": 3,
+            "referReason": "Tindakan Tatatertib - Meniru"
+        }
+    ],
+    "dummyConsult": [
+        {
+            "consField": "Keyakinan Diri",
+            "tableId": 1,
+            "consEnt": "PRS UNISEL"
+        },
+        {
+            "consField": "Perkhidmatan Kaunseling",
+            "tableId": 2,
+            "consEnt": "PELAJAR BARU UNISEL SEPT - 2018"
+        }
+    ],
     "dummyGrp": [
         {
             "clientGroupCode": "RKK-180921010",
             "sessionDate": "02/09/2018",
             "sessionHourEnd": "16:00:00",
-            "tableId": 10,
+            "tableId": 1,
             "sessionHourStart": "15:00:00",
             "sessionNum": 1
         },
@@ -102,7 +215,7 @@
             "clientGroupCode": "RKK-181002001",
             "sessionDate": "02/10/2018",
             "sessionHourEnd": "12:00:00",
-            "tableId": 5,
+            "tableId": 2,
             "sessionHourStart": "10:30:00",
             "sessionNum": 1
         },
@@ -110,7 +223,7 @@
             "clientGroupCode": "RKK-181015002",
             "sessionDate": "15/10/2018",
             "sessionHourEnd": "16:30:00",
-            "tableId": 6,
+            "tableId": 3,
             "sessionHourStart": "15:00:00",
             "sessionNum": 1
         },
@@ -123,26 +236,10 @@
             "sessionNum": 2
         },
         {
-            "clientGroupCode": "RKK-181122001",
-            "sessionDate": "22/10/2018",
-            "sessionHourEnd": "12:00:00",
-            "tableId": 1,
-            "sessionHourStart": "10:30:00",
-            "sessionNum": 1
-        },
-        {
-            "clientGroupCode": "RKK-181023003",
-            "sessionDate": "23/10/2018",
-            "sessionHourEnd": "12:00:00",
-            "tableId": 2,
-            "sessionHourStart": "10:30:00",
-            "sessionNum": 1
-        },
-        {
             "clientGroupCode": "RKK-181015002",
             "sessionDate": "16/11/2018",
             "sessionHourEnd": "17:30:00",
-            "tableId": 3,
+            "tableId": 7,
             "sessionHourStart": "16:00:00",
             "sessionNum": 2
         },
@@ -150,9 +247,25 @@
             "clientGroupCode": "RKK-180921010",
             "sessionDate": "19/11/2018",
             "sessionHourEnd": "12:30:00",
-            "tableId": 9,
+            "tableId": 8,
             "sessionHourStart": "11:00:00",
             "sessionNum": 2
+        },
+        {
+            "clientGroupCode": "RKK-181122001",
+            "sessionDate": "22/10/2018",
+            "sessionHourEnd": "12:00:00",
+            "tableId": 5,
+            "sessionHourStart": "10:30:00",
+            "sessionNum": 1
+        },
+        {
+            "clientGroupCode": "RKK-181023003",
+            "sessionDate": "23/10/2018",
+            "sessionHourEnd": "12:00:00",
+            "tableId": 6,
+            "sessionHourStart": "10:30:00",
+            "sessionNum": 1
         }
     ]
 }

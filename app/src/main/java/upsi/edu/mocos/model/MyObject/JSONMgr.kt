@@ -3,17 +3,11 @@ package upsi.edu.mocos.model.MyObject
 import android.content.Context
 import android.content.res.AssetManager
 import android.util.Log
-import org.json.JSONArray
 import org.json.JSONObject
-import upsi.edu.mocos.model.MyData.JSONGrpData
-import upsi.edu.mocos.model.MyData.JSONIndData
-import java.io.File
+import upsi.edu.mocos.model.MyData.*
 import java.io.IOException
 import java.io.InputStream
-import java.lang.Integer.parseInt
-import java.lang.Long.parseLong
 import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.text.Charsets.UTF_8
 
@@ -21,6 +15,7 @@ object JSONMgr {
         private var className:String = ""
         private var indHour: ArrayList<Int> = arrayListOf()
         private var grpHour: ArrayList<Int> = arrayListOf()
+        private var psytestHour: ArrayList<Int> = arrayListOf()
 
     init {
         className = "JSONMgr"
@@ -48,7 +43,7 @@ object JSONMgr {
         val jsonObject = JSONObject(readJSONFile(context))
         var jsonArrayInd = jsonObject.getJSONArray("dummyInd")
 
-            for (jsonIndex in 0..(jsonArrayInd.length()) - 1) {
+            for (jsonIndex in 0..(jsonArrayInd.length())-1) {
 
                 //var intString:String = jsonArrayInd[jsonIndex].toString()
                 val sessionDate:String = jsonArrayInd.getJSONObject(jsonIndex).getString("sessionDate")
@@ -61,7 +56,7 @@ object JSONMgr {
                 val sessionHour = sessionStart+"-"+sessionEnd
 
                 val sessionNum:Int = jsonArrayInd.getJSONObject(jsonIndex).getInt("sessionNum")
-                dummyInd.add(JSONIndData(sessionDate,clientCode,sessionHour,sessionNum))
+                dummyInd.add(JSONIndData(sessionDate,clientCode,sessionHour,sessionNum,""))
             } //0..(jsonArrayInd.length()) - 1
         return dummyInd
     }
@@ -71,7 +66,7 @@ object JSONMgr {
         val jsonObject = JSONObject(readJSONFile(context))
         var jsonArrayGrp = jsonObject.getJSONArray("dummyGrp")
 
-            for (jsonIndex in 0..(jsonArrayGrp.length()) - 1) {
+            for (jsonIndex in 0..(jsonArrayGrp.length())-1) {
                 //val intString:String = jsonIndex.toString()
                 val sessionDate:String = jsonArrayGrp.getJSONObject(jsonIndex).getString("sessionDate")
                 //val newDate:String = simpleDateFormat(sessionDate)
@@ -83,15 +78,67 @@ object JSONMgr {
                 val sessionHour = sessionStart+"-"+sessionEnd
 
                 val sessionNum:Int = jsonArrayGrp.getJSONObject(jsonIndex).getInt("sessionNum")
-                dummyGrp.add(JSONGrpData(sessionDate,clientCode,sessionHour,sessionNum))
+                dummyGrp.add(JSONGrpData(sessionDate,clientCode,sessionHour,sessionNum,""))
         } //0..(jsonArrayGrp.length()) - 1
         return dummyGrp
+    }
+
+    fun parseJSONPsyTestData(context: Context):ArrayList<JSONPsyTestData> {
+        val dummyPsyTest: ArrayList<JSONPsyTestData> = arrayListOf()
+        val jsonObject = JSONObject(readJSONFile(context))
+        var jsonArrayPsyTest = jsonObject.getJSONArray("dummyPsyTest")
+
+        for (jsonIndex in 0 until (jsonArrayPsyTest.length())-1) {
+            val psytestNum = (jsonIndex+1).toString()
+            val psytestDate = jsonArrayPsyTest.getJSONObject(jsonIndex).getString("psytestDate")
+            val studentCode = jsonArrayPsyTest.getJSONObject(jsonIndex).getString("studentCode")
+            val inventName = jsonArrayPsyTest.getJSONObject(jsonIndex).getString("inventName")
+            val psytestStart = jsonArrayPsyTest.getJSONObject(jsonIndex).getString("psytestTimeStart")
+            val psytestEnd = jsonArrayPsyTest.getJSONObject(jsonIndex).getString("psytestTimeEnd")
+
+            val psytestHour = psytestStart+"-"+psytestEnd
+            dummyPsyTest.add(JSONPsyTestData(psytestNum,psytestDate,psytestHour,studentCode,inventName,""))
+        }
+
+        return dummyPsyTest
+    }
+
+    fun parseJSONRDData(context: Context):ArrayList<JSONRefDetailData> {
+        val dummyRD: ArrayList<JSONRefDetailData> = arrayListOf()
+        val jsonObject = JSONObject(readJSONFile(context))
+        var jsonArrayRD = jsonObject.getJSONArray("dummyRefer")
+
+        for (jsonIndex in 0..(jsonArrayRD.length())-1) {
+            val referNum = (jsonIndex+1).toString()
+            val referStud = jsonArrayRD.getJSONObject(jsonIndex).getString("referStud")
+            val referReason = jsonArrayRD.getJSONObject(jsonIndex).getString("referReason")
+
+            dummyRD.add(JSONRefDetailData(referNum,referStud,referReason,""))
+        }
+
+        return dummyRD
+    }
+
+    fun parseJSONCDData(context: Context):ArrayList<JSONConsDetailData> {
+        val dummyCD: ArrayList<JSONConsDetailData> = arrayListOf()
+        val jsonObject = JSONObject(readJSONFile(context))
+        var jsonArrayCD = jsonObject.getJSONArray("dummyConsult")
+
+        for (jsonIndex in 0..(jsonArrayCD.length())-1) {
+            val consNum = (jsonIndex+1).toString()
+            val consField = jsonArrayCD.getJSONObject(jsonIndex).getString("consField")
+            val consEnt = jsonArrayCD.getJSONObject(jsonIndex).getString("consEnt")
+
+            dummyCD.add(JSONConsDetailData(consNum,consEnt,consField,""))
+        }
+
+        return dummyCD
     }
 
     fun getIntHoursInd(context: Context): ArrayList<Int> {
         val jsonObject = JSONObject(readJSONFile(context))
         var jsonArrayInd = jsonObject.getJSONArray("dummyInd")
-        for (jsonIndex in 0..(jsonArrayInd.length()) - 1) {
+        for (jsonIndex in 0..(jsonArrayInd.length())-1) {
             val sessionStart:String = jsonArrayInd.getJSONObject(jsonIndex).getString("sessionHourStart")
             val sessionEnd:String = jsonArrayInd.getJSONObject(jsonIndex).getString("sessionHourEnd")
             val hourDifInd = getHours(sessionStart,sessionEnd)
@@ -114,12 +161,23 @@ object JSONMgr {
         return grpHour
     }
 
-    fun getHours(start:String, end:String): Int {
-        val convertStart = start
-        val convertEnd = end
+    fun getIntHourPsyTest(context: Context):ArrayList<Int> {
+        val jsonObject = JSONObject(readJSONFile(context))
+        var jsonArrayPsyTest = jsonObject.getJSONArray("dummyPsyTest")
+        for (jsonIndex in 0..(jsonArrayPsyTest.length())-1) {
+            val psytestStart = jsonArrayPsyTest.getJSONObject(jsonIndex).getString("psytestTimeStart")
+            val psytestEnd = jsonArrayPsyTest.getJSONObject(jsonIndex).getString("psytestTimeEnd")
+            val hourDifPsyTest = getHours(psytestStart,psytestEnd)
+            psytestHour.add(hourDifPsyTest)
+        }
+        Log.d("psytestHour", psytestHour.toString())
+        return psytestHour
+    }
+
+    private fun getHours(start:String, end:String): Int {
         val simpleDateFormat = SimpleDateFormat("HH:mm:ss")
-        val date1 = simpleDateFormat.parse(convertStart)
-        val date2 = simpleDateFormat.parse(convertEnd)
+        val date1 = simpleDateFormat.parse(start)
+        val date2 = simpleDateFormat.parse(end)
 
         val diff:Long = date2.time.minus(date1.time) / (60*60*1000)%24
         Log.d("diff =",diff.toString())

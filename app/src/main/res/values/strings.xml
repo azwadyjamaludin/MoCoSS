@@ -34,7 +34,7 @@
     <string name="content3MY">Aktiviti Bimbingan dan Psiko-Pendidikan</string>
     <string name="content4MY">Ujian Psikologi</string>
     <string name="content5MY">Perkembangan Profesional</string>
-    <string name="content6MY">Konsultasi dan Rujukan</string>
+    <string name="content6MY">Rujukan dan Konsultasi</string>
     <string name="content7MY">Pengurusan Pentadbiran</string>
     <string name="content8MY">Buku Log</string>
     <string name="content9MY">Analisis Kes</string>
@@ -69,5 +69,14 @@
     <string name="downloadFileEN">Download</string>
     <string name="attachFileMY">Kepilkan</string>
     <string name="attachFileEN">Attachment</string>
+    <string name="notesMY">Catatan</string>
+    <string name="notesEN">Notes</string>
+    <string name="totalHourMY">Jumlah Jam:</string>
+    <string name="totalHourEN">Total Hour:</string>
+
+    <string name="numberMy">Bil</string>
+    <string name="numberEN">Num</string>
+    <string name="dateMy">Tarikh</string>
+    <string name="dateEN">Date</string>
 
 </resources>
